@@ -52,7 +52,8 @@ if (isset($_POST['suivant']))
                                       <html>
                                         <body>
                                           <div align="center">
-                                            <a href="http://127.0.0.1/Hexagon/confirmation.php?numero='.urlencode($numero).'&key'.$key.'">Confirmez votre compte !</a>
+                                            Bonjour '$prenom', par mesure de sécurité vous devez confirmer votre inscription en cliquant sur ce lien: 
+                                            <a href="http://127.0.0.1/Hexagon/confirmation.php?numero='.urlencode($mail).'&key'.$key.'">Confirmez votre compte !</a>
                                             
                                             
                                           
@@ -173,4 +174,3 @@ if (isset($_POST['suivant']))
 
 </body>
 </html>
-<!--Confirmation par mail , 9.46 >
