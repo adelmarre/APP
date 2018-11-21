@@ -7,6 +7,7 @@ if (isset($_POST['suivant']))
     $mail = ($_POST['mail']);
     $numero = ($_POST['numero']);
     $mdp = sha1($_POST['mdp']);
+    $mdp2 = sha1($_POST['mdp2']);
     $adresse =  htmlspecialchars($_POST['adresse']);
     $cp =  ($_POST['cp']);
     $ville = htmlspecialchars($_POST['ville']);
@@ -36,42 +37,49 @@ if (isset($_POST['suivant']))
                             for ($i=1;$i<$longueurKey;$i++){
                               $key.=mt_rand(0,9);
                             }
-                             if (isset($_POST['choix']))
-                                {
-                             
-                                      $insertmbr = $bdd->prepare("INSERT INTO membres(nom, prenom, mail, mdp, numero,confirmkey) VALUES(?, ?, ?, ?, ?, ?)");
-                                      $insertmbr->execute(array($nom, $prenom, $mail, $mdp, $numero,$key));
-                                      $insertmbr2 =  $bdd->prepare("INSERT INTO habitation(adresse, cp, ville, pays) VALUES(?, ?, ?, ?)");
-                                      $insertmbr2->execute(array($adresse, $cp, $ville, $pays));
-                                      $header="MIME-Version: 1.0\r\n";
-                                      $header.='From:"Hexagon.com"<projet.hexagon@gmail.com>'."\n";
-                                      $header.='Content-Type:text/html; charset="utf-8"'."\n";
-                                      $header.='Content-Transfer-Encoding: 8bit';
+                            if ($mdp == $mdp2){
+                                   if (isset($_POST['choix']))
+                                      {
+                                   
+                                            $insertmbr = $bdd->prepare("INSERT INTO membres(nom, prenom, mail, mdp, numero,confirmkey) VALUES(?, ?, ?, ?, ?, ?)");
+                                            $insertmbr->execute(array($nom, $prenom, $mail, $mdp, $numero,$key));
+                                            $insertmbr2 =  $bdd->prepare("INSERT INTO habitation(adresse, cp, ville, pays) VALUES(?, ?, ?, ?)");
+                                            $insertmbr2->execute(array($adresse, $cp, $ville, $pays));
+                                            $header="MIME-Version: 1.0\r\n";
+                                            $header.='From:"Hexagon.com"<projet.hexagon@gmail.com>'."\n";
+                                            $header.='Content-Type:text/html; charset="utf-8"'."\n";
+                                            $header.='Content-Transfer-Encoding: 8bit';
 
-                                      $message='
-                                      <html>
-                                        <body>
-                                          <div align="center">
-                                            Bonjour '$prenom', par mesure de sécurité vous devez confirmer votre inscription en cliquant sur ce lien: 
-                                            <a href="http://127.0.0.1/Hexagon/confirmation.php?numero='.urlencode($mail).'&key'.$key.'">Confirmez votre compte !</a>
-                                            
-                                            
-                                          
-                                            
-                                          </div>
-                                        </body>
-                                      </html>
-                                      ';
+                                            $message='
+                                            <html>
+                                              <body>
+                                                <div align="center">
+                                                  Bonjour ,
+                                                  par mesure de sécurité vous devez confirmer votre inscription en cliquant sur ce lien: 
+                                                  <a href="http://127.0.0.1/Hexagon/confirmation.php?mail='.urlencode($mail).'&key='.$key.'">Confirmez votre compte !</a>
+                                                  
+                                                  
+                                                
+                                                  
+                                                </div>
+                                              </body>
+                                            </html>
+                                            ';
 
-                                      mail($mail, "Confirmation de l'inscription", $message, $header);
-                                     
+                                            mail($mail, "Confirmation de l'inscription", $message, $header);
+                                           
 
-                                      $erreur = "Votre compte a bien été créé";
+                                            $erreur = "Votre compte a bien été créé";
 
-                                  } 
+                                        } 
+                                        else {
+                                          $erreur = "Vous n'avez pas accepter les conditions générales d'utilisation, inscription impossible";
+                                        }}
+
                                   else {
-                                    $erreur = "Vous n'avez pas accepter les conditions générales d'utilisation, inscription impossible";
-                                  }}
+                                    $erreur = "Vos mots de passe ne correspondent pas";
+                                        }
+                                    }
                             else
                             {
                                 $erreur = "Votre email est déjà associé à un compte";
@@ -138,6 +146,10 @@ if (isset($_POST['suivant']))
     <input type="password" id="mdp" name="mdp" required>
   </div>
   <div>
+    <label for="mdp2">Confirmer son mot de passe :</label>
+    <input type="password" id="mdp2" name="mdp2" required>
+  </div>
+  <div>
     <label for="adresse">Adresse :</label>
     <input type="text" id="adresse" name="adresse" placeholder="12 rue de Vanves"required>
   </div>
@@ -174,3 +186,4 @@ if (isset($_POST['suivant']))
 
 </body>
 </html>
+
