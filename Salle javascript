@@ -1,0 +1,14 @@
+function ChangHab(){
+	var CheckHab = document.getElementByClassName("SelecHabitation");
+	var Salle=document.getElementByTagName("ul");
+	if(CheckHab.checked== true && CheckHab.value== Salle.value){
+		
+		Salle.style.display = block;
+		
+
+	}
+	else {
+		Salle.style.display = none;
+	}
+
+}
