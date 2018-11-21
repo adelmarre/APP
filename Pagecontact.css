@@ -1,0 +1,187 @@
+/*Header*/
+
+header{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	border-bottom:  2px #7AB781 solid;
+	margin-top: 1%;
+	padding-bottom: 1%;
+}
+
+#bloc_page
+{
+	width: auto;
+	height: auto;
+}
+
+#logo_hexagon
+{
+	background-size: cover;
+	width: 329px;
+	height: 101px;
+	
+}
+/* Menu de navigation*/
+nav ul
+{
+	list-style-type: none;
+	display:inline-flex;
+	
+}
+
+nav li
+{
+	margin-right: 1em;
+}
+
+nav a
+{
+	font-size: 1.2em;
+	color:#445D7B;
+	padding-bottom: 2px;
+	text-decoration: none;
+
+}
+
+nav a:hover
+{
+	color:purple;
+}
+
+/*Body*/
+body
+{
+		background-image: url(background.jpg);
+
+	font-family: 'Raleway', sans-serif;
+}
+
+
+#section1
+{
+	margin-top: 3%;
+	width: 30%;
+	margin-left: 3%;
+
+
+}
+.coordonnées
+{
+	background-image: url(background_vert.jpg);
+	padding: 5%;
+	border: 1.5px groove  #445D7B;
+	border-radius: 17px;
+	margin-bottom: 5%;
+	width: 80%;
+	display: inline-flex;
+
+}
+.mail
+{
+	 margin-right: 6%;
+	 margin-left: 3%;
+}
+
+.telephone
+{
+	margin-right: 2%;
+	margin-left: 3%;
+}
+
+
+
+
+#section2
+{
+   border: 1.5px groove #445D7B ;
+   border-radius: 17px;
+   width: 50%;
+   display: flex;
+   margin-left: 3%;
+   background-image: url(background_vert.jpg);
+
+}
+
+#aside21
+{
+	text-align: center;
+	
+	width: 15em;
+	padding-top: 2.5em;
+	padding-left: 1em;
+	margin: 1%;
+	
+}
+#aside22
+{
+	margin-right: 3%;
+
+}
+#aside22 ul
+{
+	list-style: none;
+	
+	width: 20%;
+
+}
+#aside22 li
+{
+	margin-bottom: 3%;
+	text-align: center;
+	width: 7em;
+}
+
+h2
+{
+position: relative;
+border: 1px groove #445D7B;
+padding: 2%;
+width: 8em;
+text-align: center;
+margin-left: 10em;
+
+
+}
+
+.demande
+{
+	display: flex;
+	justify-content: space-between;
+	background: none;
+	box-sizing: border-box;
+
+}
+.Votre_demande
+{
+	width: 15em;
+	height: 10.2em;
+	margin-left: 2em;
+	margin-top: 1.2em;
+
+}
+#section3
+{
+	position: absolute;
+	
+	right: 3%;
+	top: 36.4%;
+
+	border: 1.5px groove #445D7B;
+
+}
+
+footer
+{
+margin-top: 2em;
+padding: 1.5em 0em 1em;
+text-align: center;
+border-top: 2px solid #7AB781;
+font-size: 1.2em;
+}
+footer a 
+{
+	text-decoration: none;
+	color: #445D7B;
+}
+
