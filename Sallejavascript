@@ -1,0 +1,257 @@
+function AffichePrincipal(){
+	var Principal=document.getElementById('MenuMaisonPrincipal');
+	var Secondaire=document.getElementById('MenuMaisonPrincipal')
+	var Pradio=document.getElementById('PrincipalRadio')
+	var Sradio=document.getElementById('PrincipalRadio')
+	if(Pradio.checked==true){
+		Principal.style.display='block';
+		Secondaire.style.display='none';
+}
+
+}
+
+function AfficheSecondaire(){
+	var Principal=document.getElementById('MenuMaisonPrincipal');
+	var Secondaire=document.getElementById('MenuMaisonPrincipal')
+	var Pradio=document.getElementById('PrincipalRadio')
+	var Sradio=document.getElementById('PrincipalRadio')
+
+
+	if (Sradio.checked==true){
+		Secondaire.style.display='block';
+		Principal.style.display='none';
+}
+	}
+
+	 function AfficheCapt(){
+    var Chambre1=document.getElementById('setChambre1');
+    var Chambre2=document.getElementById('setChambre2');
+    var Cuisine=document.getElementById('setCuisine');
+    var SalledeBain=document.getElementById('SalledeBain');
+    var Salon=document.getElementById('setSalon');
+    var Cave=document.getElementById('setCave');
+
+    var ch1radio=document.getElementById('ch1');
+    var ch2radio=document.getElementById('ch2');
+    var cuiradio=document.getElement
+
+  }
+
+
+
+
+function AfficheCapt(){
+    var Titre=document.getElementsByClassName('titreSet');
+
+    var Capteursalon=document.getElementsByClassName('capteur');
+    var Capteurch1=document.getElementsByClassName('capteurch1');
+    var Capteurch2=document.getElementsByClassName('capteurch2');
+    var Capteurcui=document.getElementsByClassName('capteurcui');
+    var Capteursalbain=document.getElementsByClassName('capteursalbain');
+    var Capteurcave=document.getElementsByClassName('capteurcave');
+  
+
+    var Ch1radio=document.getElementById('ch1');
+    var Ch2radio=document.getElementById('ch2');
+    var Cuiradio=document.getElementById('cui');
+    var Salbainradio=document.getElementById('salbain');
+    var Salonradio=document.getElementById('salon');
+    var Caveradio=document.getElementById('cave');
+
+    var i;
+
+
+
+    if(Ch1radio.checked==true){
+      for (i=0; i< Capteurch1.length; i++){
+        Capteurch1[i].style.display='table-cell';
+      }
+
+      for (i=0; i< Capteurch2.length; i++){
+         Capteurch2[i].style.display='none';
+    }
+      for (i=0; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='none';
+      }
+
+      for (i=0; i< Capteursalbain.length; i++){
+        Capteursalbain[i].style.display='none';
+      }
+
+       for (i=0; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='none';
+
+      }
+
+       for (i=0; i< Capteurcave.length; i++){
+        Capteurcave[i].style.display='none';
+      }
+
+
+    else{
+      for (i=0; i< Capteurch1.length; i++){
+        Capteurch1[i].style.display='none';
+    }
+
+
+if(Ch2radio.checked==true){
+      for (i=0; i< Capteurch2.length; i++){
+        Capteurch1[i].style.display='table-cell';
+      }
+
+      for (i=0; i< Capteurch1.length; i++){
+         Capteurch2[i].style.display='none';
+    }
+      for (i=0; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='none';
+      }
+
+      for (i=0; i< Capteursalbain.length; i++){
+        Capteursalbain[i].style.display='none';
+      }
+
+       for (i=0; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='none';
+
+      }
+
+       for (i=0; i< Capteurcave.length; i++){
+        Capteurcave[i].style.display='none';
+      }
+
+
+    else{
+      for (i=0; i< Capteurch2.length; i++){
+        Capteurch1[i].style.display='none';
+    }
+
+
+if(Cuiradio.checked==true){
+      for (i=0; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='table-cell';
+      }
+
+      for (i=0; i< Capteurch2.length; i++){
+         Capteurch2[i].style.display='none';
+    }
+      for (i=0; i< Capteurcui.length; i++){
+        Capteurch1[i].style.display='none';
+      }
+
+      for (i=0; i< Capteursalbain.length; i++){
+        Capteursalbain[i].style.display='none';
+      }
+
+       for (i=0; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='none';
+
+      }
+
+       for (i=0; i< Capteurcave.length; i++){
+        Capteurcave[i].style.display='none';
+      }
+
+
+    else{
+      for (i=0; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='none';
+    }
+
+
+
+    if(Salbainradio.checked==true){
+      for (i=0; i< Capteursalbain.length; i++){
+        Capteurch1[i].style.display='table-cell';
+      }
+
+      for (i=0; i< Capteurch2.length; i++){
+         Capteurch2[i].style.display='none';
+    }
+      for (i=0; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='none';
+      }
+
+      for (i=0; i< Capteurch1.length; i++){
+        Capteurch1[i].style.display='none';
+      }
+
+       for (i=0; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='none';
+
+      }
+
+       for (i=0; i< Capteurcave.length; i++){
+        Capteurcave[i].style.display='none';
+      }
+
+
+    else{
+      for (i=0; i< Capteursalbain.length; i++){
+        Capteursalbain[i].style.display='none';
+    }
+
+
+     if(Salonradio.checked==true){
+      for (i=0; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='table-cell';
+      }
+
+      for (i=0; i< Capteurch2.length; i++){
+         Capteurch2[i].style.display='none';
+    }
+      for (i=0; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='none';
+      }
+
+      for (i=0; i< Capteursalbain.length; i++){
+        Capteursalbain[i].style.display='none';
+      }
+
+       for (i=0; i< Capteurch1.length; i++){
+        Capteursalon[i].style.display='none';
+
+      }
+
+       for (i=0; i< Capteurcave.length; i++){
+        Capteurcave[i].style.display='none';
+      }
+
+
+    else{
+      for (i=0; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='none';
+    }
+
+
+
+
+     if(Caveradio.checked==true){
+      for (i=0; i< Capteurcave.length; i++){
+        Capteurcave[i].style.display='table-cell';
+      }
+
+      for (i=0; i< Capteurch2.length; i++){
+         Capteurch2[i].style.display='none';
+    }
+      for (i=0; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='none';
+      }
+
+      for (i=0; i< Capteursalbain.length; i++){
+        Capteursalbain[i].style.display='none';
+      }
+
+       for (i=0; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='none';
+
+      }
+
+       for (i=0; i< Capteurch1.length; i++){
+        Capteurch1[i].style.display='none';
+      }
+
+
+    else{
+      for (i=0; i< Capteurch1.length; i++){
+        Capteurcave[i].style.display='none';
+    }

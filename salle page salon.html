@@ -9,8 +9,10 @@
      function AfficheHab(){
   var Principal=document.getElementById('MenuMaisonPrincipal');
   var Secondaire=document.getElementById('MenuMaisonSecondaire')
+
   var Pradio=document.getElementById('PrincipalRadio')
   var Sradio=document.getElementById('SecondaireRadio')
+
   if(Pradio.checked==true){
     Principal.style.display='block';
     Secondaire.style.display='none';
@@ -34,7 +36,7 @@
     var Capteurch2=document.getElementsByClassName('capteurch2');
     var Capteurcui=document.getElementsByClassName('capteurcui');
     var Capteursalbain=document.getElementsByClassName('capteursalbain');
-    var Capteurcave=document.getElementsByClassName('capteurcave')
+    var Capteurcave=document.getElementsByClassName('capteurcave');
   
 
     var Ch1radio=document.getElementById('ch1');
@@ -44,73 +46,209 @@
     var Salonradio=document.getElementById('salon');
     var Caveradio=document.getElementById('cave');
 
-    var i;
+    var i=0;
 
 
 
     if(Ch1radio.checked==true){
-      for (i=0; i< Capteurch1.length; i++){
+      for (i; i< Capteurch1.length; i++){
         Capteurch1[i].style.display='table-cell';
       }
 
-      for (i=0; i< Capteurch2.length; i++){
+      for (i; i< Capteurch2.length; i++){
          Capteurch2[i].style.display='none';
     }
-      for (i=0; i< Capteurcui.length; i++){
+      for (i; i< Capteurcui.length; i++){
         Capteurcui[i].style.display='none';
       }
 
-      for (i=0; i< Capteursalbain.length; i++){
+      for (i; i< Capteursalbain.length; i++){
         Capteursalbain[i].style.display='none';
       }
 
-       for (i=0; i< Capteursalon.length; i++){
+       for (i; i< Capteursalon.length; i++){
         Capteursalon[i].style.display='none';
 
       }
 
-       for (i=0; i< Capteurcave.length; i++){
+       for (i; i< Capteurcave.length; i++){
         Capteurcave[i].style.display='none';
       }
 
+}
 
     else{
-      for (i=0; i< Capteurch1.length; i++){
+      for (i; i< Capteurch1.length; i++){
         Capteurch1[i].style.display='none';
     }
 
+}
 
 if(Ch2radio.checked==true){
-      for (i=0; i< Capteurch2.length; i++){
+      for (i; i< Capteurch2.length; i++){
         Capteurch1[i].style.display='table-cell';
       }
 
-      for (i=0; i< Capteurch1.length; i++){
+      for (i; i< Capteurch1.length; i++){
          Capteurch2[i].style.display='none';
     }
-      for (i=0; i< Capteurcui.length; i++){
+      for (i; i< Capteurcui.length; i++){
         Capteurcui[i].style.display='none';
       }
 
-      for (i=0; i< Capteursalbain.length; i++){
+      for (i; i< Capteursalbain.length; i++){
         Capteursalbain[i].style.display='none';
       }
 
-       for (i=0; i< Capteursalon.length; i++){
+       for (i; i< Capteursalon.length; i++){
         Capteursalon[i].style.display='none';
 
       }
 
-       for (i=0; i< Capteurcave.length; i++){
+       for (i; i< Capteurcave.length; i++){
         Capteurcave[i].style.display='none';
       }
+}
 
 
     else{
-      for (i=0; i< Capteurch2.length; i++){
+      for (i; i< Capteurch2.length; i++){
         Capteurch1[i].style.display='none';
     }
+}
 
+
+if(Cuiradio.checked==true){
+      for (i; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='table-cell';
+      }
+
+      for (i; i< Capteurch2.length; i++){
+         Capteurch2[i].style.display='none';
+    }
+      for (i; i< Capteurcui.length; i++){
+        Capteurch1[i].style.display='none';
+      }
+
+      for (i; i< Capteursalbain.length; i++){
+        Capteursalbain[i].style.display='none';
+      }
+
+       for (i; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='none';
+
+      }
+
+       for (i; i< Capteurcave.length; i++){
+        Capteurcave[i].style.display='none';
+      }
+}
+
+    else{
+      for (i; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='none';
+    }
+}
+
+
+    if(Salbainradio.checked==true){
+      for (i; i< Capteursalbain.length; i++){
+        Capteurch1[i].style.display='table-cell';
+      }
+
+      for (i; i< Capteurch2.length; i++){
+         Capteurch2[i].style.display='none';
+    }
+      for (i; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='none';
+      }
+
+      for (i; i< Capteurch1.length; i++){
+        Capteurch1[i].style.display='none';
+      }
+
+       for (i; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='none';
+
+      }
+
+       for (i; i< Capteurcave.length; i++){
+        Capteurcave[i].style.display='none';
+      }
+}
+
+
+    else{
+      for (i; i< Capteursalbain.length; i++){
+        Capteursalbain[i].style.display='none';
+    }
+}
+
+     if(Salonradio.checked==true){
+      for (i; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='table-cell';
+      }
+
+      for (i; i< Capteurch2.length; i++){
+         Capteurch2[i].style.display='none';
+    }
+      for (i; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='none';
+      }
+
+      for (i; i< Capteursalbain.length; i++){
+        Capteursalbain[i].style.display='none';
+      }
+
+       for (i; i< Capteurch1.length; i++){
+        Capteursalon[i].style.display='none';
+
+      }
+
+       for (i; i< Capteurcave.length; i++){
+        Capteurcave[i].style.display='none';
+      }
+}
+
+    else{
+      for (i; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='none';
+    }
+
+}
+
+
+     if(Caveradio.checked==true){
+      for (i; i< Capteurcave.length; i++){
+        Capteurcave[i].style.display='table-cell';
+      }
+
+      for (i; i< Capteurch2.length; i++){
+         Capteurch2[i].style.display='none';
+    }
+      for (i; i< Capteurcui.length; i++){
+        Capteurcui[i].style.display='none';
+      }
+
+      for (i; i< Capteursalbain.length; i++){
+        Capteursalbain[i].style.display='none';
+      }
+
+       for (i; i< Capteursalon.length; i++){
+        Capteursalon[i].style.display='none';
+
+      }
+
+       for (i; i< Capteurch1.length; i++){
+        Capteurch1[i].style.display='none';
+      }
+
+}
+    else{
+      for (i; i< Capteurch1.length; i++){
+        Capteurcave[i].style.display='none';
+    }
+}
 
 
 
