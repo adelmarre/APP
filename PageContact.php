@@ -4,16 +4,38 @@ if(isset($_POST['mailform']))
 	if(!empty($_POST['Nom']) AND !empty($_POST['Prenom']) AND !empty($_POST['Telephone']) AND !empty($_POST['Email']) AND !empty($_POST['Ville']) AND !empty($_POST['Codepostal']) AND !empty($_POST['Votre_demande']))
 	{
 
+		$header="MIME-Version: 1.0\r\n";
+		$header.='From:"Hexagon.com"<projet.hexagon@gmail.com>'."\n";
+		$header.='Content-Type:text/html; charset="utf-8"'."\n";
+		$header.='Content-Transfer-Encoding: 8bit';
+		$message='
+		<html>
+			<body>
+				<div align="center">
+					
+					<br />
+					<u> Nom de l\'expéditeur :</u>'.$_POST['Nom'].' <br />
+					<u> Prenom de l\'expéditeur :</u>'.$_POST['Prenom'].' <br />
+					<u> Telephone de l\'expéditeur :</u>'.$_POST['Telephone'].' <br />
+					<u> Email de l\'expéditeur :</u>'.$_POST['Email'].' <br />
+					<u> Codepostal de l\'expéditeur :</u>'.$_POST['Codepostal'].' <br />
+
+					'.$_POST['Votre_demande'].'
+					<br />
+				
+					
+				</div>
+			</body>
+		</html>
+		';
+		mail("projet.hexagon@gmail.com", "CONTACT - Hexagon", $message, $header);
+
 	}
 	else
 	{
 		$msg='Tous les champs doivent être complétés !';
 	}
-
 }
-
-
-
 ?>
 <html>
 <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
@@ -41,7 +63,7 @@ if(isset($_POST['mailform']))
 						<h1>Nos Coordonées:</h1>
 					<div class="coordonnées">
 						<img src="icone_mail.png" alt="icone_mail" id="icone_mail">
-						<div class="mail">mail@hexagon.fr </div>
+						<div class="mail">projet.hexagon@gmail.com</div>
 						<img src="icone_telephone.png" alt="icone_telephone" id="icone_telephone">
 						<div class="telephone">0122334455 </div>
 					</div>
@@ -59,27 +81,26 @@ if(isset($_POST['mailform']))
 					<div class="demande">
 					<ul>
 						<form method="POST" action="">
-							<li><input type="text" name="Nom" placeholder="Nom" value="<?php if(isset($_POST['Nom'])){echo $_POST['Nom'];}?>"></li>
-							<li><input type="text" name="Prenom" placeholder="Prénom"></li>
-							<li><input type="text" name="Telephone" placeholder="Téléphone"></li>
-							<li><input type="mail" name="Email" placeholder="Email"></li>
-							<li><input type="text" name="Ville" placeholder="Ville"></li>
-							<li><input type="text" name="Codepostal" placeholder="Code postal"></li>
+							<li><input type="text" name="Nom" placeholder="Nom" value="<?php if(isset($_POST['Nom'])) { echo $_POST['Nom']; } ?>" /></li>
+							<li><input type="text" name="Prenom" placeholder="Prénom" value="<?php if(isset($_POST['Prenom'])) { echo $_POST['Prenom']; } ?>"/></li>
+							<li><input type="text" name="Telephone" placeholder="Téléphone" value="<?php if(isset($_POST['Telephone'])) { echo $_POST['Telephone']; } ?>"></li>
+							<li><input type="mail" name="Email" placeholder="Email" value="<?php if(isset($_POST['Email'])) { echo $_POST['Email']; } ?>"></li>
+							<li><input type="text" name="Ville" placeholder="Ville" value="<?php if(isset($_POST['Ville'])) { echo $_POST['Ville']; } ?>"></li>
+							<li><input type="text" name="Codepostal" placeholder="Code postal" value="<?php if(isset($_POST['Codepostal'])) { echo $_POST['Codepostal']; } ?>"></li>
+							</ul>	
+							<div>
+					
+							<textarea name="Votre_demande" placeholder="Votre message"><?php if(isset($_POST['Votre_demande'])) { echo $_POST['Votre_demande']; } ?></textarea>
+							<br /> <br />
+							<input type="submit" value="Envoyer" name="mailform">					
+					
+						
+							</div>
 						</form>
 						
 						
 
-					</ul>	
-					<div>
-					<form method="POST" action="">
-						<textarea name="Votre_demande" placeholder="Votre message"></textarea>
-						<br /> <br />
-						<input type="submit" value="Envoyer" name="mailform">
-					</form>
 					
-					
-						
-					</div>
 
 					</div>
 					<?php
@@ -87,7 +108,6 @@ if(isset($_POST['mailform']))
 					{
 						echo $msg;
 					}
-
 					?>	
 					
 				</div>
