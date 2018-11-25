@@ -1,5 +1,5 @@
 <?php 
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=espace_membre','root','');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
 if (isset($_POST['suivant']))
 {
     $nom = htmlspecialchars($_POST['nom']);
@@ -27,7 +27,7 @@ if (isset($_POST['suivant']))
           {
                       if (filter_var($mail,FILTER_VALIDATE_EMAIL)) 
                       {
-                          $reqmail = $bdd->prepare("SELECT * FROM membres WHERE mail = ?");
+                          $reqmail = $bdd->prepare("SELECT * FROM personne WHERE mail = ?");
                           $reqmail->execute(array($mail));
                           $mailexist = $reqmail->rowCount();
                           if ($mailexist==0) 
@@ -41,7 +41,7 @@ if (isset($_POST['suivant']))
                                    if (isset($_POST['choix']))
                                       {
                                    
-                                            $insertmbr = $bdd->prepare("INSERT INTO membres(nom, prenom, mail, mdp, numero,confirmkey) VALUES(?, ?, ?, ?, ?, ?)");
+                                            $insertmbr = $bdd->prepare("INSERT INTO personne(nom, prenom, mail, mdp, numero,confirmkey) VALUES(?, ?, ?, ?, ?, ?)");
                                             $insertmbr->execute(array($nom, $prenom, $mail, $mdp, $numero,$key));
                                             $insertmbr2 =  $bdd->prepare("INSERT INTO habitation(adresse, cp, ville, pays) VALUES(?, ?, ?, ?)");
                                             $insertmbr2->execute(array($adresse, $cp, $ville, $pays));
