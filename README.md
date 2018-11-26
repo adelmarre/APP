@@ -1,5 +1,5 @@
 #APP
- Administrateur.php : n'est pas terminée, voici une premiere version
+ Administrateur.php : n'est pas terminée, voici une premiere version ATTENTION initialisé admin a 1 manuellement dans php my admin si on veut tester 
  
  Inscription.php (w/ inscription.css) + confirmation. php : terminé
  
