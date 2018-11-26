@@ -1,0 +1,167 @@
+body {
+	
+	background-image: url("background.jpg");
+	font-family: "Raleway";
+
+}
+#logo{
+	  /*background-size: cover;
+      
+        margin-left: 1em;*/
+}
+
+#logo img{
+	/*width: 55%;
+	padding-top: 2%;
+	padding-left: 2%;*/
+}
+
+#identification{
+	min-height: 3%;
+	position: absolute;
+	top: 0.5%;
+	right : 0%;
+	width: 40%;
+	height: 15%;
+	margin: 1%;
+	padding: 0.5em; 
+	border: 2px black solid;
+	border-radius: 10px;
+
+}
+
+#titre{
+
+	position: absolute;
+	
+	left: 2%;
+	font-size: 2em;
+}
+
+#connexion button{
+
+	font-style: oblique;
+	border: 2px solid #445D7B;
+	border-radius: 5%;
+	width: 20%;
+	height: 70%;
+	position: absolute;
+	right: 1%;
+	top: 15%;
+	bottom: 50%;
+	transition : all 0.5s;
+	cursor: pointer;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #7AB781 ;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover{
+    color: #445D7B;
+    transition : all 0.2s;
+}
+.boutton:hover{
+
+	background-color: #445D7B; 
+    color: white;
+}
+
+
+#text{
+	/*padding: 0.5%;*/
+	width: 80%;
+	/*height: 75%;
+	border: 3px black solid;
+	border-radius: 10px;*/
+	position:absolute;
+	left: 10%;
+	top: 33%;
+	overflow: auto;
+	
+
+}
+
+#utilisateur input{
+	width: 35%;
+	height: 20%;
+	position: absolute;
+	left: 2%;
+	bottom: 35%;
+}
+
+#motdepasse input{
+	width: 35%;
+	height: 20%;
+	position: absolute;
+	left: 41%;
+	bottom: 35%;
+
+}
+
+#souvenir {
+
+	
+	
+	right : 12%;
+	bottom: 12%;
+
+	
+}
+
+
+
+
+#oublie {
+
+	position: absolute;
+	bottom: 12%;
+	left: 41%;
+
+}
+
+
+
+
+#menucote{
+	width: 100%;
+	position: absolute;
+	left: -0.3%;
+	top: 114.5%;
+
+}
+#menucote button {
+    
+
+    border: none;
+    color: white;
+    padding: 1%;
+    color: black;
+    text-align: center;
+    display: inline-block;
+    font-size:90% ;
+    cursor: pointer;
+    transition : all 0.3s;
+    float: right;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#menucote button:hover{
+
+    background-color: #008CBA;
+}
