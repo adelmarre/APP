@@ -1,2 +1,8 @@
 #APP
-Mettre içi les commentaires généraux
+ Administrateur.php : n'est pas terminée, voici une premiere version
+ 
+ Inscription.php : terminé
+ 
+ Deconnexion : terminé
+ 
+ 
