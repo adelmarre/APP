@@ -1,0 +1,230 @@
+body,html{
+padding: 0;
+margin: 0;
+height: 0;
+background-color:#F7EFE1;
+}
+
+ul ul {display: none;}
+li:hover ul.sous_menu_salles
+{display:block;}
+
+header{
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-end;
+ border-bottom:  2px #7AB781 solid;
+ margin-top: 1%;
+ padding-bottom: 1%;
+}
+#logo_hexagon
+{
+ background-size: cover;
+ width: 329px;
+ height: 101px;
+ 
+}
+/* Menu de navigation*/
+.head ul
+{
+ list-style-type: none;
+ display:inline-flex;
+ 
+}
+.head li
+{
+ margin-right: 1em;
+}
+ .head a
+{
+ font-size: 1.2em;
+ color:#445D7B;
+ padding-bottom: 2px;
+ text-decoration: none;
+}
+.head a:hover
+{
+ color:purple;
+}
+
+.colonnedroite{
+float:right;
+width:20%;
+margin-right: 1em;
+margin-left: 1em;
+padding-top:2em
+}
+
+.photo_profil{
+margin:0 auto;
+padding:0 ;
+left: 8%;
+height:6em;
+width: 6em;
+display: block ;
+
+}
+
+.affichage_prenom{
+width: auto;
+height: auto;
+text-align: center;
+margin:0 0.8em;
+padding:0 ;
+font-size: 0.8em;
+border:0.13em solid black;
+background-color: #fff;
+list-style-type:none;
+}
+.affichage_nom{
+width: auto;
+height: auto;
+text-align: center;
+
+margin:0 0.8em;
+padding:0 ;
+font-size: 0.8em;
+border:0.13em solid black;
+background-color: #fff;
+list-style-type:none;
+}
+
+.box_information{
+width: auto;
+height: auto;
+margin:0 auto;
+padding:0 ;
+top:35%;
+left:88%;
+margin-top:10%;
+border:0.13em solid black;
+background-color: #fff;
+list-style-type:none;
+
+}
+.box{
+color : black;
+text-decoration: none;
+font-size: 1em;
+display: block ;
+margin : auto auto auto 1em; /*haut droite bas gauche */
+float:left;
+
+}
+
+.box_rouge:link, .box_rouge:visited, .box_rouge:focus{
+color : red;
+text-decoration: none;
+font-size:1em;
+display: block ;
+margin : auto auto auto auto;
+
+border-top:0.13em solid black;
+text-align:center;
+}
+.box_rouge:hover{
+color : white;
+background: #445D7B;
+text-decoration: none;
+font-size:1em;
+display: block ;
+margin : auto auto auto 1em;
+}
+
+.avatar_box{
+height:1.1em;
+width: 1.1em;
+display: block ;
+margin : 1em 5em auto auto ;
+}
+
+.box_profil{
+width: auto;
+height: auto;
+margin:0 auto;
+padding:0 ;
+top:2%;
+left:88%;
+margin-bottom:10%;
+border:0.13em solid #F7EFE1;
+background-color: #F7EFE1
+list-style-type:none;
+}
+
+.colonnegauche{
+float:left;
+width:20%;
+margin-right: 1em;
+margin-left: 1em;
+padding-top:2em
+}
+
+.meta_menu{
+width: auto;
+height: auto;
+margin:0 auto;
+padding:0 ;
+top:15%;
+border:0.13em solid black;
+background-color: #fff;
+list-style-type:none;
+overflow-y: hidden;
+}
+.sous_menu_salles{
+width: auto;
+height: auto;
+margin:0 auto;
+padding:0 ;
+border:0.13em solid black;
+background-color: #fff;
+list-style-type:none;
+}
+
+#Centre{
+margin-left:22%;
+margin-right:22%;
+padding-top:2em
+}
+
+.head2 ul
+{
+ list-style-type: none;
+ display:inline-block;
+ 
+}
+.head2 li
+{
+ margin-right: 1em;
+ margin-bottom:1em;
+}
+ .head2 a
+{
+ font-size: 1.2em;
+ color:#445D7B;
+ padding-bottom: 2px;
+ text-decoration: none;
+}
+.head2 a:hover
+{
+ color:purple;
+}
+
+label{
+	display:block;
+}
+
+.RentrerInfo{
+	display: block;
+ margin-right: 1em;
+ margin-bottom:1em;
+ width: 6em;
+ height: 2em;
+ overflow: hidden;
+}
+
+.envoyer{
+	margin-right: 1em;
+ margin-bottom:1em;
+ width: 6em;
+ height: 2em;
+}

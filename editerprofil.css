@@ -1,0 +1,253 @@
+
+
+body,html{
+    padding: 0;
+    margin: 0;
+    height: 0;
+    background-color:#F7EFE1;
+    font-family: "Raleway";
+}
+ul ul {display: none;}
+li:hover ul.sous_menu_salles, li:hover ul.sous_menu_habitations
+{display:block;}
+/* @media only screen and (min-width: 1300px) and (max-width:2000px) { */
+    header{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-bottom: 2px #7AB781 solid;
+        margin-top: 1%;
+        padding-bottom: 1%;
+    }
+    #logo_hexagon
+    {
+        background-size: cover;
+        width: 329px;
+        height: 101px;
+        margin-left: 1em;
+
+    }
+    /* Menu de navigation*/
+    .head ul
+    {
+        list-style-type: none;
+        display:inline-flex;
+    }
+    .head li
+    {
+        margin-right: 1em;
+    }
+    .head a
+    {
+        font-size: 1.2em;
+        color:#445D7B;
+        padding-bottom: 2px;
+        text-decoration: none;
+    }
+    .head a:hover
+    {
+        font-size: 1.2em;
+        color:purple;
+    }
+
+    .logo{
+        display:block;
+        width: 15em;
+        height: 15em
+        padding:0 ;
+        margin : auto auto auto auto; /*haut droite bas gauche */
+        float:left;
+    }
+    #colonnedroite{
+        float:right;
+        width:20%;
+        margin-right: 1em;
+        margin-left: 1em;
+        padding-top:2em
+    }
+    #colonnegaucheMaisonPrincipal{
+        float:left;
+        width:20%;
+        margin-right: 1em;
+        margin-left: 1em;
+        padding-top:2em
+        
+    }
+    #Centre{
+        width : 60%;
+        margin-left:8%;
+        padding-top:2em
+    }
+    a{
+        position: relative;
+        color : #000;
+        text-decoration: none;
+        font-size:1em;
+        display: block ;
+        margin : auto auto auto 1em;
+    }
+    a:visited{
+        position: relative;
+        color : gray;
+        text-decoration: none;
+        font-size:1em;
+        display: block ;
+        margin : auto auto auto 1em;
+    }
+    a:hover, a:focus,a:active{
+        position: relative;
+        color : white;
+
+        background: #445D7B;
+        text-decoration: none;
+        font-size:1em;
+        display: block ;
+        margin : auto auto auto 1em;
+    }
+    .box_information{
+        width: auto;
+        height: auto;
+        margin:0 auto;
+        padding:0 ;
+        top:35%;
+        left:88%;
+        margin-top:10%;
+        border:0.13em solid black;
+        background-color: #fff;
+        list-style-type:none;
+
+    }
+    .box{
+        color : black;
+        text-decoration: none;
+        font-size: 1em;
+        display: block ;
+        margin : auto auto auto 1em; /*haut droite bas gauche */
+        float:left;
+
+}
+
+    .bouton{
+        margin : auto auto auto 1em
+    }
+    .avatar_box{
+        height:1.1em;
+        width: 1.1em;
+        display: block ;
+        margin : 1em 5em auto auto ;
+    }
+    .box_rouge:link, .box_rouge:visited, .box_rouge:focus{
+        color : red;
+        text-decoration: none;
+        font-size:1em;
+        display: block ;
+        margin : auto auto auto auto;
+
+        border-top:0.13em solid black;
+        text-align:center;
+    }
+    .box_rouge:hover{
+        color : white;
+        background: #445D7B;
+        text-decoration: none;
+        font-size:1em;
+        display: block ;
+        margin : auto auto auto 1em;
+    }
+
+    .box_profil{
+        width: auto;
+        height: auto;
+        margin:0 auto;
+        padding:0 ;
+        top:2%;
+        left:88%;
+        margin-bottom:10%;
+        border:0.13em solid #F7EFE1;
+        background-color: #F7EFE1
+        list-style-type:none;
+    }
+    .photo_profil{
+        margin:0 auto;
+        padding:0 ;
+        left: 8%;
+        height:6em;
+        width: 6em;
+        display: block ;
+
+    }
+    .affichage_prenom{
+        width: auto;
+        height: auto;
+        text-align: center;
+        margin:0 0.8em;
+        padding:0 ;
+        font-size: 0.8em;
+        border:0.13em solid black;
+        background-color: #fff;
+        list-style-type:none;
+    }
+    .affichage_nom{
+        width: auto;
+        height: auto;
+        text-align: center;
+
+        margin:0 0.8em;
+        padding:0 ;
+        font-size: 0.8em;
+        border:0.13em solid black;
+        background-color: #fff;
+        list-style-type:none;
+    }
+    .meta_menu{
+        width: auto;
+        height: auto;
+        margin:0 auto;
+        padding:0 ;
+        top:15%;
+        border:0.13em solid black;
+        background-color: #fff;
+        list-style-type:none;
+        overflow-y: hidden;
+    }
+
+
+
+
+
+
+    .Salon{
+        width: auto;
+        height: auto;
+        margin:0 auto;
+
+        padding:0 ;
+        border:0.13em solid black;
+        left:20%;
+        top:5%;
+        overflow-y: hidden;
+
+    }
+    .capteur{
+        display:table-cell;
+        width: 20em;
+        border:0.13em solid black;
+
+    }
+
+
+    .titre{
+        text-align: center;
+    }
+    .bouton{
+        border-radius:0.2em
+        border:none;
+        color:#fff;
+        box-shadow: 0.5em 0.5em 0.8em #999;
+        font: bold 1.5em;
+        background-color:#445D7B
+    }
+
+div {
+    text-align: center;
+}
