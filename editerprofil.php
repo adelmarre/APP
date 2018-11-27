@@ -1,14 +1,12 @@
 <?php 
 session_start();
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
-
 if (isset($_SESSION['id']))
 {
     $requser = $bdd -> prepare('SELECT * FROM personne WHERE id = ?');
     $requser -> execute(array($_SESSION['id']));
     $user = $requser ->fetch();
     if (isset($_POST['newnom']) AND !empty($_POST['newnom']) AND $_POST['newnom']!=$user['nom']) {
-
       
         $newnom = htmlspecialchars($_POST['newnom']);
         $insertnom = $bdd -> prepare("UPDATE personne SET nom=? WHERE id=?");
@@ -16,7 +14,6 @@ if (isset($_SESSION['id']))
               header('Location: gerermamaison.php?id='.$_SESSION['id']);
     }
     if (isset($_POST['newprenom']) AND !empty($_POST['newprenom']) AND $_POST['newprenom']!=$user['prenom']) {
-
       
         $newprenom = htmlspecialchars($_POST['newprenom']);
         $insertnom = $bdd -> prepare("UPDATE personne SET prenom=? WHERE id=?");
@@ -46,13 +43,11 @@ if (isset($_SESSION['id']))
         $insertmdp = $bdd -> prepare("UPDATE personne SET mdp=? WHERE id=?");
         $insertmdp ->execute(array($mdp1,$_SESSION['id']));
         header('Location: gerermamaison.php?id='.$_SESSION['id']);
-
     }
     else
     {
         $msg = "Vos deux mots de passe ne correspondent pas";
     }
-
   }
 ?>
 
@@ -176,40 +171,67 @@ if (isset($_SESSION['id']))
 
   <fieldset id="set">
     <legend> <h1>Editer son profil</h1></legend>
+    <form method="POST" action="">
+            <table>
+               <tr>
+                  <td align="right">
+                     <label for="nom">Nom :</label>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="Nom" id="nom" name="newnom" value="<?php echo $user['nom'] ?>" />
+                  </td>
+               </tr>
+               <tr>
+                  <td align="right">
+                     <label for="prenom">Prenom:</label>
+                  </td>
+                  <td>
+                     <input type="text" placeholder="Prénom" id="prenom" name="newprenom" value="<?php echo $user['prenom'] ?>" />
+                  </td>
+               </tr>
+               <tr>
+                  <td align="right">
+                     <label for="mail">Courriel :</label>
+                  </td>
+                  <td>
+                     <input type="email" placeholder="Courriel" id="mail" name="newmail" value="<?php echo $user['mail'] ?>" />
+                  </td>
+               </tr>
+               <tr>
+                  <td align="right">
+                     <label for="motdepasse">Mot de passe :</label>
+                  </td>
+                  <td>
+                     <input type="password"  id="mdp" name="newmdp1" />
+                  </td>
+               </tr>
+               <tr>
+                  <td align="right">
+                     <label for="motdepasse">Confirmation du mot de passe :</label>
+                  </td>
+                  <td>
+                     <input type="password" id="mdp" name="newmdp2" />
+                  </td>
+               </tr>
+               <tr>
+                  <td></td>
+                  <td align="right">
+                     <br />
+                     <input type="tel" id="numero" placeholder="+336xxxxxxxxx" name="newnumero" value="<?php echo $user['numero'] ?>" />
+                  </td>
+               </tr>
+               <tr>
+                  <td></td>
+                  <td align="center">
+                     <br />
+                     <input type="submit" class="boutton "name="maj" value="Mettre à jour mon profil!" />
+                  </td>
+               </tr>
+            </table>
+         </form>
+         <?php if (isset($msg)) {echo$msg;} ?>
 
-
-      <form method="post" action="">
-<div >
-    <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="newnom" placeholder="Nom" value="<?php echo $user['nom'] ?>" >
-  </div>
-
-  <div>
-    <label for="prenom">Prénom :</label>
-    <input type="text" id="prenom" name="newprenom" placeholder="Prénom"  value="<?php echo $user['prenom'] ?> " >
-  </div>
-
-  <div>
-    <label for="mail">Courriel :</label>
-    <input type="text" id="mail" name="newmail" placeholder="Courriel" value="<?php echo $user['mail'] ?>" >
-  </div>
-  <div>
-    <label for="motdepasse">Mot de passe :</label>
-    <input type="password" id="mdp" name="newmdp1" >
-  </div>
-   <div>
-    <label for="motdepasse">Confirmer son mot de passe :</label>
-    <input type="password" id="mdp" name="newmdp2" >
-  </div>
-   <div>
-    <label for="numero">Numéro de téléphone :</label>
-    <input type="tel" id="numero" placeholder="+336xxxxxxxxx" name="newnumero" value="<?php echo $user['numero'] ?>" >
-  </div>
-      <div>
-      <button type="submit" class="boutton" name="maj">Mettre à jour mon profil!</button>
-      <?php if (isset($msg)) {echo$msg;} ?>
-
-      </div> </div>  </form>
+ </div>  </form>
     </fieldset>               
        </body>     
 <?php
