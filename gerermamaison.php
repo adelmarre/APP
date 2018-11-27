@@ -1,7 +1,6 @@
 <?php 
 session_start();
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
-
 if (isset($_GET['id']) AND $_GET['id'] > 0)
 {
     $getid = intval($_GET['id']);
@@ -17,10 +16,8 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="gerermamaisonstyle.css">
 	<script type="text/javascript">
-
 		function AfficheFormulaire(){
 			var AjHab1
-
 		}
 	</script>
 </head>
@@ -47,15 +44,10 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)
 		<ul class="box_information">
 			<form  method="post" action="">
 			<li>
-       <p> <a class="box"><input type="submit" name="editerprofil" value="Editer mon profil"> </a>
 
-        <?php
-        if (isset($_POST['editerprofil'])) {
-          $_SESSION['id'] = $userinfo['id'];
-          header ("Location: editerprofil.php?id=".$_SESSION['id']);
-          exit();
-        }
-?>
+       			<p> 
+       				<a href="editerprofil.php?id=<?php echo $_SESSION['id'];?>" class="box">Editer mon profil</a>
+
 					<img src="https://image.freepik.com/icones-gratuites/symbole-des-parametres_318-34202.jpg"
 					class="avatar_box">
 				</p>
@@ -196,4 +188,4 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)
 					</form>
 
 				</fieldset>
-			</div>
+</div>
