@@ -20,13 +20,11 @@ if(isset($_GET['type']) AND $_GET['type'] == 'personne') {
       $req = $bdd->prepare('DELETE FROM habitation WHERE id_habitation = ?');
       $req->execute(array($supprimehabitation));
    }
-      if(isset($_GET['modifier']) AND !empty($_GET['modifier'])) {
-     
-   }
+    
 }
 
 $habitation = $bdd -> query('SELECT * FROM habitation JOIN personne ON personne.id = habitation.id_personne');
-
+$personne = $bdd -> query('SELECT * FROM personne');
 ?>
 
 <html>
@@ -37,13 +35,13 @@ $habitation = $bdd -> query('SELECT * FROM habitation JOIN personne ON personne.
   <link rel="stylesheet" type="text/css" href=".css" /> 
    
 </head>
-
+<a href="deconnexion.php" class="box_rouge">Déconnexion</a>
 <body align="center">
 	
                                     
 	                                  
 	<table border>
-		<tr> <th> ID</th> <th> Nom</th><th> Prénom</th><th> Mail</th><th> Numéro</th><th> Adresse</th> <th>Code postal</th><th>Ville</th><th>Type d'habitation</th><th>Pays</th><th>Compte Admin</th></tr>
+		<tr> <th> ID personne </th> <th> Nom</th><th> Prénom</th><th> Mail</th><th> Numéro</th><th> Adresse</th> <th>Code postal</th><th>Ville</th><th>Type d'habitation</th><th>Pays</th></tr>
 		<tr>
 		<?php
 
@@ -53,10 +51,10 @@ $habitation = $bdd -> query('SELECT * FROM habitation JOIN personne ON personne.
           <td><?= $h['id'] ?> 
           <?php if($h['confirme'] == 0) 
           { ?>  <a href="administrateur.php?type=personne&confirme=<?= $h['id_personne'] ?>">Confirmer</a>
-          <?php } ?> <a href="administrateur.php?type=personne&modifier=<?= $h['id_personne'] ?>">Modifier le client</a>  
+          <?php } ?> <a href="administrateur_modifierclient.php?id=<?=$h['id_personne']?>">Modifier le client</a>  
           <a href="administrateur.php?type=personne&supprime=<?= $h['id'] ?>">Supprimer le client</a>
            </td> <td> <?= $h['nom'] ?> </td> <td> <?= $h['prenom'] ?></td><td>  <?= $h['mail'] ?></td><td>  <?= $h['numero'] ?> </td>
-           <td> <?= $h['adresse']?> </td><td> <?= $h['cp']?></td><td>  <?= $h['ville']?></td> <td><?= $h['type']?>  </td><td> <?= $h['pays']?></td><td><?= $h['admin']?></td>
+           <td> <?= $h['adresse']?> </td><td> <?= $h['cp']?></td><td>  <?= $h['ville']?></td> <td><?= $h['type']?>  </td><td> <?= $h['pays']?></td>
          
 	 </tr>
       
@@ -65,14 +63,27 @@ $habitation = $bdd -> query('SELECT * FROM habitation JOIN personne ON personne.
   </table>
 
 
-<!--
-<?php $req=$bdd ->query('SELECT * FROM personne');
-$personnes = $req ->fetchall() ;
-foreach ($personnes as $personne): ?>
-	<?= $personne['id'] ?>
-	<?= $personne['prenom'] ?> 
-	<?= $personne['mail'] ?>
-	<?= $personne['numero'] ?> 
-<?php  endforeach ?>
--->
+
+<table border>
+    <tr> <th> ID personne</th> <th> Nom</th><th> Prénom</th><th> Mail</th><th>Numero</th><th>Compte Admin</th></tr>
+    <tr>
+    <?php
+
+    while($p=$personne->fetch()) { 
+    ?>
+      <tr>
+          <td><?= $p['id'] ?> 
+          <?php if($p['confirme'] == 0) 
+          { ?>  <a href="administrateur.php?type=personne&confirme=<?= $p['id_personne'] ?>">Confirmer</a>
+          <?php } ?> <a href="administrateur_modifierclient.php?id=<?=$p['id_personne']?>">Modifier le client</a>  
+          <a href="administrateur.php?type=personne&supprime=<?= $p['id'] ?>">Supprimer le client</a>
+           </td> <td> <?= $p['nom'] ?> </td> <td> <?= $p['prenom'] ?></td><td>  <?= $p['mail'] ?></td><td>  <?= $p['numero'] ?> </td><td>  <?= $p['admin'] ?> </td>
+           
+   </tr>
+      
+      
+      <?php } ?>
+  </table>
+
+
 </body>
