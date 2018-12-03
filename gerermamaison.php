@@ -16,9 +16,24 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="gerermamaisonstyle.css">
 	<script type="text/javascript">
-		function AfficheFormulaire(){
-			var AjHab1
+		function AfficheFormulaireAjMais(){
+			
+			
+			
+
+			var AjHab1=document.getElementById('gHab1');
+			var AjHab2=document.getElementById('ajoutHab2');
+
+			if (AjHab1.style.display='none' && AjHab2.style.dispaly){
+			AjHab1.style.display='block';
+			AjHab2.style.display='block';
 		}
+			else{
+			AjHab1.style.display='none';
+			AjHab2.style.display='none';
+			}
+			
+			}
 	</script>
 </head>
 <body>
@@ -141,11 +156,10 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)
 			<header>
 				<nav class="head2">
 					<ul>
-						<li><input type="button" value="Ajouter une salle" class="bouton"></li>
-						<li><input type="button" value="Ajouter une salle" class="bouton"></li>
-						<li><input type="button" value="Modifier ma maison" class="bouton"></li>
-						<li><input type="button" value="Ajouter une maison" class="bouton"></li>
-						<li><input type="button" value="Modifier utilisateurs secondaires" class="bouton"></li>
+						<li><input type="button" value="Ajouter une salle" class="bouton" onclick="AfficheFormulaire()" id="ajsal"> </li>
+						<li><input type="button" value="Modifier ma maison" class="bouton" onclick="AfficheFormulaire()" id="modmais"></li>
+						<li><input type="button" value="Ajouter une maison" class="bouton" onclick="AfficheFormulaireAjMais()" id="ajmais"></li>
+						<li><input type="button" value="Modifier utilisateurs secondaires" class="bouton" onclick="AfficheFormulaire()" id="modutilsecond"></li>
 					</ul>
 				</nav>
 			</header>
