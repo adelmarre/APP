@@ -1,0 +1,155 @@
+/*allure de la page*/
+
+body {
+	font-family: Comic Sans Ms;
+
+}
+#bloc_page
+{
+    width: 100em;
+    margin: auto;
+}
+header {
+	position : relative;
+}
+h1 {
+	text-align: center;
+	font-size: 65px;	
+}
+#logo {
+	position : absolute; 
+}
+#baniere {
+	position : relative;
+	left : 20em;
+}
+section {
+	
+    font-size: 25px;
+}
+article, aside,#capteur
+{
+    display: inline-block;
+    vertical-align: top;
+    text-align: justify;
+}
+article {
+	position : relative;
+	width: 95em;
+    top : 1em;
+    left : 27em;
+    /*background-color: #ddd;*/
+    border : 1px solid #ddd;
+	border-radius : 5px;
+	font-size: 10px;
+
+}
+
+article a {
+  text-decoration: none;
+  font-size : 1.4em;
+}
+
+h2 {
+	font-size: 15px;
+}
+/*aside
+{
+    position: relative;
+    width: 400px;
+    background-color: #949494;
+    /*box-shadow: 0px 2px 5px #949494;
+    color: white;
+    font-size: 1em;
+}*/
+
+
+
+.sidenav {
+    
+    /*width: 10em; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    /*z-index: 1; /* Stay on top */
+    top: 13em; /* Stay at the top */
+    left: 2em;
+    /*background-color: #111; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    /*padding-top: 20px;*/
+ }
+ .sidenav a {
+    padding:2px 8px 6px 2px;
+    text-decoration: none;
+    
+    color: #818181; /*gris*/
+    display: block;
+    border: 1px solid #ddd;
+
+}
+.sidenav a:hover {
+    background-color: #3BACED ;/*bleu*/
+
+}
+/* Fond du gadget de la barre de recherche */
+.recherche_p {
+  background-color: #eeeeee;   /* Couleur de fond */
+  border-style: solid;   /* Style de la bordure  */
+  border-width: 1px;   /* Epaisseur de la bordure  */
+  border-color: #dddddd;   /* Couleur de la bordure  */
+  padding: 10px 10px 10px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+}
+/* Champ de saisie */
+#searchthis #search {
+  background-color: #ffffff;   /* Couleur de fond */
+  border-style: solid;   /* Style de la bordure  */
+  border-width: 1px;   /* Epaisseur de la bordure  */
+  border-color: #dddddd;   /* Couleur de la bordure  */
+  border-radius : 7px;
+  padding: 5px 10px 5px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+  width: 87.5%;   /* Permet d'ajuster la largeur du champ de saisie à 100% */
+  box-sizing: border-box;   /* Important */
+  
+  font-size: 20px;   /* Taille de la police du texte */
+  font-weight: normal;   /* Graisse du texte : normal = normal ; bold = gras */
+  letter-spacing: 1px;   /* Espacement des caractères */
+}
+/* Bouton valider */
+#searchthis #search-btn {
+  background-color: #7BB781;   /* Couleur de fond */
+  border-style: solid;   /* Style de la bordure  */
+  border-width: 1px;   /* Epaisseur de la bordure  */
+  border-color: #445D7B;   /* Couleur de la bordure  */
+  padding: 5px 10px 5px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+  box-sizing: border-box;   /* Important */
+  font-size: 13px;   /* Taille de la police du texte */
+  font-weight: normal;   /* Graisse du texte : normal = normal ; bold = gras */
+  letter-spacing: 2px;   /* Espacement des caractères */
+  margin: 10px 0 0 0;   /* Espace autour du bouton : haut droite bas gauche  */
+  text-transform: uppercase;   /* Transforme le texte en majuscules */
+  color: #ffffff;   /* Couleur du texte */
+}
+
+/* Bouton valider quand survolé par la souris */
+#searchthis #search-btn:hover {
+  background-color: #ffffff;   /* Couleur de fond */
+  color: #E2CEAB;   /* Couleur du texte */
+  cursor: pointer;   /* Apparence du curseur comme pour un lien */
+}
+
+
+/* Create three equal columns that floats next to each other */
+
+.column {
+    float: left;
+    width: 22.5%;
+    padding: 1em;
+  
+
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
