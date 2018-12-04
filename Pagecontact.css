@@ -48,7 +48,12 @@ nav a:hover
 }
 
 /*Body*/
+body
+{
+		background-image: url(background.jpg);
 
+	font-family: 'Raleway', sans-serif;
+}
 
 
 #section1
