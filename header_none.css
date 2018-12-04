@@ -1,0 +1,20 @@
+/*Header*/
+
+header{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	border-bottom:  2px #7AB781 solid;
+	margin-top: 1%;
+	padding-bottom: 1%;
+}
+
+
+#logo_hexagon
+{
+	background-size: cover;
+	width: 329px;
+	height: 101px;
+	
+}
+

@@ -1,0 +1,58 @@
+header{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	border-bottom:  2px #7AB781 solid;
+	margin-top: 1%;
+	padding-bottom: 1%;
+}
+
+
+#logo_hexagon
+{
+	background-size: cover;
+	width: 329px;
+	height: 101px;
+	
+}
+.deco
+{
+	position: absolute;
+	right : 1.5em;
+	top : 1.2em;
+}
+
+.deconnexion
+{
+	text-decoration:  none;
+	font-size: 1.2em;
+	color: #445D7B;
+	
+
+}
+/* Menu de navigation*/
+nav ul
+{
+	list-style-type: none;
+	display:inline-flex;
+	
+}
+
+nav li
+{
+	margin-right: 1em;
+}
+
+nav a
+{
+	font-size: 1.2em;
+	color:#445D7B;
+	padding-bottom: 2px;
+	text-decoration: none;
+
+}
+
+nav a:hover
+{
+	color:purple;
+}
