@@ -228,3 +228,58 @@ label{
  width: 6em;
  height: 2em;
 }
+
+#ajoutHab1{
+	display:none;
+}
+
+#ajoutHab2{
+	display:none;
+}
+
+.utilisateursecond{
+ list-style-type: none;
+ display:inline-flex;
+
+}
+
+.Maison{
+ list-style-type: none;
+ display:inline-flex; 
+
+}
+
+
+ul{
+	list-style-type: none;
+}
+
+table{
+	border-collapse:collapse;
+}
+
+td,th{
+	 border:0.13em solid black;
+	 
+}
+
+#tableauUS1MP{
+	display:none;
+}
+
+#utilSecond{
+	display:none;
+}
+
+#mail{
+	display:none;
+}
+
+
+
+
+
+
+
+
+
