@@ -6,9 +6,7 @@ if(isset($_GET['section'])){
 }else{
 	$section = "";
 }
-
 if (isset($_POST['recup_submit'], $_POST['recup_mail'])) {
-
 	if (!empty($_POST['recup_mail'])) {
 		$recup_mail = htmlspecialchars($_POST['recup_mail']);
 		if (filter_var($recup_mail,FILTER_VALIDATE_EMAIL)){
@@ -18,7 +16,6 @@ if (isset($_POST['recup_submit'], $_POST['recup_mail'])) {
 			if ($mailexist_count == 1){
 				$prenom = $mailexist->fetch();
 				$prenom = $prenom['prenom'];
-
 				$_SESSION['recup_mail'] = $recup_mail;
 				$recup_code = "";
 				for ($i=0; $i < 8 ; $i++) {
@@ -28,7 +25,6 @@ if (isset($_POST['recup_submit'], $_POST['recup_mail'])) {
 				$mail_recup_exist = $bdd->prepare('SELECT id FROM recuperation WHERE mail =?');
 				$mail_recup_exist->execute(array($recup_mail));
 				$mail_recup_exist = $mail_recup_exist->rowCount();
-
 				if ($mail_recup_exist == 1) {
 					$recup_insert = $bdd->prepare('UPDATE recuperation SET code = ? WHERE mail = ?');
 					$recup_insert->execute(array($recup_code,$recup_mail));
@@ -77,7 +73,6 @@ if (isset($_POST['recup_submit'], $_POST['recup_mail'])) {
 			}else{
 				$error = "Cette adresse mail n'est pas enregistrée";
 			}
-
 		}else{
 			$error = "Adresse mail incorrect";
 		}
@@ -98,12 +93,10 @@ if (isset($_POST['recup_submit'], $_POST['recup_mail'])) {
 			}else{
 				$error = "Code invalide";
 			}
-
 		}else{
 			$error = "Veuillez entrer votre code de vérification";
 		}
 	}
-
 	if (isset($_POST['change_submit'],$_POST['change_mdp'],$_POST['change_mdpc'])){
 		$mdp = htmlspecialchars($_POST['change_mdp']);
 		$mdpc = htmlspecialchars($_POST['change_mdpc']);
@@ -117,9 +110,7 @@ if (isset($_POST['recup_submit'], $_POST['recup_mail'])) {
 			}else{
 				$error = "Vos mots de passes ne correspondent pas";
 			}
-
 			
-
 		}else{
 			$error = "Veuillez remplir tous les champs";
 		}
@@ -130,23 +121,13 @@ if (isset($_POST['recup_submit'], $_POST['recup_mail'])) {
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="mdp_oublie.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
 	<title>Mot de passe oublié</title>
 </head>
 <body>
-	<header>
-		<img src="logo hexagon final.png" alt="logo Hexagon" id="logo_hexagon">
-		<nav>
-			<ul>
-				<li><a href="#">Ma maison</a></li>
-				<li><a href="#">Catalogue</a></li>
-				<li><a href="#">A Propos</a></li>
-				<li><a href="#">FAQ</a></li>
-				<li><a href="#">Aide</a></li>
-				<li><a href="#">Consignes Globales</a></li>
-			</ul>
-		</nav>
-
-	</header>
+	<?php
+include "header.php";
+?>
 
 	
 	
