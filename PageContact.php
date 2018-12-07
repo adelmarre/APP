@@ -19,7 +19,7 @@ if(isset($_POST['mailform']))
 		$date = date("Y-m-d");
 		$heure = date("H:i:s");
 		if (filter_var($mail,FILTER_VALIDATE_EMAIL)) {
-			$insert = $bdd->prepare('INSERT INTO mailvisiteurs(contenu, ladate, heure, mail, nom, prenom) VALUES(?, ?, ?, ?,? , ?)');
+			$insert = $bdd->prepare('INSERT INTO mailvisiteur(contenu, ladate, heure, mail, nom, prenom) VALUES(?, ?, ?, ?,? , ?)');
 		    $insert ->execute(array($demande, $date, $heure, $mail, $nom, $prenom));
 	        $msg = "Demande envoyée! ";               	                            
 		}
@@ -32,10 +32,9 @@ if(isset($_POST['mailform']))
 		$msg='Tous les champs doivent être complétés !';
 	}
 }
-
 ?>
 <html>
-
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet"  href="pagecontact.css">
