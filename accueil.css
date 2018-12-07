@@ -116,9 +116,9 @@ li a:hover{
 #souvenir {
 
 	
-	
-	right : 12%;
-	bottom: 12%;
+	position: absolute;
+	right : 40%;
+	bottom: 58%;
 
 	
 }
@@ -165,3 +165,5 @@ li a:hover{
 
     background-color: #008CBA;
 }
+
+ 
