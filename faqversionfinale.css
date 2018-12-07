@@ -1,96 +1,51 @@
-body
-{
-    background-image: url(background.jpg);
-    font-family: 'Raleway', sans-serif;
-}
-
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    border-bottom:  2px #7AB781 solid;
-    margin-top: 1%;
-    padding-bottom: 1%;
-}
-
-.banniere
-{
-    margin-top: 1em;
-    border: 0.5px groove black;
-}
-#logo_hexagon
-{
-    background-size: cover;
-    width: 329px;
-    height: 101px;
-    
-}
-/* Menu de navigation*/
-nav ul
-{
-    list-style-type: none;
-    display:inline-flex;
-    
-}
-
-nav li
-{
-    margin-right: 1em;
-}
-
-nav a
-{
-    font-size: 1.2em;
-    color:#445D7B;
-    padding-bottom: 2px;
-    text-decoration: none;
-
-}
-
-nav a:hover
-{
-    color:purple;
-}
-
-
-
 div#colonne1 {
 	float: left;
-	width: 320px;
-	margin: 20px;
-    padding: 20px;
+	width: 26%;
+	background: white;
+	margin: 2%;
+    padding: 1%;
+    
 }
 .questions {
-    
+    background-color: white;
     color: black;
     margin: 0px;
-    padding: 20px;
-    border: 2px groove #000000;
+    padding: 3%;
+    border: 2px solid #000000;
+    border-radius: 6%;
 }
 
 
 div#colonne2 {
 	float: right;
-	width: 320px;
-	
-	margin: 20px;
-    padding: 20px;
+	width: 26%;
+	background: white;
+    padding: 3.5%;
+    
 }
 
 div#centre {
 	overflow: hidden;
-	
-	margin: 40px;
-    padding: 20px;
-    width: 320px;
+	background: white;
+    padding: 2%;
+    width: 31%;
+    
 
 }
 
 .ensemble{
+	background-color: white;
     color: black;
-    margin: 5em;
-    padding: 20px;
-    border: 3px groove #000000;
-    border-radius: 10px;
+    margin: auto;
+    padding: auto;
+    border: 3px solid #000000;
+    border-radius: 4%;
+    float: left
 }
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 
