@@ -13,7 +13,6 @@
 						<li><a href="catalogue.php">Catalogue</a></li>
 						<li><a href="apropos.php">A Propos</a></li>
 						<li><a href="aide.php">Aide</a></li>
-						<li><a href="">Consignes Globales</a></li>
 					</ul>
 				</nav>
 				
