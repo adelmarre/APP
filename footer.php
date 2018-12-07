@@ -1,8 +1,7 @@
 
-	<html>	
 	<link rel="stylesheet"  href="footer.css">	
 		<footer>
-				<a href="Pagecontact.html">Nous Contacter</a>
+				<a href="pagecontact.php">Nous Contacter</a>
 				<div class='domisep'>
 					Copyright &copy; Domisep2018.
 				</div>
@@ -10,4 +9,4 @@
 
 		</footer>
 
-	</html>
+
