@@ -4,7 +4,7 @@ include 'header.php';
 <html>
   <head>
   	<meta charset="utf-8"/>
-  	<title>Page FAQ</title>
+  	<title>Aide</title>
   	<link rel="stylesheet" href="faqversionfinale.css">
 </head>
 
