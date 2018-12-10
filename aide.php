@@ -1,9 +1,5 @@
 <!DOCTYPE html">
-<?php
 
-include 'header.php';
-
-?>
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="general.css">
@@ -11,7 +7,7 @@ include 'header.php';
   	<title>Aide</title>
   	<link rel="stylesheet" href="aide.css">
   </head>
-
+<?php include 'header.php'; ?>
   <body>
     
     <div class="banniere">
@@ -63,10 +59,7 @@ include 'header.php';
   </div>
 
   </div>
+  <?php include 'footer.php'?>
 </body>
 </html>
-<?php 
 
-include 'footer.php'
-
-?>
