@@ -25,109 +25,126 @@ if (isset($_POST['suivant']))
             if ($prenomlenght<= 255)
             {
                 $maillenght = strlen($mail);
-           		if ($maillenght<= 255)
-					{
+              if ($maillenght<= 255)
+          {
                     if ($mdp==$mdp2)
-                    {
-	                    if (filter_var($mail,FILTER_VALIDATE_EMAIL)) 
-	                    {
-	                        $reqmail = $bdd->prepare("SELECT * FROM personne WHERE mail = ?");
-	                        $reqmail->execute(array($mail));
-	                        $mailexist = $reqmail->rowCount();
-	                        if ($mailexist==0) 
-	                        {
-                              $longueurKey=15;
 
-                              $key="";
+                    { 
+                      if (strlen($_POST['mdp']) >=10)
+                      {
+                        if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $_POST['mdp'])) 
+                        {
+                          if (filter_var($mail,FILTER_VALIDATE_EMAIL)) 
+                          {
+                              $reqmail = $bdd->prepare("SELECT * FROM personne WHERE mail = ?");
+                              $reqmail->execute(array($mail));
+                              $mailexist = $reqmail->rowCount();
+                              if ($mailexist==0) 
+                              {
+                                  $longueurKey=15;
 
-                             for ($i=1;$i<$longueurKey;$i++){
+                                  $key="";
 
-                                $key.=mt_rand(0,9); }
-                             if (isset($_POST['choix']))
-                                {
-	                           
-	                                    $insertmbr = $bdd->prepare("INSERT INTO personne(nom, prenom, mail, mdp, numero, confirmkey) VALUES(?, ?, ?, ?, ?, ?)");
-	                                    $insertmbr->execute(array($nom, $prenom, $mail, $mdp, $numero, $key));
-                                      
-                                                                       
-	                               
+                                 for ($i=1;$i<$longueurKey;$i++){
 
-                                    $requser = $bdd -> prepare("SELECT * FROM personne WHERE mail = ? ");
-                                    $requser -> execute(array($mail));
-	                                  $userinfo = $requser -> fetch();
-                                    $_SESSION['id'] = $userinfo['id'];
-                                    $_SESSION['nom'] = $userinfo['nom'];
-                                    $_SESSION['prenom'] = $userinfo ['prenom'];
-                                    $_SESSION['mail'] = $userinfo ['mail'];
-                                            
-                                    $insertmbr2 =  $bdd->prepare("INSERT INTO habitation(adresse, cp, ville, pays, type, id_personne) VALUES(?, ?, ?, ?, ?,?)");
-                                    $insertmbr2->execute(array($adresse, $cp, $ville, $pays, $type, $userinfo['id']));
-
+                                    $key.=mt_rand(0,9); }
+                                 if (isset($_POST['choix']))
+                                    {
+                                 
+                                          $insertmbr = $bdd->prepare("INSERT INTO personne(nom, prenom, mail, mdp, numero, confirmkey) VALUES(?, ?, ?, ?, ?, ?)");
+                                          $insertmbr->execute(array($nom, $prenom, $mail, $mdp, $numero, $key));
                                           
-                                    //header("Location: salon.php?id=".$_SESSION['id']);
-                                    $header="MIME-Version: 1.0\r\n";
+                                                                           
+                                     
 
-                                            $header.='From:"Hexagon.com"<projet@gmail.com>'."\n";
-
-                                            $header.='Content-Type:text/html; charset="utf-8"'."\n";
-
-                                            $header.='Content-Transfer-Encoding: 8bit';
-
-
-
-                                            $message='
-
-                                            <html>
-
-                                              <body>
-
-                                                <div align="center">
-
-                                                  Bonjour ,
-
-                                                  par mesure de sécurité vous devez confirmer votre inscription en cliquant sur ce lien: 
-
-                                                  <a href="http://127.0.0.1/Hexagon/confirmation.php?mail='.urlencode($mail).'&key='.$key.'">Confirmez votre compte !</a>
-
-                                                  
-
-                                                  
-
+                                        $requser = $bdd -> prepare("SELECT * FROM personne WHERE mail = ? ");
+                                        $requser -> execute(array($mail));
+                                        $userinfo = $requser -> fetch();
+                                        $_SESSION['id'] = $userinfo['id'];
+                                        $_SESSION['nom'] = $userinfo['nom'];
+                                        $_SESSION['prenom'] = $userinfo ['prenom'];
+                                        $_SESSION['mail'] = $userinfo ['mail'];
                                                 
+                                        $insertmbr2 =  $bdd->prepare("INSERT INTO habitation(adresse, cp, ville, pays, type, id_personne) VALUES(?, ?, ?, ?, ?,?)");
+                                        $insertmbr2->execute(array($adresse, $cp, $ville, $pays, $type, $userinfo['id']));
 
-                                                  
+                                              
+                                        //header("Location: salon.php?id=".$_SESSION['id']);
+                                        $header="MIME-Version: 1.0\r\n";
 
-                                                </div>
+                                                $header.='From:"Hexagon.com"<projet@gmail.com>'."\n";
 
-                                              </body>
+                                                $header.='Content-Type:text/html; charset="utf-8"'."\n";
 
-                                            </html>
-
-                                            ';
-
-
-
-                                            mail($mail, "Confirmation de l'inscription", $message, $header);
-
-                                            header("Location: index.php");
+                                                $header.='Content-Transfer-Encoding: 8bit';
 
 
 
-	                                }  
-                                  else {
-                                    $erreur = "Vous n'avez pas accepter les conditions générales d'utilisation, inscription impossible";
-                                  }}
+                                                $message='
+
+                                                <html>
+
+                                                  <body>
+
+                                                    <div align="center">
+
+                                                      Bonjour ,
+
+                                                      par mesure de sécurité vous devez confirmer votre inscription en cliquant sur ce lien: 
+
+                                                      <a href="http://127.0.0.1/Hexagon/confirmation.php?mail='.urlencode($mail).'&key='.$key.'">Confirmez votre compte !</a>
+
+                                                      
+
+                                                      
+
+                                                    
+
+                                                      
+
+                                                    </div>
+
+                                                  </body>
+
+                                                </html>
+
+                                                ';
+
+
+
+                                                mail($mail, "Confirmation de l'inscription", $message, $header);
+
+                                                header("Location: index.php");
+
+
+
+                                      }  
+                                      else {
+                                        $erreur = "Vous n'avez pas accepter les conditions générales d'utilisation, inscription impossible";
+                                      }}
+                                else
+                                {
+                                    $erreur = "Votre email est déjà associé à un compte";
+                                }
+                            }
                             else
                             {
-                                $erreur = "Votre email est déjà associé à un compte";
+                                $erreur = "Email invalide";
                             }
-                        }
-                        else
-                        {
-                            $erreur = "Email invalide";
-                        }
+                          }
+                          else
+                          {
+
+                            $erreur = "Votre mot de passe doit au moins contenir une majuscule, une minuscule, un caractère spécial et un chiffre";
+                          }
+                      }
+                      else 
+                      {
+                        $erreur = "Votre mot de passe doit avoir plus de 10 caractères";
+                      }
                     }
-                    else {
+                    else 
+                    {
                       $erreur = "Vous n'avez pas saisi les mêmes mot de passe";
                     }
                     }
@@ -162,7 +179,7 @@ if (isset($_POST['suivant']))
         <meta charset="UTF-8" />
           <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
         <link rel="stylesheet" href="inscription.css" />
-        <title>Sinscrire</title>
+        <title>S'inscrire</title>
     </head>
 
 <img src="logo hexagon final.png" alt="photo de hexagon" id="hexagon">
@@ -222,7 +239,7 @@ if (isset($_POST['suivant']))
 
   <div class="button">
     <button type="submit" name="suivant" >Je m'inscris</button>
-</br>
+</br> </br>
  <?php
             if (isset($erreur)) 
             { 
