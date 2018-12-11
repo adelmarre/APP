@@ -190,17 +190,17 @@ if (isset($_POST['suivant']))
     
   <div>
     <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom" placeholder="Dupont" value="<?php if(isset($nom[''])) {echo $nom;} ?>" autofocus required>
+    <input type="text" id="nom" name="nom" placeholder="Dupont" value="<?php if(isset($_POST['nom'])) {echo $nom;} ?>" autofocus required>
   </div>
 
   <div>
     <label for="prenom">Prénom :</label>
-    <input type="text" id="prenom" name="prenom" placeholder="Jean"  value="<?php if(isset($prenom[''])) {echo $prenom;} ?>"required>
+    <input type="text" id="prenom" name="prenom" placeholder="Jean"  value="<?php if(isset($_POST['prenom'])) {echo $prenom;} ?>"required>
   </div>
 
   <div>
     <label for="mail">Courriel :</label>
-    <input type="text" id="mail" name="mail" placeholder="hexagon@gmail.com" value="<?php if(isset($mail[''])) {echo $mail;} ?>" required>
+    <input type="text" id="mail" name="mail" placeholder="hexagon@gmail.com" value="<?php if(isset($_POST['mail'])) {echo $mail;} ?>" required>
   </div>
   <div>
     <label for="motdepasse">Définir son mot de passe :</label>
@@ -212,28 +212,28 @@ if (isset($_POST['suivant']))
   </div>
   <div>
     <label for="adresse">Adresse :</label>
-    <input type="text" id="adresse" name="adresse" placeholder="10 rue de Vanves"  value="<?php if(isset($adresse[''])) {echo $adresse;} ?>"required>
+    <input type="text" id="adresse" name="adresse" placeholder="10 rue de Vanves"  value="<?php if(isset($_POST['adresse'])) {echo $adresse;} ?>"required>
   </div>
    <div>
     <label for="cp">Code Postal :</label>
-    <input id="cp" name="cp" placeholder="75006"  value="<?php if(isset($cp[''])) {echo $cp;} ?>" required>
+    <input id="cp" name="cp" placeholder="75006"  value="<?php if(isset($_POST['cp'])) {echo $cp;} ?>" required>
   </div>
   <div>
     <label for="ville">Ville :</label>
-    <input type="text" id="ville" name="ville" placeholder="Issy-les-Moulineaux" name="user_ville"  value="<?php if(isset($ville[''])) {echo $ville;} ?>" required >
+    <input type="text" id="ville" name="ville" placeholder="Issy-les-Moulineaux" name="user_ville"  value="<?php if(isset($_POST['ville'])) {echo $ville;} ?>" required >
   </div>
    <div>
     <label for="type_habitation">Type d'habitation :</label>
-    <input type="text" id="type_habitation" name="type_habitation" placeholder="Principale"  value="<?php if(isset($type_habitation[''])) {echo $type_habitation;} ?>" required>
+    <input type="text" id="type_habitation" name="type_habitation" placeholder="Principale"  value="<?php if(isset($_POST['type_habitation'])) {echo $type;} ?>" required>
   </div>
   <div>
    <div>
     <label for="pays">Pays :</label>
-    <input type="text" id="pays" name="pays" placeholder="France"  value="<?php if(isset($pays[''])) {echo $pays;} ?>"required>
+    <input type="text" id="pays" name="pays" placeholder="France"  value="<?php if(isset($_POST['pays'])) {echo $pays;} ?>"required>
   </div>
    <div>
     <label for="numero">Numéro de téléphone :</label>
-    <input type="tel" id="numero" placeholder="+336xxxxxxxxx" name="numero"  value="<?php if(isset($numero[''])) {echo $numero;} ?>" required>
+    <input type="tel" id="numero" placeholder="+336xxxxxxxxx" name="numero"  value="<?php if(isset($_POST['numero'])) {echo $numero;} ?>" required>
   </div>
  <p><input type="checkbox" name="choix"> J'ai lu et j'accepte les conditions générales d'utilisation <a href="conditions.php" onclick="window.open(this.href); return false;" > Conditions d'utilisation </a></p>
 
