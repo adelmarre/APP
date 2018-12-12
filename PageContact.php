@@ -33,6 +33,12 @@ if(isset($_POST['mailform']))
 	}
 }
 ?>
+<?php if (isset($_SESSION['id'])) {
+	include "header_deco.php"; }
+	else {
+		include "header_connexion.php";
+	}
+?>
 <html>
 <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
 	<head>
@@ -42,16 +48,16 @@ if(isset($_POST['mailform']))
 		<title>Contact</title>
 	</head>
 	<body>
+
+
 		<div id="bloc_page">
-	<?php include "header.php"
-	?>
 			<div id="conteneur">
 				<div id="section1">
 						<h1>Nos Coordonées:</h1>
 					<div class="coordonnees">
-						<img src="icone_mail.png" alt="icone_mail" id="icone_mail">
+						<img src="image/icone_mail.png" alt="icone_mail" id="icone_mail">
 						<div class="mail">projet.hexagon@gmail.com</div>
-						<img src="icone_telephone.png" alt="icone_telephone" id="icone_telephone">
+						<img src="image/icone_telephone.png" alt="icone_telephone" id="icone_telephone">
 						<div class="telephone">0122334455 </div>
 					</div>
 				</div>
