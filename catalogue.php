@@ -2,19 +2,25 @@
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
 ?>
 <html>
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="catalogue.css" />
+		<link rel="stylesheet" type="text/css" href="general.css">
 		<title>Catalogue</title>
 	</head>
 	<body>
 		<div id="bloc_page">
 		<!-- bloc1-->
-		<header>
-			<img src="hexagon.png" alt="logo Hexagon" id="logo"></p>
-		</header>
+				<?php if (isset($_SESSION['id'])) {
+	include "header_deco.php"; }
+	else {
+		include "header_connexion.php";
+	}
+
+?>
 		<h1>Catalogue</h1>
-		<img src="photo baniere.png" alt="logo Hexagon" id="baniere">
+		
 		<section>
 			<div class="sidenav">
 			<p>Capteurs</p>
@@ -209,10 +215,7 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
 
  			
 
-			<div class="column">
-	  			<img src="map.png" alt="logo Hexagon" id="capteur">	
-	   			<p>Retrouvez nous en magasin !</p>
-	  		</div>
+			
 	  	</div>
 
 
@@ -221,4 +224,9 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
 	</section>
 
 	</body>
+			<?php 
+	
+		include "footer.php";
+	
+?>
 </html>
