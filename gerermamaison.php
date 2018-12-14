@@ -2,7 +2,6 @@
 session_start();
 try {
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
-
 if (isset($_SESSION['id']))
 {
   $getid = intval($_SESSION['id']);
@@ -14,7 +13,6 @@ if (isset($_SESSION['id']))
 catch(Exception $e){
   die('Erreur : ' . $e->getMessage());
 }
-
 if (isset($_GET['valide1']))
 {
 	$nommaison = htmlspecialchars($_GET['nommaison']);
@@ -24,27 +22,20 @@ if (isset($_GET['valide1']))
 	$ville = htmlspecialchars($_GET['ville']);
 	$cp = htmlspecialchars($_GET['cp']);
 	$pays = htmlspecialchars($_GET['pays']);
-
 	{	
 		try{
-
-
 		$insertmais = $bdd->prepare("INSERT INTO habitation(nomhabitation, superficie,  adresse,id_personne,ville,pays,cp,nbpiece) VALUES(?, ?, ?, ?,?,?,?,?)");
     	$insertmais->execute(array($nommaison, $superficie, $adresse,$userinfo['id'],$ville,$pays,$cp,$nbpiece));
     }
     catch(Exception $e){
     	die("erreur bdd");
     }
-
     	
 	}
 	
 	
  
-
 }
-
-
 ?>
 
 
@@ -256,7 +247,7 @@ if (isset($_GET['valide1']))
 							<ul>
 								<li> <input type="radio" name="Sélection" value="Ajouter une salle" class="Selec" id="ajsal" onchange="AfficheFormulaire()"> Ajouter une salle </li>
 								<li><input type="radio" name="Sélection" value="Modifier ma Maison" class="Selec" id="modmais" onchange="AfficheFormulaire()"> Modifier ma Maison </li>
-								<li> <input type="radio" name="ajmaison" value="Ajouter ma Maison" class="Selec" id="ajmais" onchange="AfficheFormulaire()"> Ajouter ma Maison  </li>
+								<li> <input type="radio" name="Sélection" value="Ajouter ma Maison" class="Selec" id="ajmais" onchange="AfficheFormulaire()"> Ajouter ma Maison  </li>
 								<li><input type="radio" name="Sélection" value="Modifier utilisateur secondaire" class="Selec" id="modutilsecond" onchange="AfficheFormulaire()"> Modifier utilisateur secondaire </li>
 							</ul>
 							</nav>
@@ -347,18 +338,7 @@ if (isset($_GET['valide1']))
 								</div>
 							</form>
 							<br/> <br/>
-							<?php
-							if (isset($_GET['ajmaison']))
-							{
-								if (isset($erreur))
-								{
-									echo '<font color="red">'.$erreur."</font>";
-								}				            
-				                
-				            }
-							
-				            
-							?>
+						
 							
 
 							<fieldset id="utilSecond">
