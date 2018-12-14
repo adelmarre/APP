@@ -287,7 +287,7 @@ catch(Exception $e){
 									<input type="text" class="RentrerInfo" name="nommaison" required minlength="2" size="10">
 
 									<input type="submit" value="Valider" class="envoyer">
-									<input type="submit" value="Annuler" class="envoyer" is="suppr">
+									<input type="submit" value="Annuler" class="envoyer" id="suppr">
 
 								</div>
 
