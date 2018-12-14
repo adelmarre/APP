@@ -1,12 +1,11 @@
-
-
 <?php 
 session_start();
 try {
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
-if (isset($_GET['id']) AND $_GET['id'] > 0)
+
+if (isset($_SESSION['id']))
 {
-  $getid = intval($_GET['id']);
+  $getid = intval($_SESSION['id']);
   $requser = $bdd -> prepare('SELECT * FROM personne WHERE id = ?');
   $requser -> execute(array($getid));
   $userinfo = $requser ->fetch();
@@ -15,100 +14,104 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)
 catch(Exception $e){
   die('Erreur : ' . $e->getMessage());
 }
+
+if (isset($_GET['valide1']))
+{
+	$nommaison = htmlspecialchars($_GET['nommaison']);
+	$superficie = htmlspecialchars($_GET['superficie']);
+	$nbpiece = htmlspecialchars($_GET['nbpiece']);
+	$adresse = htmlspecialchars($_GET['adresse']);
+	$ville = htmlspecialchars($_GET['ville']);
+	$cp = htmlspecialchars($_GET['cp']);
+	$pays = htmlspecialchars($_GET['pays']);
+
+	{	
+		try{
+
+
+		$insertmais = $bdd->prepare("INSERT INTO habitation(nomhabitation, superficie,  adresse,id_personne,ville,pays,cp,nbpiece) VALUES(?, ?, ?, ?,?,?,?,?)");
+    	$insertmais->execute(array($nommaison, $superficie, $adresse,$userinfo['id'],$ville,$pays,$cp,$nbpiece));
+    }
+    catch(Exception $e){
+    	die("erreur bdd");
+    }
+
+    	
+	}
+	
+	
+ 
+
+}
+
+
 ?>
 
 
 <html>
 <head>
+
 	<title>Gérer ma Maison</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="gerermamaisonstyle.css">
 	<link rel="stylesheet" type="text/css" href="general.css">
 
 	<script type="text/javascript">
-
 		function AfficheFormulaire(){
 			
 			
 			
-
 			var AjHab1=document.getElementById('ajoutHab1');
 			var AjHab2=document.getElementById('ajoutHab2');
-
 			var AjM=document.getElementById('ajmais');
 			var UserSec=document.getElementById('modutilsecond');
-
-
 			AjHab1.style.display='none';
 			AjHab2.style.display='none';
 			var FieldUser=document.getElementById('utilSecond');
-
-
 			FieldUser.style.display='none';
-
 			
 			if(AjM.checked==true){
 				AjHab1.style.display='block';
 				AjHab2.style.display='block';
 			}
-
 			else if(UserSec.checked==true) {
 				FieldUser.style.display='block';
-
 				
 			}
 		}
-
 		function AfficheMail(){
 			var Mail=document.getElementById('mail');
-
 			var US1=document.getElementById('uss1');
 			var US2=document.getElementById('uss2');
-
 			Mail.style.display='none';
-
 			if(US1.checked==true  ||  US2.checked==true ){
-
 				Mail.style.display='block';
 			}
 		}
-
-
 		function AfficheTableau(){
-
 			var US1=document.getElementById('uss1');
 			var US2=document.getElementById('uss2');
-
 			var MP=document.getElementById('MP');
 			var SP=document.getElementById('SP');
-
 			var Mail=document.getElementById('mail');
-
 			var TMUS1=document.getElementById('tableauUS1MP');
-
 			
 			TMUS1.style.display='none';
-
-
 			
 			if(US1.checked==true  && MP.checked==true ){
 				AfficheMail()
 				TMUS1.style.display='table';
 				
 			}
-
-
 		}
-
-
-
 		
-
 		
 	</script>
 
 </head>
 <body>
+
+
 	<?php include "header_none.php" ?>
 	  <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
 
@@ -125,6 +128,7 @@ catch(Exception $e){
 		</div>
 
 		<nav>
+
     <ul class="box_information">
 
  
@@ -247,51 +251,115 @@ catch(Exception $e){
 				<fieldset id="set">
 					<legend> <h1>Gérer ma maison</h1></legend>
 
-					<header>
+					
 						<nav class="head2">
 							<ul>
 								<li> <input type="radio" name="Sélection" value="Ajouter une salle" class="Selec" id="ajsal" onchange="AfficheFormulaire()"> Ajouter une salle </li>
 								<li><input type="radio" name="Sélection" value="Modifier ma Maison" class="Selec" id="modmais" onchange="AfficheFormulaire()"> Modifier ma Maison </li>
-								<li> <input type="radio" name="Sélection" value="Ajouter ma Maison" class="Selec" id="ajmais" onchange="AfficheFormulaire()"> Ajouter ma Maison  </li>
+								<li> <input type="radio" name="ajmaison" value="Ajouter ma Maison" class="Selec" id="ajmais" onchange="AfficheFormulaire()"> Ajouter ma Maison  </li>
 								<li><input type="radio" name="Sélection" value="Modifier utilisateur secondaire" class="Selec" id="modutilsecond" onchange="AfficheFormulaire()"> Modifier utilisateur secondaire </li>
-
+							</ul>
 							</nav>
-						</header>
 
-						<form method="post" action="traitement.php"> 
+						<form method="GET" action=""> 
 
-							<div class="colonnegauche">
+								<div class="colonnegauche">
 
-								<div id="ajoutHab1">
+									<div id="ajoutHab1">
 
-									<label for="nomdelamaison"> Nom de la  Maison: </label>
-									<input type="text" class="RentrerInfo" name="nommaison" required minlength="2" maxlength="16" size="16">
+										<label for="nomdelamaison"> Nom de la  Maison: </label>
+										<input type="text" class="RentrerInfo" name="nommaison" required minlength="2" maxlength="16" size="16">
 
-									<label for="superficie"> Superficie en m°2: </label>
-									<input type="number" class="RentrerInfo" name="superficie" required min="0">
+										<label for="superficie"> Superficie en m°2: </label>
+										<input type="number" class="RentrerInfo" name="superficie" required min="0">
 
-									<label for="nbhab"> Nombre d'habitants: </label>
-									<input type="number" class="RentrerInfo" name="nbhab" required min="0">
-								</div>
+										<label for="pays"> Pays : </label>
+										<input type="text" class="RentrerInfo" name="pays" required min="0">
 
-							</div>
+										<label for="ville"> Ville :</label>
+										<input type="text" class="RentrerInfo" name="ville" required min="0">
 
-							<div class="colonnedroite">
 
-								<div id="ajoutHab2">
+										
 
-									<label for="nbpiece"> Nombre de piéce: </label>
-									<input type="number" class="RentrerInfo" name="nbpiece" required min="0" >
-
-									<label for="addresse"> Addresse: </label>
-									<input type="text" class="RentrerInfo" name="nommaison" required minlength="2" size="10">
-
-									<input type="submit" value="Valider" class="envoyer">
-									<input type="submit" value="Annuler" class="envoyer" id="suppr">
+									</div>
 
 								</div>
 
-							</div>
+								<div class="colonnedroite">
+
+									<div id="ajoutHab2">
+
+										<label for="cp"> Code Postal : </label>
+										<input type="text" class="RentrerInfo" name="cp" required min="0">
+
+										<label for="addresse"> Addresse: </label>
+										<input type="text" class="RentrerInfo" name="adresse" required minlength="2" size="10">
+
+										<label for="nbpiece"> Nombre de pièce: </label>
+										<input type="number" class="RentrerInfo" name="nbpiece" required min="0" >
+
+										
+
+										<input type="submit" value="Valider" class="envoyer" name="valide1">
+										<input type="submit" value="Annuler" class="envoyer" is="suppr">
+
+
+									</div>
+
+								</div>
+							</form>
+
+							<form method="GET" action=""> 
+
+								<div class="colonnegauche">
+
+									<div id="ajoutHab1">
+
+										<label for="nomdelamaison"> Nom de la  Maison: </label>
+										<input type="text" class="RentrerInfo" name="nommaison" required minlength="2" maxlength="16" size="16">
+
+										<label for="superficie"> Superficie en m°2: </label>
+										<input type="number" class="RentrerInfo" name="superficie" required min="0">
+
+										<label for="nbhab"> Nombre d'habitants: </label>
+										<input type="number" class="RentrerInfo" name="nbhab" required min="0">
+									</div>
+
+								</div>
+
+								<div class="colonnedroite">
+
+									<div id="ajoutHab2">
+
+										<label for="nbpiece"> Nombre de pièce: </label>
+										<input type="number" class="RentrerInfo" name="nbpiece" required min="0" >
+
+										<label for="addresse"> Addresse: </label>
+										<input type="text" class="RentrerInfo" name="adresse" required minlength="2" size="10">
+
+										<input type="submit" value="Valider" class="envoyer" name="valide1">
+										<input type="submit" value="Annuler" class="envoyer" is="suppr">
+
+
+									</div>
+
+								</div>
+							</form>
+							<br/> <br/>
+							<?php
+							if (isset($_GET['ajmaison']))
+							{
+								if (isset($erreur))
+								{
+									echo '<font color="red">'.$erreur."</font>";
+								}				            
+				                
+				            }
+							
+				            
+							?>
+							
 
 							<fieldset id="utilSecond">
 								<legend > <ul class="utilisateursecond">
@@ -380,13 +448,13 @@ catch(Exception $e){
 
 
 									</table>
-									<input type="submit" value="Valider" class="envoyer">
+									<input type="submit" value="Valider" class="envoyer" name="valide2">
 									<input type="submit" value="Annuler" class="envoyer" is="suppr">
 								</div>
 
+							
 
-
-							</form>
+							
 
 						</fieldset>
 
@@ -396,10 +464,8 @@ catch(Exception $e){
 					
 
 						<?php 
-
 						include "footer.php";
-
 						?>
 
 					</body>
-					</html>
+</html>
