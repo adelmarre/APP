@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html>
+
 	<head>
 		<link rel="stylesheet" type="text/css" href="apropos.css">
 		<link rel="stylesheet" type="text/css" href="general.css">
 		<meta charset="utf-8">
 		<title>A propos</title>
 	</head>
-		<?php if (isset($_SESSION['id'])) {
-	include "header_deco.php"; }
-	else {
-		include "header_connexion.php";
-	}
-
+<?php 
+session_start();
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root',''); 
+if (isset($_SESSION['id'])) {
+  include "header_deco.php"; }
+  else {
+    include "header_connexion.php";
+  }
 ?>
 	<body>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
@@ -21,7 +22,7 @@
 
 			<div class="contenu">
 					
-						<img src="image/logo dominium.jpg" alt="Photo de dominium" id="dominium" class="logo_dominium">
+						<img src="image/logo dominium.png" alt="Photo de dominium" id="dominium" class="logo_dominium">
 
 						<div class="texte">
 							<p>Hexagon est un projet répondant à la demande de Domisep faite à la start-up Dominium (spécialisée en informatique, télécommunications, électronique et traitement du signal) de créer une plate-forme web afin de pouvoir gérer des habitations connectées de particuliers à distance. </br></br>
