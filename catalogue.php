@@ -1,5 +1,6 @@
 <?php 
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
+session_start();
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root',''); 
 ?>
 <html>
 <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
