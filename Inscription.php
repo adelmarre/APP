@@ -182,7 +182,7 @@ if (isset($_POST['suivant']))
         <title>S'inscrire</title>
     </head>
 
-<img src="logo hexagon final.png" alt="photo de hexagon" id="hexagon">
+<img src="image/logo hexagon.png" alt="photo de hexagon" id="hexagon">
 <body><h1>Formulaire d'inscription</h1>
     <form method="post" action="">
 
