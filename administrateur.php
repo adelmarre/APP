@@ -1,89 +1,136 @@
+<style type="text/css">
+ @import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+a.snip0072 {
+ border: none;
+  background-color: #000000;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 20px 40px;
+  display: inline-block;
+  margin: 15px 35px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 1em;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+a.snip0072:before {
+  border-radius: 3px;
+  content: '';
+  display: block;
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 50%;
+  bottom: 50%;
+  background-color: #ffffff;
+  border-top: 2px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+a.snip0072:hover,
+a.snip0072.hover {
+  color: #ffffff;
+  -webkit-animation: flashText 0.5s;
+  animation: flashText 0.5s;
+}
+
+a.snip0072:hover:before,a.snip0072.hover:before {
+  top: 15%;
+  bottom: 15%;
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 0.8;
+}
+
+a.snip0072:active:before {
+  background-color: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+a.snip0072.blue {
+  background-color: #1e5d87;
+}
+
+a.snip0072.green {
+  background-color: #787746
+}
+
+a.snip0072.red {
+  background-color: #8e2a20;
+}
+a.snip0072.yellow {
+  background-color: #b66015;
+}
+
+@-webkit-keyframes flashText {
+  0% {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    color: transparent;
+  }
+  100% {
+    color: #fff;
+  }
+}
+
+@keyframes flashText {
+  0% {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    color: transparent;
+  }
+  100% {
+    color: #fff;
+  }
+}
+body {
+  background-image: url(image/admin.jpg);
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+ background-size: 100% 100%;
+}
+
+</style>
 <?php
 session_start();
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
 
-if(isset($_GET['type']) AND $_GET['type'] == 'personne') {
-   if(isset($_GET['confirme']) AND !empty($_GET['confirme'])) {
-      $confirme = (int) $_GET['confirme'];
-      $req = $bdd->prepare('UPDATE personne SET confirme = 1 WHERE id = ?');
-      $req->execute(array($confirme));
-   }
-   if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
-      $supprime = (int) $_GET['supprime'];
-      $req1 = $bdd->prepare('DELETE FROM personne WHERE id = ?');
-      $req1->execute(array($supprime));
-      //$req2 = $bdd->prepare('DELETE FROM habitation WHERE id_personne = ?');
-      //$req2->execute(array($supprime));
-   }
-   if(isset($_GET['supprimehabitation']) AND !empty($_GET['supprimehabitation'])) {
-      $supprimehabitation = (int) $_GET['supprimehabitation'];
-      $req = $bdd->prepare('DELETE FROM habitation WHERE id_habitation = ?');
-      $req->execute(array($supprimehabitation));
-   }
-    
-}
-
-$habitation = $bdd -> query('SELECT * FROM habitation JOIN personne ON personne.id = habitation.id_personne');
-$personne = $bdd -> query('SELECT * FROM personne');
+include "verifadmin.php";
 ?>
+
 
 <html>
 <head>
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
   <title>Admin</title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href=".css" /> 
+  <link rel="stylesheet" type="text/css" href="administrateur.css" /> 
    
 </head>
-<a href="deconnexion.php" class="box_rouge">Déconnexion</a>
-<body align="center">
-	
-                                    
-	                                  
-	<table border>
-		<tr> <th> ID personne </th> <th> Nom</th><th> Prénom</th><th> Mail</th><th> Numéro</th><th> Adresse</th> <th>Code postal</th><th>Ville</th><th>Type d'habitation</th><th>Pays</th></tr>
-		<tr>
-		<?php
-
-		while($h=$habitation->fetch()) { 
-		?>
-      <tr>
-          <td><?= $h['id'] ?> 
-          <?php if($h['confirme'] == 0) 
-          { ?>  <a href="administrateur.php?type=personne&confirme=<?= $h['id_personne'] ?>">Confirmer</a>
-          <?php } ?> <a href="administrateur_modifierclient.php?id=<?=$h['id_personne']?>">Modifier le client</a>  
-          <a href="administrateur.php?type=personne&supprime=<?= $h['id'] ?>">Supprimer le client</a>
-           </td> <td> <?= $h['nom'] ?> </td> <td> <?= $h['prenom'] ?></td><td>  <?= $h['mail'] ?></td><td>  <?= $h['numero'] ?> </td>
-           <td> <?= $h['adresse']?> </td><td> <?= $h['cp']?></td><td>  <?= $h['ville']?></td> <td><?= $h['type']?>  </td><td> <?= $h['pays']?></td>
-         
-	 </tr>
-      
-      <td><a href="#">Modifier l'habitation du client</a> </br><a href="administrateur.php?type=personne&supprimehabitation=<?= $h['id_habitation'] ?>">Supprimer l'habitation du client</a> </td>
-      <?php } ?>
-  </table>
+<body >
+<div id="global">
+<a href="deconnexion.php" >Déconnexion</a></br>
 
 
-
-<table border>
-    <tr> <th> ID personne</th> <th> Nom</th><th> Prénom</th><th> Mail</th><th>Numero</th><th>Compte Admin</th></tr>
-    <tr>
-    <?php
-
-    while($p=$personne->fetch()) { 
-    ?>
-      <tr>
-          <td><?= $p['id'] ?> 
-          <?php if($p['confirme'] == 0) 
-          { ?>  <a href="administrateur.php?type=personne&confirme=<?= $p['id_personne'] ?>">Confirmer</a>
-          <?php } ?> <a href="administrateur_modifierclient.php?id=<?=$p['id_personne']?>">Modifier le client</a>  
-          <a href="administrateur.php?type=personne&supprime=<?= $p['id'] ?>">Supprimer le client</a>
-           </td> <td> <?= $p['nom'] ?> </td> <td> <?= $p['prenom'] ?></td><td>  <?= $p['mail'] ?></td><td>  <?= $p['numero'] ?> </td><td>  <?= $p['admin'] ?> </td>
-           
-   </tr>
-      
-      
-      <?php } ?>
-  </table>
-
-
+  <a class="snip0072" href="administrateur_afficherclient.php?id_admin=<?= $getidadmin ?>">Afficher les clients </a>
+ <a class="snip0072 blue"href="administrateur_nouscontacter.php?id_admin=<?= $getidadmin?>"> Mails reçus</a>
+ <a class="snip0072 red"href="administrateur_nouscontacter.php?id_admin=<?= $getidadmin?>"> Modifier le catalogue</a>
+ <a class="snip0072 yellow"href="administrateur_nouscontacter.php?id_admin=<?= $getidadmin?>"> Modifier "à propos"</a>
+   
+</div>
 </body>
+
+
