@@ -96,12 +96,18 @@ a.snip0072.yellow {
     color: #fff;
   }
 }
-body {
-  background-image: url(image/admin.jpg);
-    background-repeat: no-repeat;
-  background-attachment: fixed;
- background-size: 100% 100%;
+
+#content {
+  margin-top: 20em;
+  background-color: rgba(255,255,255,0.2);
+  margin-left : 2em;
 }
+#content a {
+
+  left : 15em;
+}
+
+
 
 </style>
 <?php
@@ -121,15 +127,17 @@ include "verifadmin.php";
    
 </head>
 <body >
-<div id="global">
-<a href="deconnexion.php" >Déconnexion</a></br>
+ <div class="snip1231">
+ <a  class="current" href="deconnexion.php">Déconnexion</a>
+    </div>
 
+
+  <div id="content">
 
   <a class="snip0072" href="administrateur_afficherclient.php?id_admin=<?= $getidadmin ?>">Afficher les clients </a>
  <a class="snip0072 blue"href="administrateur_nouscontacter.php?id_admin=<?= $getidadmin?>"> Mails reçus</a>
  <a class="snip0072 red"href="administrateur_nouscontacter.php?id_admin=<?= $getidadmin?>"> Modifier le catalogue</a>
  <a class="snip0072 yellow"href="administrateur_nouscontacter.php?id_admin=<?= $getidadmin?>"> Modifier "à propos"</a>
-   
 </div>
 </body>
 
