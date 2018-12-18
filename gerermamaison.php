@@ -25,7 +25,7 @@ catch(Exception $e){
 $requser = $bdd -> prepare('SELECT * FROM habitation JOIN personne ON personne.id = habitation.id_personne WHERE (id = ?) AND (id_habitation = ?)');
 $requser -> execute(array($getid,$gethabitation));
 $user = $requser ->fetch();
-$requser2 = $bdd -> prepare('SELECT * FROM piece WHERE (id_habitation = ?)');
+$requser2 = $bdd -> prepare('SELECT * FROM piece WHERE id_habitation = ?');
 $requser2 -> execute(array($gethabitation));
 
 
@@ -52,6 +52,7 @@ if (isset($_POST['valide1']))
 	
  
 }
+
 ?>
 
 
@@ -322,19 +323,13 @@ if (isset($_POST['valide1']))
 							if (isset($_POST['ajouter'])) {
 								$nom = htmlspecialchars($_POST['nom']);
 								$superficie = htmlspecialchars($_POST['superficie']);
-								$habitation = $_GET['habitation'];
+								$habitation = $_GET['id_habitation'];
 								$insertpiece = $bdd->prepare("INSERT INTO piece(nom, id_habitation, superficie) VALUES(?, ?, ?)");
 	                            $insertpiece->execute(array($nom, $habitation , $superficie));
-	                            $req_augmenterNbpiece = $bdd->prepare("UPDATE habitation SET nbpiece = (nbpiece+1) WHERE id_habitation = ? ");
-								$req_augmenterNbpiece -> execute(array($user['id_habitation']));
-								$newsuperficie = $user['superficie']+$superficie;
-								$req_augmenterSuperficie = $bdd->prepare("UPDATE habitation SET superficie = ? WHERE id_habitation = ? ");
-								$req_augmenterSuperficie -> execute(array($newsuperficie,$user['id_habitation']));
-
 							}?>
 
-						<fieldset>
-						<legend><h2>Ajouter une salle :</h2></legend>
+					
+						
 						<FORM method="POST">
 								<h3>Nom de la maison</h3>
 								<?php echo $user['nomhabitation'];?>
@@ -347,20 +342,34 @@ if (isset($_POST['valide1']))
 							<input type="submit" name="ajouter" id="ajouter" value="Ajouter">
 
 							</FORM>	
-							</fieldset>
+							
 						</div>
 						<div id="modifiermaison">
-						<fieldset>
-						<legend><h2>Modifier ma maison :</h2></legend>
-					
+						
+						
+
 						<div class="colonnegauche">
 							<label> Nom de la  Maison: </label>
 							<input type="text" class="RentrerInfo" name="newnomhabitation" value="<?php echo $user['nomhabitation']?>" required minlength="2" maxlength="16" size="16">
 							<label> Superficie en m^2 : </label>
-							<?php echo $user['superficie']?>
+							<?php
+							$superficietotal =  0 ;
+							$superficie = $bdd -> query("SELECT superficie FROM piece WHERE id_habitation = '" . $user['id_habitation'] . "'");
+							while ($row = $superficie->fetch()) {
+								$superficietotal= $superficietotal + $row["superficie"];
+							}
+							echo $superficietotal;
+							?>
 
 							<label> Nombre de pièce : </label>
-							<?php echo $user['nbpiece']?>
+							<?php
+							$nbpiece = $bdd -> prepare("SELECT * FROM piece WHERE id_habitation = '" . $user['id_habitation'] . "'");
+							$nbpiece ->execute();
+							$count= $nbpiece ->rowCount();
+							echo $count;
+
+							?>
+							
 						</div>
 						<div class="colonnedroite">
 					
@@ -377,7 +386,7 @@ if (isset($_POST['valide1']))
 							<label > Ville : </label>
 							<input type="text" class="RentrerInfo" name="newville" value="<?php echo $user['ville']?>" required minlength="2" size="10">   
 						</div>
-						</fieldset>
+					
 						</div>
 						<form method="POST" action=""> 
 
@@ -420,7 +429,7 @@ if (isset($_POST['valide1']))
 								</div>
 							</form>
 
-							</div>
+							
 
 							<fieldset id="utilSecond">
 								<legend > <ul class="utilisateursecond">
