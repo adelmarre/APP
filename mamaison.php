@@ -90,58 +90,6 @@ $type-> execute(array($getid));
 			</div>
 		</div>
 
-		<nav>
-			<ul class="box_information">
-
-
-				<li>
-					<p>
-
-						<?php echo '<a href="editerprofil.php?id='.$_SESSION['id'].'" class="box">Editer profil</a>'; ?>
-
-						<img src="https://image.freepik.com/icones-gratuites/symbole-des-parametres_318-34202.jpg"
-						class="avatar_box">
-					</p>
-				</li>
-				<li>
-					<p>
-						<?php echo '<a href="faqversionfinale.php?id='.$_SESSION['id'].'" class="box">Aide</a>'; ?>
-
-						<img src="https://images.emojiterra.com/twitter/512px/2753.png" class="avatar_box">
-					</p>
-				</li>
-				<li> 
-					<p> <?php echo '<a href="apropos.php?id='.$_SESSION['id'].'" class="box">A propos</a>'; ?>
-
-						<img src="https://image.freepik.com/icones-gratuites/informations-petite-lettre-symbole-i_318-54670.jpg" class="avatar_box">
-					</p>
-				</li>
-				<li> 
-					<p> <a href="Consignes globales" class="box">Consignes globales</a>
-
-						<img src="https://images-na.ssl-images-amazon.com/images/I/61OH1BsW99L._SY355_.jpg" class="avatar_box">
-					</p>
-				</li>
-				<li> 
-					<p> <?php echo '<a href="catalogue.php?id='.$_SESSION['id'].'" class="box">Catalogue</a>'; ?>
-
-
-						<img src="https://svgsilh.com/svg_v2/160871.svg" class="avatar_box">
-					</p>
-
-
-
-				</li>
-				<li> 
-
-					<p> <a href="deconnexion.php" class="deconnexion" class="box_rouge">Déconnexion</a>
-
-
-					</p>
-
-				</li>
-			</ul>
-		</nav>
 	</div>
 
 	<div class="colonnegauche">
