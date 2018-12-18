@@ -587,7 +587,37 @@ function Hautbas(){
 </nav>
 
 
+<?php
+if (isset($_SESSION['id']))
+{
+  $getid = intval($_SESSION['id']);
+  $requser = $bdd -> prepare('SELECT * FROM personne WHERE id = ?');
+  $requser -> execute(array($getid));
+  $userinfo = $requser ->fetch();
+  $valeurtemp = htmlspecialchars($_POST["temperature"]);
+  $valeurlampe1 = htmlspecialchars($_POST["lampe1"]);
+  $valeurlampe2 = htmlspecialchars($_POST["lampe2"]);
+  $valeurvoletplus = htmlspecialchars($_POST["haut"]);
+  $valeurvoletmoins = htmlspecialchars($_POST["bas"]);
+  $valeurdetecteur2 = htmlspecialchars($_POST["detecteur1"]);
+  $valeurhumidite = htmlspecialchars($_POST["eau"]);
+  $valeurdetecteur2 = htmlspecialchars($_POST["detecteur2"]);
+}
+if (isset($_POST['valide'])){
+  if (isset($_POST["lampe1"])){
 
+    $insertval = $bdd -> prepare("UPDATE capteurpiece SET valeur=1 WHERE id_type=1");
+    $insertval ->execute(array($valeurlampe1,$_SESSION['id']));
+  }
+  else
+  {
+    $insertval = $bdd -> prepare("UPDATE capteurpiece SET valeur=0 WHERE id_type=1");
+    $insertval ->execute(array($valeurlampe1,$_SESSION['id']));
+  }
+
+}
+
+?>
 
 </div>
 
@@ -608,7 +638,7 @@ function Hautbas(){
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQunrWUy0VQcH_Knq_1O1G9aE9lGL_txsN1lfa83tJSn9nu1_BP" class="avatar_capteur">
 
 
-            <input type="number" name="température" step="0.5" min="13" max="30" value="19">
+            <input type="number" name="temperature" step="0.5" min="13" max="30" value="19">
           </div>
 
           <div class="capteur" id="capteurl1">
@@ -618,7 +648,7 @@ function Hautbas(){
             <img src="http://data-cache.abuledu.org/1024/ampoule-allumee-5435780b.jpg" class="avatar_capteur_lampe_allume" >
             <img src="https://image.freepik.com/icones-gratuites/symbole-d-39-ampoule-noire_318-60262.jpg" class="avatar_capteur_lampe_éteint">
 
-            <input type="checkbox" name="lumiere 1" id="switch1" onchange="EteintAllume()">
+            <input type="checkbox" name="lampe1" id="switch1" onchange="EteintAllume()">
 
             <span class="slider round"> </span>
 
@@ -631,7 +661,7 @@ function Hautbas(){
             <img src="http://data-cache.abuledu.org/1024/ampoule-allumee-5435780b.jpg" class="avatar_capteur_lampe_allume">
             <img src="https://image.freepik.com/icones-gratuites/symbole-d-39-ampoule-noire_318-60262.jpg" class="avatar_capteur_lampe_éteint">
 
-            <input type="checkbox" name="lumiere 2" id="switch2" onchange="EteintAllume()">
+            <input type="checkbox" name="lampe2" id="switch2" onchange="EteintAllume()">
 
             <span class="slider round"> </span>
 
@@ -660,7 +690,7 @@ function Hautbas(){
 
             <img src="https://cdn3.domomat.com/16028-large_default/detecteur-de-mouvement-luxomat-lc-click-n-200-blanc.jpg" class="avatar_capteur">
 
-            <input type="checkbox" name="détecteur 1" class="switch">
+            <input type="checkbox" name="detecteur1" class="switch">
 
             <span class="slider round"> </span>
           </div>
@@ -697,7 +727,7 @@ function Hautbas(){
 
                                   <img src="https://cdn3.domomat.com/16028-large_default/detecteur-de-mouvement-luxomat-lc-click-n-200-blanc.jpg" class="avatar_capteur">
 
-                                  <input type="checkbox" name="détecteur 2" class="switch">
+                                  <input type="checkbox" name="detecteur2" class="switch">
 
                                   <span class="slider round"> </span>
                                 </div>
@@ -715,6 +745,7 @@ function Hautbas(){
                                 </div>
 
                               </div>
+                                <input type="submit"  class="boutton "name="valide" value="Valider"  />
 
 
                               <a href="ajouter des capteurs" class="ajout"> Ajouter des capteurs </a>
@@ -737,3 +768,4 @@ function Hautbas(){
 
                     </body>
                     </html>
+
