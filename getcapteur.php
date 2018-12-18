@@ -12,7 +12,7 @@ $sql = "SELECT reference FROM catalogue WHERE id_type = '" . $q . "'";
 
 
 $result = mysqli_query($conn, $sql);
-
+}
 ?>
 <script>
 </script>
