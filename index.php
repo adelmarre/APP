@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
@@ -19,12 +20,17 @@ if (isset($_POST['formconnexion']))
             $_SESSION['nom'] = $userinfo['nom'];
             $_SESSION['prenom'] = $userinfo ['prenom'];
             $_SESSION['mail'] = $userinfo ['mail'];
-            header("Location: salon.php?id=".$_SESSION['id']);
+
+            $requser = $bdd -> prepare('SELECT * FROM habitation JOIN personne ON personne.id = habitation.id_personne WHERE id = ?');
+		    $requser -> execute(array($userinfo['id']));
+		    $user = $requser ->fetch();
+
+            header("Location: mamaison.php?id=".$_SESSION['id']);
             }
             else { $erreur= "Veuillez confirmer votre compte";}
             if ($userinfo['admin']==1 && $userinfo['confirme']==1)
             {
-            	header("Location: administrateur.php");
+            	header("Location: administrateur.php?id_admin=".$userinfo['id']);
             }
         }
         else { $erreur = "Mauvaise combinaison email/mot de passe";}
@@ -41,6 +47,7 @@ if (isset($_POST['formconnexion']))
 	<head>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="accueil.css">
+		<link rel="stylesheet" type="text/css" href="general.css">
 		<meta charset="utf-8">
 		<title>Accueil</title>
 	</head>
@@ -50,7 +57,7 @@ if (isset($_POST['formconnexion']))
 
 	
 
-			<img src="logo hexagon final.png" alt="photo de hexagon" id="hexagon">
+			<img src="image/logo hexagon.png" alt="photo de hexagon" id="hexagon">
 					
 	
 		<div id="identification">
@@ -59,10 +66,10 @@ if (isset($_POST['formconnexion']))
 
 				<ul>
 			  <li><a href="inscription.php">S'inscrire</a></li>
-			  <li><a href="#news">Catalogue</a></li>
-			  <li><a href="#about">Aide</a></li>
-			  <li><a href="#contact">Contact</a></li>
-			  <li><a href="#about">A propos</a></li>
+			  <li><a href="catalogue.php">Catalogue</a></li>
+			  <li><a href="faqversionfinale.php">Aide</a></li>
+			  <li><a href="pagecontact.php">Contact</a></li>
+			  <li><a href="apropos.php">A propos</a></li>
 			  
 				</ul>
 			
@@ -101,7 +108,7 @@ if (isset($_POST['formconnexion']))
 
 			<div id="oublie">
 				
-				<a href="">Mot de passe oublié</a>
+				<a href="mdpoublie.php">Mot de passe oublié</a>
 			</div>
 
 			<div id="connexion">
@@ -119,7 +126,7 @@ if (isset($_POST['formconnexion']))
 	
 		<div id="text">
 			
-			<center>	<img class="fond" src="fond_accueil2.jpg" height="100%" width="100%" height="auto"></center></div>
+			<center>	<img class="fond" src="image/fond_accueil2.jpg" height="100%" width="100%" height="auto"></center></div>
 
 
 			</div>
