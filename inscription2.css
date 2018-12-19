@@ -1,0 +1,280 @@
+body {
+
+  background-image: url("fond_inscription.png");
+   font-family: "Raleway";
+
+}
+h1 {
+  text-align: center;
+  font-size: 65px;  
+}
+
+form {
+  /* Pour le centrer dans la page */
+  margin: 0 auto;
+  width: 50em;
+ 
+
+  /* Pour voir les limites du formulaire */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+
+
+
+input, textarea {
+  /* Afin de s'assurer que tous les champs textuels utilisent la même police
+     Par défaut, textarea utilise une police à espacement constant */
+  font: 1em sans-serif;
+
+  /* Pour donner la même dimension à tous les champs textuels */
+  width: 40%;
+
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+
+  /* Pour harmoniser l'apparence des bordures des champs textuels */
+  border: 1px solid #999;
+}
+
+input:focus, textarea:focus {
+  /* Afin de réhausser les éléments actifs */
+  border-color: #000;
+}
+
+
+
+button {
+  /* Cette marge représente approximativement le même espace
+     que celui entre les étiquettes et les champs textuels */
+  margin-left: .5em;
+}
+ul{
+  text-align: left;
+  padding-left: 27%
+}
+input[type=checkbox]{
+  position: relative;
+}
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700);
+
+
+:root {
+
+  
+
+  /* Borders */
+  --fh-border-radius: 3px;
+  --fh-border-width: 1px;
+  --fh-border-style: solid;
+  --fh-border-color: rgb(200, 200, 200);
+
+  /* Inputs, Textareas, Select, Option */
+  --fh-input-height: 40px;
+  --fh-input-width: 100%;
+  --fh-input-max-width: 400px;
+  --fh-input-bg-color: rgb(250,250,250);
+  --fh-focus-bg-color: var(--fh-input-bg-color);
+  --fh-focus-border-color: #000;
+  --fh-focus-font-color: var(--fh-font-color);
+
+  /* Select Vendor Styling */
+  --fh-select-vendor-styling: none; 
+
+
+  /* Buttons & Input Submits */
+  --fh-button-height: 40px;
+  --fh-button-width: 100%;
+  --fh-button-max-width: 200px;
+  --fh-button-font-color: var(--fh-font-color);
+  --fh-button-bg-color: rgba(255, 219, 58,0.3);
+  --fh-button-hover-bg-color: rgb(255, 219, 58);
+  --fh-button-hover-font-color: var(--fh-font-color);
+
+  /* Layout */
+  --fh-layout-display: block;
+  --fh-layout-margin: 10px auto; /* change to "10px auto" to center */
+  --fh-layout-text-align: center;
+}
+
+
+
+
+input,
+textarea,
+select,
+option,
+optgroup,
+button,
+legend,
+fieldset {
+  box-sizing: border-box;
+  outline: none;
+
+  font-family: var(--fh-font-family);
+  font-size: var(--fh-font-size);
+  color: var(--fh-font-color);
+  vertical-align: top;
+
+  display: var(--fh-layout-display);
+  margin: var(--fh-layout-margin);
+  text-align: var(--fh-layout-text-align);
+}
+
+
+datalist {
+  font-family: var(--fh-font-family);
+  font-size: var(--fh-font-size);
+}
+
+label {
+  display: block;
+  margin: var(--fh-layout-margin);
+  text-align: var(--fh-layout-text-align);
+  margin-bottom: 20px;
+  position: relative;
+  padding: 0 20px;
+}
+
+
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="month"],
+input[type="number"],
+input[type="tel"],
+select,
+textarea {
+  width: var(--fh-input-width);
+  max-width: var(--fh-input-max-width);
+  padding: calc( var(--fh-input-height) / 5 );
+  background-color: var(--fh-input-bg-color);
+
+  border-radius: var(--fh-border-radius);
+  border-width: var(--fh-border-width);
+  border-style: var(--fh-border-style);
+  border-color: var(--fh-border-color);
+}
+
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],{
+  height: var(--fh-input-height);
+  -webkit-appearance: none;
+}
+
+
+
+
+
+select[multiple] {
+  height: auto;
+  min-height: var(--fh-input-height);
+  padding: 0;
+}
+
+select[multiple] option {
+  margin: 0;
+  padding: calc( var(--fh-input-height) / 5 );
+}
+
+
+
+fieldset {
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0;
+  font-weight: inherit;
+}
+
+
+
+
+input[disabled],
+textarea[disabled],
+select[disabled],
+option[disabled],
+button[disabled] {
+  cursor: not-allowed;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+option:focus,
+button:focus  {
+  background-color: var(--fh-focus-bg-color);
+  border-color: var(--fh-focus-border-color);
+}
+
+
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus {
+  background-color:#00BFFF ;
+  color: black;
+}
+
+
+
+
+
+
+input:not([type="submit"]):valid {
+  border-color: #2ecc71;
+}
+
+input:not([type="submit"]) + .requiert {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 1s ease-out;  
+}
+input:not([type="submit"]):hover + .requiert,
+input:not([type="submit"]):focus + .requiert,
+input:not([type="submit"]):active + .requiert {
+  max-height: 1000px; 
+  transition: max-height 1s ease-in;
+}
+
+
+.requiert li.invalid {
+  color: #E74C3C;
+}
+.requiert li.valid {
+  color: #2ecc71;
+}
+
+.requiert li.valid:after {
+  display: inline-block;
+  padding-left: 10px;
+  content: "\2713";
+}
+
+
+#CUG{
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  width: 120%;
+  text-align: left;
+  
+}
+#CUG input{
+  width: 10%;
+  float: left;
+}
