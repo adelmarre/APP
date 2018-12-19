@@ -103,7 +103,7 @@ if (isset($_POST['suivant']))
     <meta charset="UTF-8" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="inscription.css" />
+    <link rel="stylesheet" href="inscription2.css" />
     <title>S'inscrire</title>
   </head>
 
@@ -233,6 +233,6 @@ if (isset($_POST['suivant']))
       </div>
 </form>
 
-<script src="inscription.js"></script>
+<script src="inscription2.js"></script>
 </body>
 </html>
