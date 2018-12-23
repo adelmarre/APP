@@ -8,9 +8,9 @@ if (isset($_POST['reference'])) {
 	$resultat1 -> execute(array($reference));
 	$capteur = $resultat1 -> fetch(); 
 	$id = $capteur['id_capteur'];
-	$insertcapteur = $bdd->prepare("INSERT INTO capteurpiece(id_capteur_catalogue,id_piece) VALUES(?,?)");
-	$insertcapteur-> execute(array($id,12));
-	header('Location : index.php');
+	$type=$capteur['id_type'];
+	$insertcapteur = $bdd->prepare("INSERT INTO capteurpiece(id_capteur_catalogue,id_piece,id_type) VALUES(?,?,?)");
+	$insertcapteur-> execute(array($id,12,$type));
 }
 ?>
 <head>
