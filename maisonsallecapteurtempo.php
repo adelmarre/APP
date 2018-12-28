@@ -1,4 +1,4 @@
-<?php session_start(); ?> 
+<?php session_start(); ?>
 <script type="text/javascript">
 
 function AfficheCapt(str,std,sth){
@@ -41,7 +41,7 @@ function AfficheCapt(str,std,sth){
   <title>Ma maison</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="sallestyle.css" /> 
-  <link rel="stylesheet" type="text/css" href="general.css">
+
 </head>
 <body>
 
