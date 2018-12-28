@@ -56,115 +56,12 @@ if (isset($_SESSION['id']))
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
   <title>Editer mon profil</title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="editerprofil.css" /> 
-   
+  <link rel="stylesheet" type="text/css" href="sallestyle.css" /> 
+  
 </head>
 <body>
 
-  <header>
-    <img src="logo hexagon final.png" alt="logo Hexagon" id="logo_hexagon">
-    <nav class="head">
-     <ul>
-      <li><a href="#">Ma maison</a></li>
-      <li><a href="#">Catalogue</a></li>
-      <li><a href="#">A Propos</a></li>
-      <li><a href="#">Aide</a></li>
-      <li><a href="#">Consignes Globales</a></li>
-    </ul>
-  </nav>=
-</header>
-
-
-</div>
-
-<div id="colonnedroite">
-
-  <div class="box_profil">
-
-    <img src="profil.jpg" class="photo_profil">
-    <br/>
-    <div class="affichage_prenom">
-      <?php echo $user['prenom'];?></p>
-    </div>
-    <div class="affichage_nom">
-       <?php echo $user['nom'];?></p>
-    </div>
-
-  </div>
-
-
-  <nav>
-    <ul class="box_information">
-
-      <li> 
-       <p> <a href="Editer Son Profil" class="box">Editer son profil </a>
-
-        <img src="https://image.freepik.com/icones-gratuites/symbole-des-parametres_318-34202.jpg" class="avatar_box">
-      </p>
-    </li>
-
-    <li>
-      <p>
-        <a href="Aide" class="box">FAQ </a>
-
-        <img src="https://images.emojiterra.com/twitter/512px/2753.png" class="avatar_box">
-      </p>
-    </li>
-    <li> 
-     <p> <a href="A propos" class="box">A propos</a>
-
-      <img src="https://image.freepik.com/icones-gratuites/informations-petite-lettre-symbole-i_318-54670.jpg" class="avatar_box">
-    </p>
-  </li>
-  <li> 
-   <p> <a href="Consignes globales" class="box">Consignes globales</a>
-
-    <img src="https://images-na.ssl-images-amazon.com/images/I/61OH1BsW99L._SY355_.jpg" class="avatar_box">
-  </p>
-</li>
-<li> 
- <p> <a href="Catalogue" class="box">Catalogue</a>
-
-
-  <img src="https://svgsilh.com/svg_v2/160871.svg" class="avatar_box">
-</p>
-
-
-
-</li>
-
-<li> 
-
- <p> <a href="gerermamaison" class="box_rouge">Gérer ma maison</a>
-
-
- </p>
-
-
-
-</li>
-
-
-
-<li> 
-
- <p> <a href="deconnexion.php" class="box_rouge">Déconnexion</a>
-
-
- </p>
-
-</li>
-</ul>
-</nav>
-
-
-
-
-
-</div>
-
-
-</div>
+<?php include "menu.php" ?>
 
 
 <div id="Centre">
@@ -214,9 +111,10 @@ if (isset($_SESSION['id']))
                   </td>
                </tr>
                <tr>
-                  <td></td>
                   <td align="right">
-                     <br />
+                     <label for="telephone">Numéro de téléphone : </label>
+                  </td>
+                  <td>
                      <input type="tel" id="numero" placeholder="+336xxxxxxxxx" name="newnumero" value="<?php echo $user['numero'] ?>" />
                   </td>
                </tr>
