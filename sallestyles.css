@@ -333,7 +333,7 @@ li:hover ul.sous_menu_salles
     }
     */
     .capteur{
-        display: :block;
+        display: table-cell;
         width: 20em;
         border:0.13em solid black;
 
