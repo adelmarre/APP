@@ -1,25 +1,19 @@
 <?php 
-$l = $luminosite ->fetch();
+$nb = 1;
+while ($l = $luminosite -> fetch())
+{?> 
 
-for ($i=0 ; $i<$captlexist ; $i++) {?>
- <div class="capteur" id="capteurl1">
-
-            <h3 class="titre"> Lampe </h3>
-
-            <img src="http://data-cache.abuledu.org/1024/ampoule-allumee-5435780b.jpg" class="avatar_capteur_lampe_allume">
-            <img src="<?php echo $l['photo']?>" class="avatar_capteur_lampe_éteint">
-
-            <input type="checkbox" name="lampe1" id="switch1" onchange="EteintAllume()">
-
-            <span class="slider round"> </span>
-
-          </div>
-
-
-
- <?php } ?>
-
-
+	<div class="capteur">
+	<h3 class="titre"> Lumière <?php echo $nb?></h3>
+	
+	<img src="<?php echo $l['photo']?>" class="avatar_capteur">
+	<select name="luminosite[]" single>
+	<option  value="<?php echo $l['id_capteur_piece']?>,1" <?php if ( $l['valeur']==1) {echo 'selected="selected"';}?>  class="switch">On </option>
+	<option   value="<?php echo $l['id_capteur_piece']?>,0" <?php if ( $l['valeur']==0) {echo 'selected="selected"';}?>  class="switch">Off</option>
+	</select>
+	</div>
+ <?php $nb = $nb + 1; } 
+ ?>
 
 
 
