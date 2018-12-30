@@ -45,7 +45,53 @@ function AfficheCapt(str,std,sth){
 </head>
 <body>
 
-  <?php include "menu.php" ?>
+  <?php include "menu.php";
+
+if (isset($_POST['modifier'])) {
+  if (!empty($_POST['mouvement'])) {
+     foreach ($_POST['mouvement'] as $select)
+      {
+        $o =explode(',',$select);  
+        
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($o[1],$o[0]));
+      
+  
+      }
+  }
+  if (!empty($_POST['fumee'])) {
+     foreach ($_POST['fumee'] as $select)
+      {
+        $o =explode(',',$select);  
+        
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($o[1],$o[0]));
+      
+  
+      }
+  }
+  if (!empty($_POST['luminosite'])) {
+     foreach ($_POST['luminosite'] as $select)
+      {
+        $o =explode(',',$select);  
+        
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($o[1],$o[0]));
+      
+  
+      }
+  }
+  if (isset($_POST['volet'])) {
+        $select=$_POST['volet'];
+        $o =explode(',',$select);  
+        
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($o[1],$o[0]));
+      }
+  
+}
+
+   ?>
 
 <div id="colonnegauche">
 
