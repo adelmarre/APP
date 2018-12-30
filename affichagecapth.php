@@ -1,10 +1,10 @@
  <?php 
-$hum = $humidite ->fetch();
-for ($i=0 ; $i<$capthexist ; $i++) {?> 
+$nb = 1;
+while ($hum = $humidite -> fetch()) {?> 
            
             <div class="capteur">
 
-            <h3 class="titre"> Humidité </h3>
+            <h3 class="titre"> Humidité <?php echo $nb?></h3>
 
             <img src="<?php echo $hum['photo']?>" class="avatar_capteur">
 
@@ -27,5 +27,5 @@ for ($i=0 ; $i<$capthexist ; $i++) {?>
 
                                 </div>
 
-<?php }?>
+<?php $nb = $nb + 1; }?>
  
