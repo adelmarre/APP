@@ -14,7 +14,6 @@
 ?>
 	<body>
 
-		</div
 
 		<link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
 		<div class="blocpage">
@@ -22,14 +21,14 @@
 
 		<?php
 		session_start();
-		$bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
+		$bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','',array (PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
 		$sql = "SELECT * FROM  'A_propos' ";
 		$reponse = $bdd->query('SELECT * FROM A_propos');
 		while ($donnees = $reponse->fetch())
 		{
 			?>
 			<div class="contenu">
-			<img src="image/logo dominium.jpg" alt="Photo de dominium" id="dominium" class="logo_dominium">
+			<img src="image/logo dominium.png" alt="Photo de dominium" id="dominium" class="logo_dominium">
 			<div class="texte">
 			<p > <?php echo $donnees['description'] ; 
 				?>
@@ -38,15 +37,15 @@
 <?php
 }
 		?>
-		</div
+			</div>
 
 			
-						</div>
+			</div>
 					
 			
-			</div>
-			<?php require "footer.php"; ?>
 		</div>
+			<?php require "footer.php"; ?>
+		
 	
 	</body>
 	
