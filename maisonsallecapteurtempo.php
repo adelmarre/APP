@@ -88,7 +88,12 @@ if (isset($_POST['modifier'])) {
         $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
         $insertcapteur-> execute(array($o[1],$o[0]));
       }
-  
+  if (isset($_POST['temperature'])) {
+        $select=$_POST['temperature'];
+        $id_capteur=$_POST['numcapteur'];
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($select,$id_capteur));
+      }
 }
 
    ?>
