@@ -1,8 +1,6 @@
 <?php session_start(); ?>
 <script type="text/javascript">
-
 function AfficheCapt(str,std,sth){
-
   var Titre=document.getElementById('titreSet');
   Titre.innerHTML=std;
   if (window.XMLHttpRequest) {
@@ -30,8 +28,6 @@ function AfficheCapt(str,std,sth){
         xmlhttp.open("GET", "getpiece.php?q=" + str +"&h=" + sth, true);
         xmlhttp.send();
 }
-
-
 </script>
 
 
@@ -46,7 +42,6 @@ function AfficheCapt(str,std,sth){
 <body>
 
   <?php include "menu.php";
-
 if (isset($_POST['modifier'])) {
   if (!empty($_POST['mouvement'])) {
      foreach ($_POST['mouvement'] as $select)
@@ -94,6 +89,12 @@ if (isset($_POST['modifier'])) {
         $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
         $insertcapteur-> execute(array($select,$id_capteur));
       }
+  if (isset($_POST['humidite'])) {
+        $select=$_POST['humidite'];
+        $id_capteur=$_POST['humcapteur'];
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($select,$id_capteur));
+      }
 }
 
    ?>
@@ -116,28 +117,22 @@ if (isset($_POST['modifier'])) {
           <ul class="sous_menu_salles">
             <form>
                 <?php
-
                 function AffichePiece(){
                      $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
                     
                     if (isset($_GET["id_habitation"])) {
                      
                       $piece =$bdd->prepare('SELECT nom,id_piece,id_habitation FROM piece  WHERE id_habitation= "'.$_GET["id_habitation"].'" ');
-
                       $piece ->execute();
                       
                        $tabpiece=$piece->fetchAll(PDO::FETCH_ASSOC);
-
                        //var_dump($tabpiece);
-
                       
                       foreach ($tabpiece as $row) {
                         
-
                          echo '<li> <input type="radio" name="'.$row['id_habitation'].'" value="'.$row['id_piece'].'" onchange="AfficheCapt(this.value,this.id,this.name)" class="Selec" id="'.$row['nom'].'" > '.$row['nom'].'  </li>' ;
                         
                       
-
                          }
                        }
                     
@@ -175,25 +170,13 @@ if (isset($_POST['modifier'])) {
   <?php
   
   function habitation() {
-
    $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
-
-
-
    $habitation =$bdd->prepare('SELECT nomhabitation,id_habitation  FROM habitation  WHERE id_personne= "'.$_SESSION['id'].'" ');
-
    $habitation ->execute();
-
     $tabhab=$habitation->fetchAll(PDO::FETCH_ASSOC);
-
-
    foreach ($tabhab as $row) {
-
     echo '<li> <input type="radio" name="id_habitation" value="'.$row['id_habitation'].'" class="SelecHabitation" id="'.$row['id_habitation'].'"  > '.$row['nomhabitation'].'  </li>' ;
-
-
     $habitation->closeCursor();
-
     
   }
   
@@ -201,10 +184,7 @@ if (isset($_POST['modifier'])) {
 ?>
 
 <?php
-
-
 habitation();
-
 ?>
 
 <input type="submit" id="Hab" value="Entrer" >
@@ -237,9 +217,7 @@ habitation();
  </div>
 
                       <?php 
-
                       include "footer.php";
-
                       ?>
 
 
