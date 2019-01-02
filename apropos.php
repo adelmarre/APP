@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html>
+<?php session_start();?>
 	<head>
 		<link rel="stylesheet" type="text/css" href="apropos.css">
 		<link rel="stylesheet" type="text/css" href="general.css">
+
 		<meta charset="utf-8">
 		<title>A propos</title>
 	</head>
@@ -20,7 +20,7 @@
 		<h1>A propos</h1>
 
 		<?php
-		session_start();
+	
 		$bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','',array (PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
 		$sql = "SELECT * FROM  'A_propos' ";
 		$reponse = $bdd->query('SELECT * FROM A_propos');
