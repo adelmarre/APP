@@ -39,17 +39,32 @@ function AfficheCapt(str,std,sth){
   <link rel="stylesheet" type="text/css" href="sallestyle.css" /> 
 
 </head>
+<?php 
+  $date = date("Y-m-d");
+  $heure = date("H:i:s");
+  
+  ?>
 <body>
 
   <?php include "menu.php";
+
 if (isset($_POST['modifier'])) {
+
+  
+ 
+  
   if (!empty($_POST['mouvement'])) {
      foreach ($_POST['mouvement'] as $select)
-      {
+      { 
+        
         $o =explode(',',$select);  
         
         $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
         $insertcapteur-> execute(array($o[1],$o[0]));
+
+        
+        $histcapteur = $bdd->prepare("INSERT INTO donnees(valeur,heure,ladate,id_capteur_piece,id_type_capteur) VALUES(?,?,?,?,?)");
+        $histcapteur-> execute(array($select,$heure,$date,$o[0],3));
       
   
       }
@@ -57,11 +72,15 @@ if (isset($_POST['modifier'])) {
   if (!empty($_POST['fumee'])) {
      foreach ($_POST['fumee'] as $select)
       {
-        $o =explode(',',$select);  
+
+        $o =explode(',',$select); 
+
         
         $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
         $insertcapteur-> execute(array($o[1],$o[0]));
-      
+        
+        $histcapteur = $bdd->prepare("INSERT INTO donnees(valeur,heure,ladate,id_capteur_piece,id_type_capteur) VALUES(?,?,?,?,?)");
+        $histcapteur-> execute(array($select,$heure,$date,$o[0],4));
   
       }
   }
@@ -72,7 +91,8 @@ if (isset($_POST['modifier'])) {
         
         $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
         $insertcapteur-> execute(array($o[1],$o[0]));
-      
+        $histcapteur = $bdd->prepare("INSERT INTO donnees(valeur,heure,ladate,id_capteur_piece,id_type_capteur) VALUES(?,?,?,?,?)");
+        $histcapteur-> execute(array($select,$heure,$date,$o[0],1));
   
       }
   }
@@ -82,18 +102,24 @@ if (isset($_POST['modifier'])) {
         
         $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
         $insertcapteur-> execute(array($o[1],$o[0]));
+        $histcapteur = $bdd->prepare("INSERT INTO donnees(valeur,heure,ladate,id_capteur_piece,id_type_capteur) VALUES(?,?,?,?,?)");
+        $histcapteur-> execute(array($select,$heure,$date,$o[0],5));
       }
   if (isset($_POST['temperature'])) {
         $select=$_POST['temperature'];
         $id_capteur=$_POST['numcapteur'];
         $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
         $insertcapteur-> execute(array($select,$id_capteur));
+        $histcapteur = $bdd->prepare("INSERT INTO donnees(valeur,heure,ladate,id_capteur_piece,id_type_capteur) VALUES(?,?,?,?,?)");
+        $histcapteur-> execute(array($select,$heure,$date,$id_capteur,2));
       }
   if (isset($_POST['humidite'])) {
         $select=$_POST['humidite'];
         $id_capteur=$_POST['humcapteur'];
         $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
         $insertcapteur-> execute(array($select,$id_capteur));
+        $histcapteur = $bdd->prepare("INSERT INTO donnees(valeur,heure,ladate,id_capteur_piece,id_type_capteur) VALUES(?,?,?,?,?)");
+        $histcapteur-> execute(array($select,$heure,$date,$id_capteur,6));
       }
 }
 
