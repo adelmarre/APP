@@ -25,7 +25,7 @@ if (isset($_POST['formconnexion']))
 		    $requser -> execute(array($userinfo['id']));
 		    $user = $requser ->fetch();
 
-            header("Location: mamaison.php?id=".$_SESSION['id']);
+            header("Location: maisonsallecapteurtempo.php?id=".$_SESSION['id']);
             }
             else { $erreur= "Veuillez confirmer votre compte";}
             if ($userinfo['admin']==1 && $userinfo['confirme']==1)
