@@ -53,11 +53,15 @@ if (isset($_POST['modifier'])) {
           include "affichagecapth.php";
           include "affichagecaptt.php"; ?>
         </div>
-          <input type="submit" id="modifier" name="modifier" value="Activer les modifications" >
+          <input type="submit" id="modifier" name="modifier" value="Activer les modifications">
 
         </form>
           <div class="ajout">
 <?php echo'<a href="capteur.php?id_habitation='.$h.'&id_piece='.$q.'"> Ajouter des capteurs</a>';?> </div>
 
 
+
+</div>
+<div>
+  <a href="">Visualiser l'historique des données de la maison</a>
 </div>
