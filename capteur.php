@@ -14,7 +14,7 @@ if (isset($_POST['reference'])) {
 		$insertcapteur = $bdd->prepare("INSERT INTO capteurpiece(id_capteur_catalogue,id_piece,id_type) VALUES(?,?,?)");
 		$insertcapteur-> execute(array($id,$_GET['id_piece'],6));
 	}
-	header("Location: maisonsallecapteurtempo.php?id=".$_SESSION['id']);
+	header("Location: maisonsallecapteur.php?id=".$_SESSION['id']);
 }
 ?>
 <head>
