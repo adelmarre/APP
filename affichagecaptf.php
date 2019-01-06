@@ -11,6 +11,7 @@ while ($f = $fumee -> fetch())
 	<option  value="<?php echo $f['id_capteur_piece']?>,1" <?php if ( $f['valeur']==1) {echo 'selected="selected"';}?>  class="switch">On </option>
 	<option   value="<?php echo $f['id_capteur_piece']?>,0" <?php if ( $f['valeur']==0) {echo 'selected="selected"';}?>  class="switch">Off</option>
 	</select>
+	<a href="maisonsallecapteur.php?id_habitation=<?php echo $h?>&amp;supprime=<?php echo $f['id_capteur_piece']?>">Supprimer le capteur</a>	
 	</div>
  <?php $nb = $nb + 1; } 
  ?>
