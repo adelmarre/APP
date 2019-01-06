@@ -12,7 +12,7 @@ while ($v = $volet -> fetch()) {?>
 	 else {?> 
 		<input type="checkbox"  name="volet" value="<?php echo $v['id_capteur_piece']?>,0"  class="switch">Monter </option>
 	<?php }?>
-
+	<a href="maisonsallecapteur.php?id_habitation=<?php echo $h?>&amp;supprime=<?php echo $v['id_capteur_piece']?>">Supprimer le capteur</a>	
           </div>
 <?php $nb = $nb + 1; } ?>
 
