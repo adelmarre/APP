@@ -58,7 +58,7 @@ catch(Exception $e){
 
       <li>
         <p>
-          <?php echo '<a href="faqversionfinale.php?id='.$_SESSION['id'].'" class="box">Aide</a>'; ?>
+          <?php echo '<a href="faq.php?id='.$_SESSION['id'].'" class="box">Aide</a>'; ?>
 
           <img src="https://images.emojiterra.com/twitter/512px/2753.png" class="avatar_box">
         </p>
@@ -70,7 +70,7 @@ catch(Exception $e){
      </p>
    </li>
    <li> 
-     <p> <a href="Consignes globales" class="box">Consignes globales</a>
+     <p> <?php echo '<a href="consignes.php?id='.$_SESSION['id'].'"  class="box">Consignes globales</a>'; ?>
 
       <img src="https://images-na.ssl-images-amazon.com/images/I/61OH1BsW99L._SY355_.jpg" class="avatar_box">
     </p>
@@ -88,7 +88,7 @@ catch(Exception $e){
 
   <li> 
 
-<p> <?php echo '<a href="maisonsallecapteurtempo.php?id='.$_SESSION['id'].'" class="box_rouge">Mes maisons</a>'; ?> 
+<p> <?php echo '<a href="maisonsallecapteur.php?id='.$_SESSION['id'].'" class="box_rouge">Mes maisons</a>'; ?> 
     
 
 
