@@ -83,6 +83,16 @@ li:hover ul.sous_menu_salles
         margin-right:22%;
         padding-top:2em
     }
+    #EditerProfil {
+          margin-left:20%;
+        margin-right:50%;
+        padding-top:2em
+    }
+    #Centrebis{
+        margin-left:10%;
+        margin-right:20%;
+        padding-top:2em
+    }
     a{
         position: relative;
         color : #000;
@@ -271,17 +281,19 @@ li:hover ul.sous_menu_salles
     }
 
     .Alerte{
-        width: auto;
-        height: 5em;
-        margin:0 auto;
-        padding:0 ;
-        top:2.5%;
+      
+       
         background-color: #f44336;
         color:white;
         margin-bottom:10%;
         border:0.13em solid black;
         text-align: center;
-    }
+        -webkit-hyphens: auto;
+      -moz-hyphens: auto;
+      -ms-hyphens: auto;
+      -o-hyphens: auto;
+      hyphens: auto;
+}
     .bouton_fermer{
         color:white;
         font-weight:bold;
