@@ -268,6 +268,9 @@ if (isset($_POST['valide1']))
 					$habitation = $_GET['id_habitation'];
 					$insertpiece = $bdd->prepare("INSERT INTO piece(nom, id_habitation, superficie) VALUES(?, ?, ?)");
 					$insertpiece->execute(array($nom, $habitation , $superficie));
+
+
+					$alterpiece=$bdd->prepare("ALTER TABLE secondaire ADD $nom INT NOT NULL AFTER mail "); 
 				}?>
 
 				<fieldset>
@@ -278,7 +281,7 @@ if (isset($_POST['valide1']))
 						<h3><label>Nom de la salle :</label></h3>
 						<input type="text" id="nom" name="nom" required>
 
-						<h3><label>Superficie en m^2 :</label></h3>
+						<h3><label>Superficie en m² :</label></h3>
 						<input type="number" id="superficie" name="superficie" min="0" value="0" required>
 
 						<input type="submit" name="ajouter" id="ajouter" value="Ajouter">
@@ -346,7 +349,7 @@ if (isset($_POST['valide1']))
 						<div class="colonnegauche">
 							<label> Nom de la  Maison: </label>
 							<input type="text" class="RentrerInfo" id="nomhabi" name="newnomhabitationm" value="<?php echo $user['nomhabitation']?>"  minlength="2" maxlength="16" size="16">
-							<label> Superficie en m^2 : </label>
+							<label> Superficie en m² : </label>
 							<?php
 							$superficietotal =  0 ;
 							$superficie = $bdd -> query("SELECT superficie FROM piece WHERE id_habitation = '" . $user['id_habitation'] . "'");
@@ -446,7 +449,7 @@ if (isset($_POST['valide1']))
 
 								<label for="adresse"> Adresse: </label>
 								<input type="text" class="RentrerInfoT" name="adresse" required minlength="2" size="10" id="a">
-
+								<br>
 								<input type="submit" value="Valider" class="envoyer" name="valide1">
 								<input type="button" value="Annuler" class="envoyer" id="suppr" onclick="Supr()">
 
@@ -564,9 +567,9 @@ if (isset($_POST['valide1']))
 					<td></td>
 					<td></td>
 					<td></td>
-					<td> <input type="Checkbox" name="Sélec" value=""  <?php  id="MpAJP'.$user['id_habitation'].'"  > </td>
+					<td> <input type="Checkbox" name="ajouterpiece" value=""  <?php  id="MpAJP'.$user['id_habitation'].'"  > </td>
 					</table>
-					<input type="submit" value="Valider" class="envoyer">
+					<input type="submit" value="Valider" name="validecondition" class="envoyer">
 					<input type="submit" value="Annuler" class="envoyer" id="suppr">';
 
 				}
@@ -577,6 +580,11 @@ if (isset($_POST['valide1']))
 				?>
 
 
+				<?php
+					if (isset($_POST['validecondition'])) {
+					}
+
+				?>
 
 			</fieldset>
 
@@ -722,41 +730,43 @@ if (isset($_POST['valide1']))
 					<h1>Formulaire d'inscription utilisateur secondaire</h1>
 					<form method="POST" action="" ">
 
-
+						<br>
 						<div >
 							<div>
 								<label for="nom">Nom :</label>
 								<input type="text" id="noms" name="nom"   value="<?php if(isset($_POST['nom'])) {echo $nom;} ?>" autofocus required>
 							</div>
+							<br>
 
 							<div>
 								<label for="prenom">Prénom :</label>
 								<input type="text" id="prenoms" name="prenom"  value="<?php if(isset($_POST['prenom'])) {echo $prenom;} ?>" required>
 							</div>
+							<br>
 
 							<div>
 								<label for="mail">Courriel :</label>
 								<input type="text" id="mails" name="mail" placeholder="hexagon@gmail.com"   value="<?php if(isset($_POST['mail'])) {echo $mail;} ?>" required>
 							</div>
-
+							<br>
 							<div>
 								<label for="motdepasse">Définir son mot de passe :</label>
 								<input type="password" id="mdps" name="mdp" required>
 							</div>
-
+							<br>
 							<div>
 								<label for="motdepasse">Confirmer son mot de passe :</label>
 								<input type="password" id="mdps2" name="mdp2" required>
 							</div>
-
+							<br>
 
 							<div>
 								<label for="numero de telephone">Numéro de téléphone :</label>
 								<input type="tel" id="numero" placeholder="+336xxxxxxxxx" name="numero"  value="<?php if(isset($_POST['numero'])) {echo $numero;} ?>" required>
 							</div>
-
+							<br>
 							<p><input type="checkbox" name="choix"> J'ai lu et j'accepte les conditions générales d'utilisation <a href="conditions.php" onclick="window.open(this.href); return false;" > Conditions d'utilisation </a></p>
-
+							<br>
 							<div class="button">
 								<button type="submit" name="ajouterUserS" >Inscription</button>
 							</div>
