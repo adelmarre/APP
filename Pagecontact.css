@@ -1,60 +1,10 @@
-header{
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	border-bottom:  2px #7AB781 solid;
-	margin-top: 1%;
-	padding-bottom: 1%;
-}
+
 
 #bloc_page
 {
 	width: auto;
 	height: auto;
 }
-
-#logo_hexagon
-{
-	background-size: cover;
-	width: 329px;
-	height: 101px;
-	
-}
-/* Menu de navigation*/
-nav ul
-{
-	list-style-type: none;
-	display:inline-flex;
-	
-}
-
-nav li
-{
-	margin-right: 1em;
-}
-
-nav a
-{
-	font-size: 1.2em;
-	color:#445D7B;
-	padding-bottom: 2px;
-	text-decoration: none;
-
-}
-
-nav a:hover
-{
-	color:purple;
-}
-
-/*Body*/
-body
-{
-		background-image: url(background.jpg);
-
-	font-family: 'Raleway', sans-serif;
-}
-
 
 #section1
 {
@@ -64,7 +14,7 @@ body
 
 
 }
-.coordonnees
+.coordonnées
 {
 	padding: 5%;
 	border: 1.5px groove  #445D7B;
@@ -96,7 +46,7 @@ body
    width: 50%;
    display: flex;
    margin-left: 3%;
-   background-image: url(background_vert.jpg);
+   
 
 }
 
@@ -104,8 +54,8 @@ body
 {
 	text-align: center;
 	
-	width: 20em;
-	padding-top: 1em;
+	width: 15em;
+	padding-top: 2.5em;
 	padding-left: 1em;
 	margin: 1%;
 	
@@ -118,6 +68,7 @@ body
 #aside22 ul
 {
 	list-style: none;
+	
 	width: 20%;
 
 }
@@ -161,22 +112,9 @@ margin-left: 10em;
 	position: absolute;
 	
 	right: 3%;
-	top: 18%;
+	top: 36.4%;
 
 	border: 1.5px groove #445D7B;
 
 }
 
-footer
-{
-margin-top: 2em;
-padding: 1.5em 0em 1em;
-text-align: center;
-border-top: 2px solid #7AB781;
-font-size: 1.2em;
-}
-footer a 
-{
-	text-decoration: none;
-	color: #445D7B;
-}
