@@ -1,0 +1,61 @@
+body{
+    padding: 0;
+    margin: 0;
+    height: 0;
+   background-image: url(image/background-home.png);
+
+    font-family: 'Raleway', sans-serif;
+
+    
+}
+ul ul {display: none;}
+li:hover ul.sous_menu_habitations
+{display:block;}
+li:hover ul.sous_menu_salles
+{display:block;}
+
+ .meta_menu{
+        width: auto;
+        height: auto;
+        margin:0 auto;
+        padding:0 ;
+        top:15%;
+        border:0.13em solid black;
+        background-color: #fff;
+        list-style-type:none;
+        overflow-y: hidden;
+    }
+    .sous_menu_salles{
+        width: auto;
+        height: auto;
+        margin:0 auto;
+        padding:0 ;
+        border:0.13em solid black;
+        background-color: #fff;
+        list-style-type:none;
+    }
+    .sous_menu_habitations{
+        width: auto;
+        height: auto;
+        margin:0 auto;
+        padding:0 ;
+        border:0.13em solid black;
+        background-color: #fff;
+        list-style-type:none;
+    }
+
+    #colonnedroite{
+        float:right;
+        width:20%;
+        margin-right: 1em;
+        margin-left: 1em;
+        padding-top:2em;
+    }
+    #colonnegauche{
+        float:left;
+        width:20%;
+        margin-right: 1em;
+        margin-left: 1em;
+        padding-top:2em
+        
+    }
