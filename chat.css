@@ -1,0 +1,25 @@
+.chat1{
+	border-radius: 1em;
+	width: 25em;
+	height : 7em;
+	padding-left: 1em;
+	margin-left: 1em;
+}
+
+.chat input[type=submit]{
+	  font-family: 'Raleway', Arial, sans-serif;
+  border: none;
+  border-radius: 1em;
+  margin-left: 7em;
+  height: 4em;
+  width:10em;
+  color: #000000;
+  cursor: pointer;
+  background-color: #708090
+}
+body
+{
+		background-image: url(image/background.jpg);
+
+	font-family: 'Raleway', sans-serif;
+}
