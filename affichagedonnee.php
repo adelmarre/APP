@@ -1,45 +1,23 @@
-<?php 
 
-echo '
-	<h3 class="titre"> Historique ></h3>
-	
-			<table>
-					<tr>
-					<th><h4>Capteur</h4></th>
-					<th><h4>date</h4></th>
-					<th><h4>heure</h4></th>
-					<th><h4>etat</h4></th>
-
-					
-
-					</tr>';
-
-?>
-
-<?php 
-while ($h = $historique -> fetch())
-{
+<table border>
+    <tr> <th> Nom</th><th>Etat </th> <th> date</th><th> heure</th></tr>
+    <tr>
+    <?php
 
 
-		echo ' <tr>
-						<th> '.$h['id_donnees'].' </th> 
-						<td>'.$h['ladate'].'</td>
-						<td>>'.$h['heure'].'</td>' ; ?>
+    while($h=$historique->fetch()) { 
+    ?>
+    		
+      <tr>
+          <td><?= $h['id_donnees'] ?></td> 
+          <td> <?= $h['valeur'] ?><td>
+           <?= $h['ladate'] ?> </td> 
+           <td> <?= $h['heure'] ?></td> ?>
+           
+   </tr>      <?php } ?>
+  </table>
 
-						<td> <?php if ( $h['valeur']==0) {echo 'désactivé';} else{echo'activé';}?> </td>
-						
-<?php
-
-		echo				'</tr>';
-
-
-     
-	
-	
- } 
-
- echo '</table>' ;
- ?>
+ 
 
 
 
@@ -47,5 +25,4 @@ while ($h = $historique -> fetch())
 
 
 
-					}
 

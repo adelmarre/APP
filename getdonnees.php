@@ -16,8 +16,21 @@ $h = $_GET['h'];
 
 </head>
 <?php 
-  $historique = $bdd -> prepare('SELECT * FROM donnees WHERE  id_piece=?');
-  $historique ->  execute(array(1,$q));
+  $historique = $bdd -> prepare('SELECT * FROM donnees WHERE  id_capteur_piece= ?');
+  $historique ->  execute(array($q));
+
+  $luminosite = $bdd -> prepare('SELECT * FROM type_capteur JOIN capteurpiece ON type_capteur.id_type_capteur=capteurpiece.id_type WHERE id_type=? AND id_piece=?');
+  $luminosite ->  execute(array(1,$q));
+  $temperature = $bdd -> prepare('SELECT * FROM type_capteur JOIN capteurpiece ON type_capteur.id_type_capteur=capteurpiece.id_type WHERE id_type=? AND id_piece=?');
+  $temperature ->  execute(array(2,$q));
+  $mouvement = $bdd -> prepare('SELECT * FROM type_capteur JOIN capteurpiece ON type_capteur.id_type_capteur=capteurpiece.id_type WHERE id_type=? AND id_piece=?');
+  $mouvement ->  execute(array(3,$q));
+  $fumee = $bdd -> prepare('SELECT * FROM type_capteur JOIN capteurpiece ON type_capteur.id_type_capteur=capteurpiece.id_type WHERE id_type=? AND id_piece=?');
+  $fumee ->  execute(array(4,$q));
+  $volet = $bdd -> prepare('SELECT * FROM type_capteur JOIN capteurpiece ON type_capteur.id_type_capteur=capteurpiece.id_type WHERE id_type=? AND id_piece=?');
+  $volet ->  execute(array(5,$q));
+  $humidite = $bdd -> prepare('SELECT * FROM type_capteur JOIN capteurpiece ON type_capteur.id_type_capteur=capteurpiece.id_type WHERE id_type=? AND id_piece=?');
+  $humidite ->  execute(array(6,$q));
 
  ?>
     <div id="titreSet">
