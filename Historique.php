@@ -27,7 +27,7 @@ function AfficheCapt(str,std,sth){
                     }
                 }
               
-        xmlhttp.open("GET", "getdonnees.php?q=" + str +"&h=" + sth true);
+        xmlhttp.open("GET", "getdonnees.php?q=" + str +"&h=" + sth, true);
         xmlhttp.send();
 }
 
@@ -38,7 +38,7 @@ function AfficheCapt(str,std,sth){
 
 <html>
 <head>
-  <title>Javascript</title>
+  <title>Ma maison</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="sallestyle.css" /> 
 
@@ -46,11 +46,106 @@ function AfficheCapt(str,std,sth){
 
 <body>
 
-  <?php include "menu.php"; ?>
+  <?php include "menu.php";
 
+if (isset($_POST['modifier'])) {
+  if (!empty($_POST['mouvement'])) {
+     foreach ($_POST['mouvement'] as $select)
+      {
+        $o =explode(',',$select);  
+        
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($o[1],$o[0]));
+      
+  
+      }
+  }
+  if (!empty($_POST['fumee'])) {
+     foreach ($_POST['fumee'] as $select)
+      {
+        $o =explode(',',$select);  
+        
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($o[1],$o[0]));
+      
+  
+      }
+  }
+  if (!empty($_POST['luminosite'])) {
+     foreach ($_POST['luminosite'] as $select)
+      {
+        $o =explode(',',$select);  
+        
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($o[1],$o[0]));
+      
+  
+      }
+  }
+  if (isset($_POST['volet'])) {
+        $select=$_POST['volet'];
+        $o =explode(',',$select);  
+        
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($o[1],$o[0]));
+      }
+      $i=1;
+      $essai = 3;
+  while ($i<1000) {
+      if (isset($_POST[$i])) {
 
+        $select=$_POST[$i];
+        $id_capteur=$_POST[$i+10];
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($select,$id_capteur));
+      }
+    
+      else { break;
+      }
+        $i=$i+1;
+  }
+
+ if (!empty($_POST['humidite'])) {
+     foreach ($_POST['humidite'] as $select)
+      {
+        $o =explode(',',$select);  
+        
+        $insertcapteur = $bdd->prepare("UPDATE capteurpiece SET valeur=? WHERE id_capteur_piece = ? ");
+        $insertcapteur-> execute(array($o[1],$o[0]));
+      
+  
+      }
+  }
+
+}
+   if(isset($_GET['supprime']) AND !empty($_GET['supprime']) AND isset($_GET['type']) AND !empty($_GET['type'])  ) {
+      $supprime = (int) $_GET['supprime'];
+      $type = (int) $_GET['type'];
+      if ($type==2) {
+          $req1 = $bdd->prepare('DELETE FROM capteurpiece WHERE id_capteur_piece = ?');
+          $req1->execute(array($supprime));
+          $req2 = $bdd->prepare('DELETE FROM capteurpiece WHERE id_capteur_piece = ?');
+          $req2->execute(array($supprime+1));
+      }
+      if ($type==6) {
+          $req1 = $bdd->prepare('DELETE FROM capteurpiece WHERE id_capteur_piece = ?');
+          $req1->execute(array($supprime));
+          $req2 = $bdd->prepare('DELETE FROM capteurpiece WHERE id_capteur_piece = ?');
+          $req2->execute(array($supprime-1));
+      }
+      else {
+      $req1 = $bdd->prepare('DELETE FROM capteurpiece WHERE id_capteur_piece = ?');
+      $req1->execute(array($supprime));
+    }
+}
+   ?>
 
 <div id="colonnegauche">
+
+  
+    
+   </br>
+  </div>
 
 
   <nav>
@@ -80,7 +175,7 @@ function AfficheCapt(str,std,sth){
                       foreach ($tabpiece as $row) {
                         
 
-                         echo '<li> <input type="radio" name="'.$row['id_habitation'].'" value="'.$row['id_piece'].'" onchange="AfficheCapt(this.value,this.id,this.name)" class="Selec" id="'.$row['id_piece'].'" > '.$row['nom'].'  </li>' ;
+                         echo '<li> <input type="radio" name="'.$row['id_habitation'].'" value="'.$row['id_piece'].'" onchange="AfficheCapt(this.value,this.id,this.name)" class="Selec" id="'.$row['nom'].'" > '.$row['nom'].'  </li>' ;
                         
                       
 
@@ -171,7 +266,7 @@ habitation();
     <div id="contenu">
 
     Choisissez votre habitation puis votre pièce
-    
+
                            
 
      
