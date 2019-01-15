@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-
+session_start();
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','', array (PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
 
 ?>
@@ -43,11 +43,42 @@ $volet = $bdd -> query('SELECT * FROM catalogue WHERE id_type="5"');
 		<article>
 		
 		<div class="recherche_p">
-			<form action="/search" id="searchthis" method="get">
-			<input id="search" name="q" type="text" placeholder="Rechercher" />
-			<input id="search-btn" type="submit" value="Rechercher" />
+			
+			<form id="searchthis" method="get">
+				<input id="search" name="q" type="text" placeholder="Rechercher (ex: nom,type,...)" />
+
+				<input id="search-btn" type="submit" value="Rechercher" />
 			</form>
+			<?php
+
+			$articles = $bdd->query('SELECT * FROM catalogue  JOIN type_capteur ON catalogue.id_type=type_capteur.id_type_capteur  ORDER BY id_capteur');
+			if (empty($_GET['q'])) {
+				//rien ne se passe
+			}
+			else if(isset($_GET['q']) AND !empty($_GET['q'])) {
+			   $q = htmlspecialchars($_GET['q']);
+			   $articles = $bdd->query('SELECT * FROM catalogue JOIN type_capteur ON catalogue.id_type=type_capteur.id_type_capteur WHERE nom_type_capteur LIKE "%'.$q.'%" ');
+			   if($articles->rowCount() == 0) {
+			      $articles = $bdd->query('SELECT * FROM catalogue JOIN type_capteur ON catalogue.id_type=type_capteur.id_type_capteur WHERE CONCAT(nom_type_capteur, description, nom) LIKE "%'.$q.'%" ');
+			   }
+			   if($articles->rowCount() > 0) { ?>
+			   <h2>Résultat pour " <?= $q ?> " :</h2>
+			   <?php while($a = $articles->fetch()) { ?>
+				    <h3><?= $a['nom'] ?></h3>
+					<img src="<?=$a['photo2']?>" id="capteur" width="150em" height="150em"><br>
+					<h3><?= $a['prix']?>€</h3><br><br>
+			   <?php } ?>
+			   
+			<?php } else { ?>
+			<h2> Aucun résultat pour:" <?= $q ?> "...</h2>
+			<?php }} ?>
+			
+			
+			
+			
+			
 		</div>
+
 		</br>
 		
 		<!--<img src="capteur.png" alt="logo Hexagon" id="capteur">-->
@@ -60,7 +91,7 @@ $volet = $bdd -> query('SELECT * FROM catalogue WHERE id_type="5"');
 				 <?php while($c=$luminosite->fetch()) { ?>
 	  			<div class="column">
 
-					<img src="<?=$c['photo']?>" id="capteur" width="150em" height="150em">
+					<img src="<?=$c['photo2']?>" id="capteur" width="150em" height="150em">
 
 					<div class="informations">	
 						<h2><?= $c['nom']?></h2>
@@ -83,7 +114,7 @@ $volet = $bdd -> query('SELECT * FROM catalogue WHERE id_type="5"');
 				<hr  color="#D6D6D6" width="95%">
 				<?php while($c=$temperature->fetch()) { ?>
 	  			<div class="column">
-					<img src="<?=$c['photo']?>" id="capteur" width="150em" height="150em">
+					<img src="<?=$c['photo2']?>" id="capteur" width="150em" height="150em">
 					<div class="informations">
 		    			<h2><?= $c['nom']?></h2>
 					    <p><?= $c['description']?> <br>Référence : <?=$c['reference']?></p>
@@ -104,7 +135,7 @@ $volet = $bdd -> query('SELECT * FROM catalogue WHERE id_type="5"');
 	  			<hr  color="#D6D6D6" width="95%">
 				<?php while($c=$mouvement->fetch()) { ?>
 		  			<div class="column">
-						<img src="<?=$c['photo']?>" id="capteur" width="150em" height="150em">	
+						<img src="<?=$c['photo2']?>" id="capteur" width="150em" height="150em">	
 						<div class="informations">
 			    			<h2><?= $c['nom']?></h2>
 						    <p><?= $c['description']?> <br>Référence : <?=$c['reference']?></p>
@@ -128,7 +159,7 @@ $volet = $bdd -> query('SELECT * FROM catalogue WHERE id_type="5"');
 				 <?php while($c=$fumee->fetch()) { ?>
 	  			<div class="column">
 
-					<img src="<?=$c['photo']?>" id="capteur" width="150em" height="150em">
+					<img src="<?=$c['photo2']?>" id="capteur" width="150em" height="150em">
 
 					<div class="informations">	
 						<h2><?= $c['nom']?></h2>
@@ -156,7 +187,7 @@ $volet = $bdd -> query('SELECT * FROM catalogue WHERE id_type="5"');
 				 <?php while($c=$volet->fetch()) { ?>
 	  			<div class="column">
 
-					<img src="<?=$c['photo']?>" id="capteur" width="150em" height="150em">
+					<img src="<?=$c['photo2']?>" id="capteur" width="150em" height="150em">
 
 					<div class="informations">	
 						<h2><?= $c['nom']?></h2>
