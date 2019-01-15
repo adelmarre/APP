@@ -2,6 +2,7 @@
 <html>
 <head>
         <meta charset="UTF-8" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
         <link rel="stylesheet" href="inscription.css" />
         <title>Conditions générales d'utilisations</title>
     </head>
@@ -19,7 +20,7 @@ Eventuellement :<ul>
 <li>Hexagon se réserve le droit de modifier unilatéralement et à tout moment le contenu des présentes conditions générales d'utilisation.</li></p></ul>
   
     <div>Article 2 : Mentions Légales</div>
-<p>L'édition du site Hexagon est assurée par la Société <font color="red">[Nom de la société] [SAS / SA / SARL, etc.]</font> au capital de <font color="red">[montant en euros]</font> € dont le siège social est situé au 10 rue de vanves, 92130, Issy-les-moulineaux.</br>
+<p>L'édition du site Hexagon est assurée par la Société elle-même dont le siège social est situé au 10 rue de vanves, 92130, Issy-les-moulineaux.</br>
 La Directrice de la publication est Madame Hashley RAMANANKATSOINA</p>
 <div>Article 3 : Définitions</div>
 <p>La présente clause a pour objet de définir les différents termes essentiels du contrat :
@@ -40,7 +41,7 @@ La Directrice de la publication est Madame Hashley RAMANANKATSOINA</p>
 
   L'accès aux services du site peut à tout moment faire l'objet d'une interruption, d'une suspension, d'une modification sans préavis pour une maintenance ou pour tout autre cas. L'Utilisateur s'oblige à ne réclamer aucune indemnisation suite à l'interruption, à la suspension ou à la modification du présent contrat.</br>
 
-  L'Utilisateur a la possibilité de contacter le site par messagerie électronique à l’adresse <font color="red">contact@nomdusite.com]</font>. </p>
+  L'Utilisateur a la possibilité de contacter le site par messagerie électronique à l’adresse projet.hexagon@gmail.com. </p>
   <div>Article 5 : Propriété intellectuelle</div>
   <p>Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur.</br>
 
@@ -61,10 +62,10 @@ En vertu des articles 39 et 40 de la loi en date du 6 janvier 1978, l'Utilisateu
 
    <li> un formulaire de contact ;</li>
 
-       <li> par mail à <font color="red">[adresse mail]</font> ;</li>
+       <li> par mail à projet.hexagon@gmail.com ;</li>
 
 
-       <li> par voie postale au<font color="red">[adresse]</font>.</li></ul>
+       <li> par voie postale au 12 rue de vanves, Issy-les-moulineaux.</li></ul>
 </p>
 <div>ARTICLE 7 : Responsabilité et force majeure</div>
  <p>Les sources des informations diffusées sur le site sont réputées fiables.
@@ -87,13 +88,12 @@ La responsabilité du site ne peut être engagée en cas de force majeure ou du 
 <div>ARTICLE 10 : Durée</div>
 <p>La durée du présent contrat est indéterminée. Le contrat produit ses effets à l'égard de l'Utilisateur à compter de l'utilisation du service.</p>
 
-<div>ARTICLE 11 : Droit applicable et juridiction compétente</div>
-<p>La législation française s'applique au présent contrat. En cas d'absence de résolution amiable d'un litige né entre les parties, seuls les tribunaux <font color="red">[du ressort de la Cour d'appel de / de la ville de] [Ville]</font> sont compétents.</p>
-  <div>ARTICLE 12 : Publication par l’Utilisateur</div>
+
+  <div>ARTICLE 1 : Publication par l’Utilisateur</div>
 <p> Le site permet aux membres de publier [des commentaires / des œuvres personnelles].
 Le membre reste titulaire de l’intégralité de ses droits de propriété intellectuelle.</p>
  
-<div> <a href="inscription.php">Retour</a></div>
+
 
 
 
