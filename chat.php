@@ -3,7 +3,7 @@ session_start();
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
 $ide = htmlspecialchars($_GET['ide']);
 $idd = htmlspecialchars($_GET['idd']);
-
+$id= htmlspecialchars($_GET['id']);
 $chatEnv = $bdd ->query('SELECT * FROM message WHERE (id_expediteur="'.$ide.'" AND id_destinataire="'.$idd.'") OR (id_expediteur="'.$idd.'" AND id_destinataire="'.$ide.'")' );
 
 
@@ -83,7 +83,7 @@ else
 			$PQ = $premque ->fetch();
 			?>
 		 
-		<p type ="text" name="chat"><? echo '<font color="red">'."Client"."</font>"; echo ("   :   "); echo($PQ['message']); echo ("   "); echo '<font color="blue">'.$PQ['ladate']."</font>"; echo ("   "); echo '<font color="blue">'.$PQ['heure']."</font>";  ?> </br></br><?php while($chatE=$chatEnv->fetch()){   echo '<font color="red">'.$chatE['nomexpediteur']."</font>"; echo ("   :   "); echo($chatE['message']); echo ("   "); echo '<font color="blue">'.$chatE['ladate']."</font>";echo ("      "); echo '<font color="blue">'.$chatE['heure']."</font>"; ?></br></p> 
+		<p type ="text" name="chat"><?php echo '<font color="red">'."Client"."</font>"; echo ("   :   "); echo($PQ['message']); echo ("   "); echo '<font color="blue">'.$PQ['ladate']."</font>"; echo ("   "); echo '<font color="blue">'.$PQ['heure']."</font>";  ?> </br></br><?php while($chatE=$chatEnv->fetch()){   echo '<font color="red">'.$chatE['nomexpediteur']."</font>"; echo ("   :   "); echo($chatE['message']); echo ("   "); echo '<font color="blue">'.$chatE['ladate']."</font>";echo ("      "); echo '<font color="blue">'.$chatE['heure']."</font>"; ?></br></p> 
 		<?php } ?>
 	
 	<form method="POST" action="">
