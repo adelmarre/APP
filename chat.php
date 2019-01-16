@@ -1,11 +1,27 @@
 <?php 
 session_start();
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','',array (PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
 $ide = htmlspecialchars($_GET['ide']);
 $idd = htmlspecialchars($_GET['idd']);
 $id= htmlspecialchars($_GET['id']);
 $chatEnv = $bdd ->query('SELECT * FROM message WHERE (id_expediteur="'.$ide.'" AND id_destinataire="'.$idd.'") OR (id_expediteur="'.$idd.'" AND id_destinataire="'.$ide.'")' );
 
+if (isset($_SESSION['id'])) {
+  $getid = intval($_SESSION['id']);
+  $reqadmin = $bdd -> prepare('SELECT admin FROM personne WHERE id = ?');
+  $reqadmin -> execute(array($getid));
+  $user = $reqadmin -> fetch();
+  if ($user['admin']!=1) {
+    $admin = 0;
+  }
+  else {
+  	$admin = 1 ; 
+  }
+  
+}
+else {
+	exit();
+}
 
 
 if ($_GET['idd']!=1) {
@@ -71,10 +87,29 @@ else
 ?>
 <html>
 <head>
-	<title>Contact</title>
+	<title>Conversation privée</title>
+	  <meta charset="UTF-8">
+	   <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="chat.css" /> 
 </head>
 <body>
+	<?php if ($admin==1) { ?>
+<div class="snip1231">
+ <a  class="current" href="deconnexion.php">Déconnexion</a>
+
+<a class="current" href="administrateur.php">Menu admin</a>    </div>
+
+<?php } 
+	else { ?>
+
+		<div class="snip1231">
+ 	<a  class="current" href="maisonsallecapteur.php">Ma maison</a></div>
+
+<?php	}
+	
+?>
+
+</br></br></br>
 	<div class="chat">
 		<?php
 		
@@ -83,25 +118,29 @@ else
 			$PQ = $premque ->fetch();
 			?>
 		 
-		<p type ="text" name="chat"><?php echo '<font color="red">'."Client"."</font>"; echo ("   :   "); echo($PQ['message']); echo ("   "); echo '<font color="blue">'.$PQ['ladate']."</font>"; echo ("   "); echo '<font color="blue">'.$PQ['heure']."</font>";  ?> </br></br><?php while($chatE=$chatEnv->fetch()){   echo '<font color="red">'.$chatE['nomexpediteur']."</font>"; echo ("   :   "); echo($chatE['message']); echo ("   "); echo '<font color="blue">'.$chatE['ladate']."</font>";echo ("      "); echo '<font color="blue">'.$chatE['heure']."</font>"; ?></br></p> 
+		<p type ="text" name="chat"><?php echo '<font color="gray">'."Client"."</font>"; echo ("   :   "); echo($PQ['message']); echo ("   "); echo '<font color="#5FA2B8">'.$PQ['ladate']."</font>"; echo ("   "); echo '<font color="#5FA2B8">'.$PQ['heure']."</font>";  ?> </br></br><?php while($chatE=$chatEnv->fetch()){   echo '<font color="gray">'.$chatE['nomexpediteur']."</font>"; echo ("   :   "); echo($chatE['message']); echo ("   "); echo '<font color="#5FA2B8">'.$chatE['ladate']."</font>";echo ("      "); echo '<font color="#5FA2B8">'.$chatE['heure']."</font>"; ?></br></p> 
 		<?php } ?>
 	
 	<form method="POST" action="">
 		<textarea type="text" name="message" placeholder="Réponse" class ="chat1"></textarea>
 	</br> <br/>
-		<input type ="submit" value ="Envoyer" name="envoyer" />
-	</form> <br/> <br/></div>
-	<?php 
+<?php 
 	if (isset($erreur))
 	{
 		echo '<font color="red">'.$erreur."</font>";
 	}
 	?>
 	
-						
+			
+		<input type ="submit" value ="Envoyer" name="envoyer" />
+
+
+
+	</form> <br/> <br/>
+	</div>
+				
 					
 	
 
 	
 </body>
-</html>
