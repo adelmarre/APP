@@ -30,13 +30,7 @@ function AfficheTableau(str,habitation){
 		function AfficheFormulaire(){
 			
 			
-			
-
-			var AjHab=document.getElementById('ajouthab');
-			var AjMRadio=document.getElementById('ajmais');
-			AjHab.style.display='none';
-
-
+		
 			
 
 			var FieldUser=document.getElementById('utilSecond');
@@ -57,12 +51,9 @@ function AfficheTableau(str,habitation){
 
 
 			
-			if(AjMRadio.checked==true){
-				AjHab.style.display='block';
+		
 
-			}
-
-			else if(UserSecRadio.checked==true) {
+			if(UserSecRadio.checked==true) {
 				FieldUser.style.display='block';
 
 				
@@ -102,8 +93,7 @@ function AfficheTableau(str,habitation){
 		}
 
 
-
-				function SuprFU(){
+		function SuprFU(){
 
 
 
@@ -118,7 +108,6 @@ function AfficheTableau(str,habitation){
 
 
 		}
-
 		
 	</script>
 
@@ -318,7 +307,6 @@ if (isset($_POST['supprimermaison'])) {
 				<ul>
 					<li> <input type="radio" name="Sélection" value="Ajouter une salle" class="Selec" id="ajsal" onchange="AfficheFormulaire()"> Ajouter une salle </li>
 					<li><input type="radio" name="Sélection" value="Modifier ma Maison" class="Selec" id="modmais" onchange="AfficheFormulaire()"> Modifier ma maison </li>
-					<li> <input type="radio" name="Sélection" value="Ajouter ma Maison" class="Selec" id="ajmais" onchange="AfficheFormulaire()"> Ajouter une maison  </li>
 					<li><input type="radio" name="Sélection" value="Modifier utilisateur secondaire" class="Selec" id="ajutilsecond" onchange="AfficheFormulaire()"> Ajouter utilisateur secondaire </li>
 					<li><input type="radio" name="Sélection" value="Modifier utilisateur secondaire" class="Selec" id="modutilsecond" onchange="AfficheFormulaire()"> Modifier utilisateur secondaire </li>
 
@@ -373,12 +361,13 @@ if (isset($_POST['supprimermaison'])) {
 						<?php echo $user['nomhabitation'];?>
 						</br></br>
 						<label>Nom de la salle :</label>
-						<input type="text" id="nom" name="nompiece" wrequired>
+						<input type="text" id="nom" name="nompiece" class="RentrerInfoT" wrequired>
 						</br></br>
 						<label>Superficie en m² :</label>
-						<input type="number" id="superficie" name="superficie" min="0" value="0" required>
+						<input type="number" id="superficie" name="superficie" class="RentrerInfoT" min="0" value="0" required>
 						</br></br>
 						<input type="submit" name="ajouter" id="ajouter" value="Ajouter">
+						<input type="button" value="Annuler" class="envoyer" id="suppr" onclick="Supr()">
 
 					</FORM>	
 				</fieldset>
@@ -527,85 +516,13 @@ if (isset($_POST['supprimermaison'])) {
 
 
 				<?php
-				if (isset($_POST['valide1'])) {
-
-					$nomM = htmlspecialchars($_POST['nommaison']);
-					$paysM =htmlspecialchars($_POST['pays']);
-					$typemaisonh = htmlspecialchars($_POST['typemaisonh']);
-					
-					$villeM =htmlspecialchars($_POST['ville']);
-					$cpM =htmlspecialchars($_POST['cp']);
-					$adresseM =htmlspecialchars($_POST['adresse']);
-
-					$inserthabitation = $bdd->prepare("INSERT INTO habitation(nomhabitation, pays, ville, cp, adresse, id_personne,type) VALUES(?, ?, ?,?, ?,?,?)");
-
-					$inserthabitation->execute(array($nomM, $paysM , $villeM, $cpM, $adresseM, $getid, $typemaisonh));
-					$erreur = "Maison ajoutée";
-					
-					if (isset($erreur)) {
-						echo '<font color="red">'.$erreur."<br></font> ";
-					}
-				}
+				
 				 if(isset($_GET['utilisateursuppr']) AND !empty($_GET['utilisateursuppr'])) {
 				 	  $utilisateursupprime = (int) $_GET['utilisateursuppr'];
 				      $req1 = $bdd->prepare('DELETE FROM personne WHERE id = ?');
 				      $req1->execute(array($utilisateursupprime));
 				 }
 				?>
-
-				<form method="POST" > 
-
-					<div id="ajouthab">
-
-						<fieldset><legend><h2>Ajouter une maison</h2></legend>
-							<div id="ajoutHab1">
-								<div>
-								<div>
-								<label for="nomdelamaison"> Nom de la  Maison : </label>
-								<input type="text" class="RentrerInfoT" name="nommaison" required >
-							</div>
-							<br>
-							<div>
-								<label for="adresse"> Adresse : </label>
-								<input type="text" class="RentrerInfoT" name="adresse" required minlength="2" >
-							</div>
-							<br>
-							<div>
-								<label for="ville"> Ville :</label>
-								<input type="text" class="RentrerInfoT" name="ville" required min="0" >
-
-							</div>
-							<br>
-							<div>
-								<label for="cp"> Code Postal : </label>
-								<input type="text" class="RentrerInfoT" name="cp" required min="0">
-							</div>
-							<br>
-							<div>
-								<label >Pays :</label>				     
-									<?php include "pays.php";?>
-							</div>
-							<br>
-								<label>Type de maison : </label>
-								<select name="typemaisonh" single required>
-									<option value="Principale" <?php if($user['type'] == 'Principale') echo "selected"; ?>>Principale</option>
-          							<option value="Secondaire" <?php if($user['type'] == 'Secondaire') echo "selected"; ?>>Secondaire</option>		
-          						</select>
-								<br>
-								<br>
-								<input type="submit" value="Valider" class="envoyer" name="valide1">
-								<input type="button" value="Annuler" class="envoyer" id="suppr" onclick="Supr()">
-										
-
-						</div>
-							
-					</form>
-
-					
-				</fieldset>
-					</div>
-				</form>
-
 				<fieldset id="utilSecond">
 					<legend > <ul class="utilisateursecond">
 
@@ -659,8 +576,11 @@ if (isset($_POST['supprimermaison'])) {
 			$prenom = htmlspecialchars($_POST['prenom']);
 			$mail = htmlspecialchars($_POST['mail']);
 			$numero = intval($_POST['numero']);
-			$mdp = sha1($_POST['mdp']) ;
-			$mdp2 = sha1($_POST['mdp2']) ;
+			$mdp = crypt($_POST['mdp'],'st');
+			$mdp2 = crypt($_POST['mdp2'],'st');
+
+			$mdpS = password_hash($mdp,PASSWORD_DEFAULT);
+			
 		
 				$nomlenght = strlen($nom);
 				if ($nomlenght<= 255)
@@ -692,7 +612,7 @@ if (isset($_POST['supprimermaison'])) {
 													{
 
 														$insertmbr = $bdd->prepare("INSERT INTO personne(nom, prenom, mail, mdp, numero, confirmkey) VALUES(?, ?, ?, ?, ?, ?)");
-														$insertmbr->execute(array($nom, $prenom, $mail, $mdp, $numero, $key));
+														$insertmbr->execute(array($nom, $prenom, $mail, $mdpS, $numero, $key));
 
 														$reqsecond = $bdd -> prepare("SELECT * FROM personne WHERE mail = ? ");
 								                        $reqsecond -> execute(array($mail));
@@ -722,7 +642,7 @@ if (isset($_POST['supprimermaison'])) {
 														<body>
 														<div align="center">
 														Bonjour ,
-														par mesure de sécurité vous devez confirmer votre inscription, comme utilisateur secondaire de '.$usersecond['prenom'].' '.$usersecond['nom'].' ,  en cliquant sur ce lien: 
+														par mesure de sécurité vous devez confirmer votre inscription, comme utilisateur secondaire de '.strip_tags($usersecond['prenom']).' '.strip_tags($usersecond['nom']).' ,  en cliquant sur ce lien: 
 														<a href="http://127.0.0.1/Hexagon/confirmation.php?mail='.urlencode($mail).'&key='.$key.'">Confirmez votre compte !</a>
 
 
@@ -806,7 +726,7 @@ if (isset($_POST['supprimermaison'])) {
 						<div >
 							<div>
 								<label for="nom">Nom :</label>
-								<input type="text" id="noms" name="nom" class="RentrerInfoFU"  value="<?php if(isset($_POST['nom'])) {echo $nom;} ?>" autofocus required>
+								<input type="text" id="noms" name="nom"  class="RentrerInfoFU"  value="<?php if(isset($_POST['nom'])) {echo $nom;} ?>" autofocus required>
 							</div>
 							<br>
 
@@ -818,30 +738,30 @@ if (isset($_POST['supprimermaison'])) {
 
 							<div>
 								<label for="mail">Courriel :</label>
-								<input type="text" id="mails" name="mail"  class="RentrerInfoFU" value="<?php if(isset($_POST['mail'])) {echo $mail;} ?>" required>
+								<input type="text" id="mails" name="mail"   class="RentrerInfoFU" value="<?php if(isset($_POST['mail'])) {echo $mail;} ?>" required>
 							</div>
 							<br>
 							<div>
 								<label for="motdepasse">Définir son mot de passe :</label>
-								<input type="password" id="mdps" name="mdp"class="RentrerInfoFU"  required>
+								<input type="password" id="mdps" name="mdp"  class="RentrerInfoFU" required>
 							</div>
 							<br>
 							<div>
 								<label for="motdepasse">Confirmer son mot de passe :</label>
-								<input type="password" id="mdps2" name="mdp2"class="RentrerInfoFU"  required>
+								<input type="password" id="mdps2" name="mdp2"  class="RentrerInfoFU" required>
 							</div>
 							<br>
 
 							<div>
 								<label for="numero de telephone">Numéro de téléphone :</label>
-								<input type="tel" id="numero"  name="numero"  class="RentrerInfoFU" value="<?php if(isset($_POST['numero'])) {echo $numero;} ?>" required>
+								<input type="tel" id="numero"  name="numero"   class="RentrerInfoFU" value="<?php if(isset($_POST['numero'])) {echo $numero;} ?>" required>
 							</div>
 							<br>
 							<p><input type="checkbox" name="choix"> J'ai lu et j'accepte les conditions générales d'utilisation <a href="conditions.php" onclick="window.open(this.href); return false;" > Conditions d'utilisation </a></p>
 							<br>
 							<div class="button">
 								<button type="submit" name="ajouterUserS" >Inscription</button>
-								<input type="button" value="Annuler" class="envoyer" id="suppr" onclick="SuprFU()">
+								<input type="button" value="Annuler" class="envoyer" id="supprFU" onclick="SuprFU()">
 							</div>
 
 						</div>

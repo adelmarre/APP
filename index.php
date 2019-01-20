@@ -5,96 +5,108 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
 
 if (isset($_POST['formconnexion']))
 {
-	$mailconnect = htmlspecialchars(($_POST['mailconnect']));
-	$mdpconnect = sha1($_POST['mdpconnect']);
+	$mailconnect =htmlspecialchars($_POST['mailconnect']);
+	$mdpconnect = (crypt($_POST['mdpconnect'],'st'));
+
 	if (!empty($mailconnect) AND !empty($mdpconnect)) {
-		$requser = $bdd -> prepare("SELECT * FROM personne WHERE mail = ? AND mdp = ?");
-        $requser -> execute(array($mailconnect, $mdpconnect));
-        $userexist = $requser -> rowCount();
-        if ($userexist == 1) {
-        	$userinfo = $requser -> fetch();
-        	if ($userinfo['confirme']==1 && $userinfo['admin']==0)
-        	{
-        	
-            $_SESSION['id'] = $userinfo['id'];
-            $_SESSION['nom'] = $userinfo['nom'];
-            $_SESSION['prenom'] = $userinfo ['prenom'];
-            $_SESSION['mail'] = $userinfo ['mail'];
+		$requser = $bdd -> prepare("SELECT * FROM personne WHERE mail = ? ");
+		$requser -> execute(array($mailconnect));
+		$userexist = $requser -> rowCount();
 
-            $requser = $bdd -> prepare('SELECT * FROM habitation JOIN personne ON personne.id = habitation.id_personne WHERE id = ?');
-		    $requser -> execute(array($userinfo['id']));
-		    $user = $requser ->fetch();
+		$requserS=$bdd -> prepare("SELECT mdp FROM personne WHERE mail= ? ");
+		$requserS -> execute(array($mailconnect));
+		
 
-            header("Location: maisonsallecapteur.php?id=".$_SESSION['id']);
-            }
-            else { $erreur= "Veuillez confirmer votre compte";}
-            if ($userinfo['admin']==1 && $userinfo['confirme']==1)
-            {
-            	header("Location: administrateur.php?id_admin=".$userinfo['id']);
-            }
-        }
-        else { $erreur = "Mauvaise combinaison email/mot de passe";}
+		while ($mdpS = $requserS->fetch())
+		{
+   		$MDPS= $mdpS['mdp'] ;
+		}
+
+
+		if ($userexist == 1 AND password_verify($mdpconnect, $MDPS)) {
+			$userinfo = $requser -> fetch();
+			
+
+
+
+				if ($userinfo['confirme']==1 && $userinfo['admin']==0)
+				{
+
+					$_SESSION['id'] = intval($userinfo['id']);
+
+
+					header("Location: maisonsallecapteur.php");
+				}
+				else { $erreur= "Veuillez confirmer votre compte";}
+				if ($userinfo['admin']==1 && $userinfo['confirme']==1)
+				{
+					$_SESSION['id'] = intval($userinfo['id']);
+					header("Location: administrateur.php");
+				}
+			
+		}
+		else { $erreur = "Mauvaise combinaison email/mot de passe";}
 	}
 	
 
 }
 
 
-	?>
+?>
 
 
 <html>
-	<head>
-		<link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="accueil.css">
-		<link rel="stylesheet" type="text/css" href="general.css">
-		<meta charset="utf-8">
-		<title>Accueil</title>
-	</head>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="accueil.css">
+	<link rel="stylesheet" type="text/css" href="general.css">
+	<meta charset="utf-8">
+	<title>Accueil</title>
+</head>
 
 
-	<body>
+<body>
 
 	
 
-			<img src="image/logo hexagon.png" alt="photo de hexagon" id="hexagon">
-					
+	<img src="image/logo hexagon.png" alt="photo de hexagon" id="hexagon">
+
 	
-		<div id="identification">
+	<div id="identification">
 
-			<div id="menucote">
+		<div id="menucote">
 
-				<ul>
-			  <li><a href="inscription.php">S'inscrire</a></li>
-			  <li><a href="catalogue.php">Catalogue</a></li>
-			  <li><a href="faqversionfinale.php">Aide</a></li>
-			  <li><a href="pagecontact.php">Contact</a></li>
-			  <li><a href="apropos.php">A propos</a></li>
-			  
-				</ul>
+			<ul>
+				<li><a href="inscription.php">S'inscrire</a></li>
+				<li><a href="catalogue.php">Catalogue</a></li>
+				<li><a href="faqversionfinale.php">Aide</a></li>
+				<li><a href="pagecontact.php">Contact</a></li>
+				<li><a href="apropos.php">A propos</a></li>
+
+			</ul>
 			
-			</div>
+		</div>
 
 
 
-			<div id="titre">
-				Connexion
-			</div>
-			
-			<form method="POST" action="">
+		<div id="titre">
+			Connexion
+		</div>
+
+		<form method="POST" action="">
 			<div id="utilisateur">
 				
 				<input type="email" name="mailconnect" placeholder="email" required>
 			</div>
 
-		<div id="souvenir">
+			<div id="souvenir">
 
 				
-        		<?php
-	            if (isset($erreur)) 
-	            { 
-	                echo '<font color="red">'.$erreur."</font>";
-	            }
+				<?php
+				if (isset($erreur)) 
+				{ 
+					echo '<font color="red">'.$erreur."</font>";
+				}
 				?>
 				
 			</div>
@@ -118,19 +130,19 @@ if (isset($_POST['formconnexion']))
 			</div></form>
 
 
-			 
 
-</div>
 
-	
-	
+		</div>
+
+
+
 		<div id="text">
 			
 			<center>	<img class="fond" src="image/fond_accueil2.jpg" height="100%" width="100%" height="auto"></center></div>
 
 
-			</div>
+		</div>
 	</body>
 
 
-</html>
+	</html>
