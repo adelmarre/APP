@@ -59,16 +59,18 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
         <meta charset="UTF-8" />
           <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
         <link rel="stylesheet" href="inscription.css" />
+    
         <title>Confirmation de compte</title>
     </head>
 
-<img src="logo hexagon final.png" alt="photo de hexagon" id="hexagon">
+<img src="image/logo hexagon.png" alt="photo de hexagon" id="hexagon">
 <body><h1>  <?php
             if (isset($erreur)) 
             { 
                 echo $erreur;
             }
 ?></h1>
-
-<a href="index.php">Connexion</a> 
+<div align="center">
+<a href="index.php">Se connecter</a> 
+</div>
 </body>

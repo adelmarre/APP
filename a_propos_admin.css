@@ -1,0 +1,71 @@
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+body {
+  font-family: 'Raleway';
+  background-image: url(image/admin.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+#content {
+  margin-top: 20em;
+  background-color: rgba(255,255,255,0.2);
+  margin-left : 2em;
+  text-align:justify;
+}
+
+
+.snip1231 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 2em;
+}
+.snip1231 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.snip1231 a {
+  padding: 0.8em 18px;
+  color: rgba(255, 255, 255, 0.5);
+  position: relative;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+.snip1231 a:before,
+.snip1231 a:after {
+  left: 0%;
+  right: 0%;
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(0deg);
+  transform: translateY(-50%) rotate(0deg);
+  content: '';
+  border-left: 12px solid #5FA2B8;
+  border-right: 12px solid #5FA2B8;
+  height: 3px;
+  position: absolute;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.snip1231 a:hover,
+.snip1231 .current a {
+  color: #ffffff;
+}
+.snip1231 a:hover:before,
+.snip1231 .current a:before {
+  -webkit-transform: translateY(-50%) rotate(12deg);
+  transform: translateY(-50%) rotate(12deg);
+}
+.snip1231 a:hover:after,
+.snip1231 .current a:after {
+  -webkit-transform: translateY(-50%) rotate(-12deg);
+  transform: translateY(-50%) rotate(-12deg);
+}
+
+textarea{
+	resize : both;
+ min-width : 100%;
+ min-height : 100%;
+ max-width : 200%;
+ max-height :200%;
+}

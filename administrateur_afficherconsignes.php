@@ -1,7 +1,4 @@
 <?php
-
-
-
 include "verifadmin.php";
 
 if(isset($_GET['type']) AND $_GET['type'] == 'consigne') {
@@ -28,7 +25,7 @@ $consignes = $bdd -> query('SELECT * FROM consignes ');
 <div class="snip1231">
  <a  class="current" href="deconnexion.php">Déconnexion</a>
 
-<a class="current" href="administrateur.php?id_admin=<?= $getidadmin ?>">Menu admin</a>    </div>
+<a class="current" href="administrateur.php">Menu admin</a>    </div>
 <body>
   <div id="content">
 <a href="administrateur_ajouterconsigne.php"><button class="snip1351">Ajouter une consigne</button></a></br></br>
@@ -45,9 +42,9 @@ $consignes = $bdd -> query('SELECT * FROM consignes ');
           <td><?= $cons['id_consignes'] ?></td> <td> <?= $cons['consigne'] ?> </td> 
       </tr>
       
-      <td><a href="administrateur_consigne.php?id_admin=<?= $getidadmin ?>&amp;id=<?=$cons['id_consignes']?>">Modifier la consigne</a> 
+      <td><a href="administrateur_modifierconsigne.php?id=<?=$cons['id_consignes']?>">Modifier la consigne</a> 
         <hr  color="#D6D6D6" width="95%">
-        <a href="administrateur_afficherconsignes.php?id_admin=<?= $getidadmin?>&amp;type=consigne&supprime=<?=$cons['id_consignes'] ?>">Supprimer la consigne</a> </td>
+        <a href="administrateur_afficherconsignes.php?type=consigne&supprime=<?=$cons['id_consignes'] ?>">Supprimer la consigne</a> </td>
       <?php } ?>
   </table>
 </div>

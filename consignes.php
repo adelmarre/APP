@@ -1,0 +1,37 @@
+<?php 
+session_start();
+include "menu.php";
+?>
+
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
+  <title>Editer mon profil</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="sallestyle.css" /> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  
+</head>
+<body>
+
+<?php $consignes = $bdd -> query('SELECT * FROM consignes'); ?>
+
+<div id="Centrebis">
+
+  <fieldset id="set">
+
+    <legend> <h1>Consignes globales</h1></legend>
+    Bienvenue sur la page "Consignes globales", vous trouverez ici les règles à respecter et nos conseils dans le cadre de l'offre Domisep. 
+
+    <ul>
+    <?php while($c = $consignes->fetch()) { ?>
+          
+          <br><li><?= $c['consigne'] ?></li></br>
+    
+         <?php } ?>
+   </ul>
+
+</div>  
+  </fieldset>               
+</body>
+

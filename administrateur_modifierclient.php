@@ -57,8 +57,9 @@ if (isset($_GET['id']) AND $_GET['id'] > 0 AND isset($_GET['id_habitation']) AND
        }
            if (isset($_POST['newadresse']) AND !empty($_POST['newadresse']) AND $_POST['newadresse'] != $user['adresse']) {
             $newadresse = htmlspecialchars($_POST['newadresse']);
-            $insertadresse = $bdd -> prepare("UPDATE personne SET adresse=? WHERE id=? AND id_habitation = ?");
+            $insertadresse = $bdd -> prepare("UPDATE habitation SET adresse=? WHERE id_personne=? AND id_habitation = ?");
             $insertadresse ->execute(array($newadresse,$getid,$getidhabitation));
+            echo $newadresse;
 
         }
         if (isset($_POST['newville']) AND !empty($_POST['newville']) AND $_POST['newville'] != $user['ville']) {
@@ -80,12 +81,12 @@ if (isset($_GET['id']) AND $_GET['id'] > 0 AND isset($_GET['id_habitation']) AND
         $insertpays ->execute(array($newpays,$getid, $getidhabitation));
         
        }
-       if (isset($_POST['typemaison']) AND !empty($_POST['typemaison']) AND $_POST['typemaison'] != $user['typemaison']) {
+       if (!empty($_POST['typemaison']) AND $_POST['typemaison'] != $user['typemaison']) {
           $typeh = htmlspecialchars($_POST['typemaison']);
-          $newtype = $bdd->prepare("UPDATE habitation SET type = ? WHERE id_habitation = ? AND id_personne " );
+          $newtype = $bdd->prepare("UPDATE habitation SET type = ? WHERE id_habitation = ? AND id_personne = ?" );
           $newtype -> execute(array($typeh,$getidhabitation,$getid));
         }
-       header ("Location: administrateur_afficherclient.php");
+    header("Location: administrateur_afficherclient.php");
     }
 
 

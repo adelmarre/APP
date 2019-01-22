@@ -25,7 +25,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=hexagon;charset=utf8', 'root', '',ar
 	<body>
 		<h1>Questions les plus consultées</h1>
 		<div class="banniere">
-        <img src="image_faq.jpg" alt="image_faq" id="image_faq" width="auto" height="250">
+        <img src="image/faq.jpg" alt="image_faq" id="image_faq" width="auto" height="250">
    		</div>
 
 		<div class="question_reponse">
@@ -45,6 +45,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=hexagon;charset=utf8', 'root', '',ar
 			
 		<?php
 		}
+		include "footer.php";
 		?>
 	</div>
 	</body>

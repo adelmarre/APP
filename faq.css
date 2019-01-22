@@ -18,11 +18,12 @@ h2
 }
 .question_reponse
 {
-    margin-top: 20px;
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+
 
     
 }
@@ -34,10 +35,14 @@ h2
     border: 1px solid black;
     text-align: justify;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 4em;
+    margin-right: 5em;
+    margin-left: 5em;
 }
 
 .banniere
 {
     margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
 }

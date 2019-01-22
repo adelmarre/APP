@@ -91,12 +91,12 @@ if (isset($_POST['ajout'])) {
 	<div class="snip1231">
  <a  class="current" href="deconnexion.php">Déconnexion</a>
 
-<a class="current" href="administrateur.php?id_admin=<?= $getidadmin ?>">Menu admin</a>    </div>
+<a class="current" href="administrateur.php">Menu admin</a>    </div>
 
 </br></br>
 
 <div class="formajfaq">
-  <h4 align="center">   Ajouter une Consigne</h4>
+  <h4 align="center">Ajouter une Consigne</h4>
 <form method="POST" action="">
 
   <label for="consigne">Consigne à ajouter</label>
