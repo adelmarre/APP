@@ -1,10 +1,10 @@
 footer{
 	width: 100%;
 	text-align: center;
-	padding: 10px;
+	padding: 2em;
 	background-color: #999999;
 	color: white;
-	position:sticky;
+	position:fixed; /*permet de garder le footer au bas de la page*/
 	bottom: 0%;
 	left: 0%;
 	display: inline-flex;

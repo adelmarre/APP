@@ -1,0 +1,152 @@
+
+/* Menu de navigation*/
+nav ul
+{
+	list-style-type: none;
+	display:inline-flex;
+	
+}
+
+nav li
+{
+	margin-right: 1em;
+}
+
+nav a
+{
+	font-size: 1.2em;
+	color:#445D7B;
+	padding-bottom: 2px;
+	text-decoration: none;
+
+}
+
+nav a:hover
+{
+	color:purple;
+	transition : all 0.3s;
+}
+
+#container{
+
+
+	width: 30em;
+	height: 31em;
+	position: relative;
+	margin-left:auto; 
+	margin-right:auto;
+	margin-top: 4em;
+	text-align: center;
+	border:5px solid black;
+	border-radius: 10%;
+	padding: 2%;
+
+
+}
+
+.mdpoublie input[type="submit"]
+{
+	width: auto;
+	height: 12%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-right: 5%;
+	padding-left: 5%;
+	position: relative;
+	margin-top:1.7em;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 1.5em;
+	transition : all 0.5s;
+	cursor: pointer;
+	
+}
+
+.mdpoublie input[type="submit"]:hover
+{
+	background-color: #008CBA; 
+    color: white;
+}
+	
+
+	
+
+input{
+	position: relative;
+	width: 46%;
+	height: 7%;
+	margin-top: 1em;
+	margin-left:1.5em;
+	font-size: 1em;
+}
+
+#container p{
+
+	width: 80%;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15%;
+	font-size: 1.3em;
+	text-align: center;
+}
+
+
+#container h3{
+
+	text-align: center;
+	position: relative;
+	margin-top: 6em;
+
+}
+#filler{
+	position: relative;
+	margin-top:-3em; 
+}
+input:not([type="submit"]) + .requiert {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 1s ease-out;  
+}
+
+
+input:not([type="submit"]):hover + .requiert,
+input:not([type="submit"]):focus + .requiert,
+input:not([type="submit"]):active + .requiert {
+  max-height: 1000px; 
+  transition: max-height 1s ease-in;
+}
+.requiert li.invalid {
+  color: #E74C3C;
+}
+.requiert li.valid {
+  color: #2ecc71;
+}
+
+.requiert li.valid:after {
+  display: inline-block;
+  padding-left: 10px;
+  content: "\2713";
+}
+
+
+#CUG{
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  width: 120%;
+  text-align: left;
+  
+}
+#CUG input{
+  width: 10%;
+  float: left;
+}
+input:not([type="submit"]):valid {
+  border-color: #2ecc71;
+}
+ul{
+	text-align: left;
+}
+
+
+

@@ -14,7 +14,7 @@ $requser ->execute();
 $donnees = $requser ->fetch();
     if (isset($_POST['modifier']) AND !empty($_POST['newdescription']) AND $_POST['newdescription']!=$donnees['description']) {
         $newdescription = htmlspecialchars($_POST['newdescription']);
-        $insertdescription = $bdd -> prepare("UPDATE A_propos SET description=?");
+        $insertdescription = $bdd -> prepare("UPDATE a_propos SET description=?");
         $insertdescription ->execute(array($newdescription));
         header ("Location: administrateur.php");
     }

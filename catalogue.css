@@ -1,31 +1,19 @@
-/*allure de la page*/
 
-body {
-	font-family: Comic Sans Ms;
-
-}
-#bloc_page
-{
-    width: 100em;
-    margin: auto;
-}
-header {
-	position : relative;
 }
 h1 {
-	text-align: center;
-	font-size: 65px;	
+  text-align: center;
+  font-size: 4em; 
 }
 #logo {
-	position : absolute; 
+  position : absolute; 
 }
 #baniere {
-	position : relative;
-	left : 20em;
+  position : relative;
+  left : 20em;
 }
 section {
-	
-    font-size: 25px;
+  
+    font-size: 1.5em;
 }
 article, aside,#capteur
 {
@@ -34,14 +22,14 @@ article, aside,#capteur
     text-align: justify;
 }
 article {
-	position : relative;
-	width: 95em;
-    top : 1em;
-    left : 27em;
-    /*background-color: #ddd;*/
-    border : 1px solid #ddd;
-	border-radius : 5px;
-	font-size: 10px;
+  position : relative;
+  width: 75%;
+  margin-top : 5em;
+  margin-left : 30em;
+  /*background-color: #ddd;*/
+  border : 1px solid #ddd;
+  border-radius : 5px;
+  font-size: 10px;
 
 }
 
@@ -51,19 +39,8 @@ article a {
 }
 
 h2 {
-	font-size: 15px;
+  font-size: 15px;
 }
-/*aside
-{
-    position: relative;
-    width: 400px;
-    background-color: #949494;
-    /*box-shadow: 0px 2px 5px #949494;
-    color: white;
-    font-size: 1em;
-}*/
-
-
 
 .sidenav {
     
@@ -105,7 +82,7 @@ h2 {
   border-color: #dddddd;   /* Couleur de la bordure  */
   border-radius : 7px;
   padding: 5px 10px 5px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
-  width: 87.5%;   /* Permet d'ajuster la largeur du champ de saisie à 100% */
+  width: 85%;   /* Permet d'ajuster la largeur du champ de saisie à 100% */
   box-sizing: border-box;   /* Important */
   
   font-size: 20px;   /* Taille de la police du texte */
@@ -139,19 +116,27 @@ h2 {
 /* Create three equal columns that floats next to each other */
 
 .column {
-    float: left;
-    width: 22.5%;
-    padding: 1em;
-  
+  float: left;
+  width: 25em;
+  margin-left:5em;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
 
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
 
 }
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
+.informations{
+  text-align: left;
 
-
+}
+h1{
+  text-align: center;
+  font-size: 3em;
 }

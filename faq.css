@@ -1,0 +1,48 @@
+
+body
+{
+    width: auto;
+    height: auto;
+}
+
+h1
+{
+    text-align: center;
+    color: #445D7B;
+    font-weight: lighter;
+}
+
+h2
+{
+    font-size: 1em;
+}
+.question_reponse
+{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+
+    
+}
+.question
+{ 
+    
+    width: 300px;
+    height: auto;
+    border: 1px solid black;
+    text-align: justify;
+    padding: 20px;
+    margin-bottom: 4em;
+    margin-right: 5em;
+    margin-left: 5em;
+}
+
+.banniere
+{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}

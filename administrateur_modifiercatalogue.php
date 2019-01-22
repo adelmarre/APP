@@ -17,7 +17,8 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)
     $reqcapteur = $bdd -> prepare('SELECT * FROM catalogue JOIN type_capteur ON catalogue.id_type = type_capteur.id_type_capteur WHERE id_capteur = ?');
     $reqcapteur -> execute(array($getid));
     $capteur = $reqcapteur ->fetch();
-}                
+}  
+            
  if (isset($_POST['maj'])) {  
         if (isset($_POST['newnom']) AND !empty($_POST['newnom']) AND $_POST['newnom']!=$capteur['nom']) {
 			      $newnom = htmlspecialchars($_POST['newnom']);
@@ -77,10 +78,51 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)
         }
             header ("Location: administrateur_affichercatalogue.php");
         
-    }
+}
 
+ if (isset($_POST['ajouter'])) {  
+      if ((isset($_POST['newnom'])) AND (!empty($_POST['newnom'])) AND (isset($_POST['newreference'])) AND (!empty($_POST['newreference'])) AND (isset($_POST['newreference'])) AND (!empty($_POST['newreference'])) AND (isset($_POST['newdescription'])) AND !empty($_POST['newdescription']) AND (isset($_POST['newprix'])) AND (!empty($_POST['newprix'])) AND (isset($_POST['newphoto'])) AND (!empty($_POST['newphoto'])) )
+          {
+            $newnom = htmlspecialchars($_POST['newnom']);
+            $reqnom = $bdd->prepare("SELECT * FROM catalogue WHERE nom = ?");
+            $reqnom->execute(array($newnom));
+            $nomexist = $reqnom->rowCount();
 
+            $newreference = htmlspecialchars($_POST['newreference']);
+            $reqreference = $bdd->prepare("SELECT * FROM catalogue WHERE reference = ?");
+            $reqreference->execute(array($newreference));
+            $referenceexist = $reqreference->rowCount();
 
+            $newdescription = htmlspecialchars($_POST['newdescription']);
+            $newprix = intval($_POST['newprix']);
+            $newphoto = htmlspecialchars($_POST['newphoto']);
+            $typecapteur = htmlspecialchars($_POST['typecapteur']);
+            
+
+            if ($nomexist==0) 
+            {
+               if ($referenceexist==0) 
+                    {
+                       $reqidtype =   $bdd->prepare("SELECT id_type_capteur FROM type_capteur WHERE nom_type_capteur = ?");
+                       $reqidtype->execute(array($typecapteur));
+                       $id_type = $reqidtype -> fetch();
+                       $insertcapteur =  $bdd->prepare("INSERT INTO catalogue(nom, description, prix, photo2, reference, id_type) VALUES(?, ?, ?, ?, ?, ?)");
+                       $insertcapteur->execute(array($newnom,$newdescription,$newprix,$newphoto,$newreference,$id_type['id_type_capteur']));
+                      header("Location: administrateur_affichercatalogue.php");
+                      
+                 }
+                 else {
+                   $msg = "Cette référence existe déjà";
+                 }
+            }
+           else {
+          $msg = "Ce nom existe déjà";
+        }
+      
+        
+}
+
+}
 ?>
 <head>
   <meta charset="UTF-8">
@@ -171,11 +213,11 @@ if (isset($_GET['id']) AND $_GET['id'] > 0)
                </tr>
   </table>
   <?php if (isset($_GET['id']) AND $_GET['id'] > 0)
-{?>
-  <button type="submit" class="snip0050 yellow" name="maj" value="modifier" ><span>Modifier la description</span><i class="ion-compose"></i></button><?php }
-  else {?>
-  <button type="submit" class="snip0050 yellow" name="ajouter" value="ajouter" ><span>Ajouter le capteur</span><i class="ion-compose"></i></button>
-  
-<?php }?>
+        {?>
+          <button type="submit" class="snip0050 yellow" name="maj" value="modifier" ><span>Modifier la description</span><i class="ion-compose"></i></button><?php }
+          else { ?>
+          <button type="submit" class="snip0050 yellow" name="ajouter" value="ajouter" ><span>Ajouter le capteur</span><i class="ion-compose"></i></button>
+          
+        <?php } ?>
   </form>
 </div>
