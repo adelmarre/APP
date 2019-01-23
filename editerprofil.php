@@ -1,12 +1,11 @@
 <?php 
 session_start();
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
-if (isset($_SESSION['id']))
-{
+include "menu.php";
     $getid = intval($_SESSION['id']);
     $requser = $bdd -> prepare('SELECT * FROM personne WHERE id = ?');
     $requser -> execute(array($getid));
     $user = $requser ->fetch();
+if (isset($_POST['maj'])) {
     if (isset($_POST['newnom']) AND !empty($_POST['newnom']) AND $_POST['newnom']!=$user['nom']) {
       
         $newnom = htmlspecialchars($_POST['newnom']);
@@ -26,13 +25,15 @@ if (isset($_SESSION['id']))
     $newmail = htmlspecialchars($_POST['newmail']);
     $insertmail = $bdd -> prepare("UPDATE personne SET mail=? WHERE id=?");
     $insertmail ->execute(array($newmail,$getid));
+     $msg = "Mis à jour!";
 
   }
-        if (isset($_POST['newnumero']) AND !empty($_POST['newnumero']) AND $_POST['newnumero'] != $user['newnumero'])
+        if (isset($_POST['newnumero']) AND !empty($_POST['newnumero']) AND $_POST['newnumero'] != $user['numero'])
     {
     $newnumero = htmlspecialchars($_POST['newnumero']);
-    $insertmail = $bdd -> prepare("UPDATE personne SET numero =? WHERE id=?");
-    $insertmail ->execute(array($newnumero,$getid));
+    $insertnumero = $bdd -> prepare("UPDATE personne SET numero =? WHERE id=?");
+    $insertnumero ->execute(array($newnumero,$getid));
+     $msg = "Mis à jour!";
  
   }
   if (isset($_POST['newmdp1']) AND !empty($_POST['newmdp1']) AND isset($_POST['newmdp2']) AND !empty($_POST['newmdp2']))
@@ -43,14 +44,19 @@ if (isset($_SESSION['id']))
     {
         $insertmdp = $bdd -> prepare("UPDATE personne SET mdp=? WHERE id=?");
         $insertmdp ->execute(array($mdp1,$getid));
+        $msg = "Mis à jour!";
        
     }
     else
     {
         $msg = "Vos deux mots de passe ne correspondent pas";
     }
-     header('Location: maisonsallecapteur.php');
+    
   }
+   $requser = $bdd -> prepare('SELECT * FROM personne WHERE id = ?');
+    $requser -> execute(array($getid));
+    $user = $requser ->fetch();
+}
 ?>
 
 <html>
@@ -63,7 +69,7 @@ if (isset($_SESSION['id']))
 </head>
 <body>
 
-<?php include "menu.php" ?>
+
 
 
 <div id="EditerProfil">
@@ -117,7 +123,7 @@ if (isset($_SESSION['id']))
                      <label for="telephone">Numéro de téléphone : </label>
                   </td>
                   <td>
-                     <input type="tel" id="numero" placeholder="+336xxxxxxxxx" name="newnumero" value="<?php echo $user['numero'] ?>" />
+                     <input type="tel" id="numero" placeholder="0627xxxxxx" name="newnumero" value="<?php echo $user['numero'] ?>" />
                   </td>
                </tr>
                <tr>
@@ -129,12 +135,8 @@ if (isset($_SESSION['id']))
                </tr>
             </table>
          </form>
-         <?php if (isset($msg)) {echo$msg;} ?>
+         <?php if (isset($msg)) {echo '<font color="red">'.$msg.'</font>' ;} ?>
 
  </div>  </form>
     </fieldset>               
        </body>     
-<?php
-}
-else { header('Location : index.php');}
-?>
