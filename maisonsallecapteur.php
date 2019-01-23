@@ -225,17 +225,17 @@ if (isset($_POST['modifier'])) {
 <div id="colonnegauche">
 
   <div class="Alerte">
-        <?php 
-        $reqmessage = $bdd -> query('SELECT * FROM message WHERE vu=0 AND id_destinataire="'.$_SESSION['id'].'"');
+         <?php 
+        $reqmessage = $bdd -> query('SELECT * FROM message WHERE vu=0 AND nomexpediteur="admin"');
         $pasvuexist = $reqmessage ->rowCount();
         $id = intval($_SESSION['id']);
-        if ($pasvuexist !=0) { ?>
-          <a id="menu" href="chat.php?idd=1&ide=<?=$userinfo['id']?>&id=<?=$userinfo['id']?>"><img src="image/logomessage.png" class="avatar_notif"> <h6>Vous avez reçu un/des nouveau(x) message(s)</h6></a><?php ;}
+        if ($pasvuexist !=0) { 
+          echo '<a id="menu" href="pagecontact.php?langue=fr"><img src="image/logomessage.png" class="avatar_notif"> <h6>Vous avez reçu un/des nouveau(x) message(s)</h6></a>';}
           ?>
          
-    <span class="bouton_fermer" onclick="this.parentElement.style.display='none';">&times;
-    </span>
-    <strong>Boite d'alerte</strong> </br></br>
+   
+    <strong>Boite d'alerte</strong> <br>
+ <span class="bouton_fermer" onclick="this.parentElement.style.display='none';">&times;</span>
     <?php  if (!empty($_GET['id_habitation'])) {
       $anomalie1 = $bdd->prepare("SELECT * from capteurpiece JOIN piece ON capteurpiece.id_piece=piece.id_piece JOIN habitation ON piece.id_habitation=habitation.id_habitation WHERE habitation.id_habitation = ? AND id_type = ? ");
 
@@ -248,7 +248,7 @@ if (isset($_POST['modifier'])) {
       
               echo "/!\ Température trop haute dans votre ";
               echo $r['nom'];
-               echo "</br>";
+               echo "";
              
             }
           
@@ -362,7 +362,7 @@ if (isset($_POST['modifier'])) {
   
   function habitation($id) {
 
-   $bdd = new PDO('mysql:host=127.0.0.1;dbname=hexagon','root','');
+   $bdd = new PDO('mysql:host=localhost;dbname=hexagon','root','');
 
 
     $reqsecondairehab = $bdd->prepare("SELECT * FROM secondairehab WHERE id_secondaire = ?");
@@ -452,4 +452,4 @@ habitation($getid);
 
  </div>
 
-</body>
+</body> 
