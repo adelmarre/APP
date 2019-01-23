@@ -7,7 +7,7 @@
 					<a href="deconnexion.php" class="deconnexion">Déconnexion</a>
 				</div>
 				<nav>
-					<ul>
+					<ul class="snip1241">
 						<li><a href="maisonsallecapteur.php">Ma maison</a></li>
 						<li><a href="catalogue.php">Catalogue</a></li>
 						<li><a href="apropos.php">A Propos</a></li>
