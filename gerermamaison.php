@@ -377,9 +377,6 @@ if (isset($_POST['supprimermaison'])) {
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="gerermamaisonstyle.css">
 
-
-	
-
 </head>
 <body>
 	<?php include "header_none.php" ?>
@@ -518,8 +515,9 @@ if (isset($_POST['supprimermaison'])) {
 						<label>Superficie en m² :</label>
 						<input type="number" id="superficie" name="superficie"  class="RentrerInfoT" min="0" value="0" required>
 						</br></br>
-						<input type="submit" name="ajouter" id="ajouter"  value="Ajouter">
-						<input type="button" value="Annuler" class="envoyer" id="suppr" onclick="Supr()">
+						<button  class="snip0040" type="submit" name="ajouter" id="ajouter"><span>Ajouter</span><i class="ion-android-done"></i></button>
+						 
+						<button type="button" class="snip0040" class="envoyer" id="suppr" onclick="Supr()"><span>Annuler</span><i class="ion-android-remove"></i></button>
 
 					</FORM>	
 				</fieldset>
@@ -658,7 +656,7 @@ if (isset($_POST['supprimermaison'])) {
           						</select>
           					<br>
 							<br>
-								<input type="submit" name="modifMaison" id="modifMaison" value="Modifier">
+								<button type="submit" class="snip0040" name="modifMaison" id="modifMaison" ><span>Modifier</span><i class="ion-android-done"></i></button>
 
 						</FORM>	
 
@@ -760,8 +758,8 @@ if (isset($_POST['supprimermaison'])) {
 							<p><input type="checkbox" name="choix"> J'ai lu et j'accepte les conditions générales d'utilisation <a href="conditions.php" onclick="window.open(this.href); return false;" > Conditions d'utilisation </a></p>
 							<br>
 							<div class="button">
-								<button type="submit" name="ajouterUserS" >Inscription</button>
-								<input type="button" value="Annuler" class="envoyer" id="supprFU" onclick="SuprFU()">
+								<button type="submit" class="snip0040" name="ajouterUserS" ><span>Inscrire</span><i class="ion-android-done"></i></button>
+								<button type="button" class="snip0040" class="envoyer" id="suppr" onclick="Supr()"><span>Annuler</span><i class="ion-android-remove"></i></button>
 							</div>
 
 						</div>
