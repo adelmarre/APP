@@ -91,9 +91,9 @@ if (isset($_SESSION['id'])) {
 						<form method="POST" action="">
 							
 							 <div>
-							<textarea type="text" name="Votre_demande" placeholder="Votre message" required > </textarea>
+							<textarea type="text" name="Votre_demande" class="Votre_demande" placeholder="..." required ></textarea>
 							<br /> <br />
-							<input type="submit" value="Envoyer" name="mailform">					
+							<button class="snip1575" type="submit" name="mailform">Envoyer</button>					
 					
 						
 							</div>
@@ -201,9 +201,9 @@ if (isset($_SESSION['id'])) {
 							<li><input type="mail" name="Email" placeholder="<?php echo $mail ;?>"  required></li>
 							</ul>	
 							 <div>
-							<textarea type="text" name="Votre_demande" placeholder="Votre message" required > </textarea>
+							<textarea class="Votre_demande" type="text" name="Votre_demande" placeholder="..." required ></textarea>
 							<br /> <br />
-							<input type="submit" value= "<?php echo $button ;?>" name="mailform">					
+							<button class="snip1575" type="submit" name="mailform"><?php echo $button ;?></button>
 					
 							</div>
 						</form>
