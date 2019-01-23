@@ -98,8 +98,7 @@ fieldset{
 {
 	width: 15em;
 	height: 10.2em;
-	margin-left: 2em;
-	margin-top: 1.2em;
+	
 
 }
 .section3
@@ -119,3 +118,41 @@ a{
 
 }
 
+.snip1575 {
+  
+  color: #445D7B;
+  cursor: pointer;
+  padding: 0px 40px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  line-height: 2.7em;
+  letter-spacing: 1.5px;
+  font-size: 1em;
+  outline: none;
+  position: relative;
+  font-size: 16px;
+  border: 3px solid #445D7B;
+  background-color: transparent;
+  border-radius: 15px 0 15px 15px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.snip1575:before {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 35px 35px 0;
+  border-color: transparent #445D7B transparent transparent;
+  z-index: 1;
+}
+
+.snip1575:hover,
+.snip1575.hover {
+  border-color: #7AB781;
+}
