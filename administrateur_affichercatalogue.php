@@ -30,7 +30,7 @@ $catalogue = $bdd -> query('SELECT * FROM catalogue JOIN type_capteur ON catalog
   
                                     
 <div id="content"> 
-<a href="administrateur_modifiercatalogue.php"><button class="snip1351">Ajouter un capteur</button></a></br></br>
+<a href="administrateur_ajoutercapteur.php"><button class="snip1351">Ajouter un capteur</button></a></br></br>
   <table border>
     <tr> <th> ID capteur </th> <th> Type de capteur</th><th> Nom</th><th> Référence</th><th> Descprition</th><th>Prix</th><th> Photo</th> </tr>
     <tr>
