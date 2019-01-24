@@ -83,7 +83,7 @@ if (isset($_SESSION['id'])) {
 					</div>
 				
 				<div class="aside22">
-				
+				<fieldset>
 					<div><h1><?php echo $ask;?></h1></div>
 					
 					<div class="demande">
@@ -94,7 +94,7 @@ if (isset($_SESSION['id'])) {
 							<textarea type="text" name="Votre_demande" class="Votre_demande" placeholder="..." required ></textarea>
 							<br /> <br />
 							<button class="snip1575" type="submit" name="mailform">Envoyer</button>					
-					
+					</fieldset>
 						
 							</div>
 						</form>
