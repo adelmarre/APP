@@ -11,6 +11,12 @@ if (isset($_POST['maj'])) {
         $newnom = htmlspecialchars($_POST['newnom']);
         $insertnom = $bdd -> prepare("UPDATE personne SET nom=? WHERE id=?");
         $insertnom ->execute(array($newnom,$getid));
+        $msg ="Mis à jour!";
+
+        $requser = $bdd -> prepare('SELECT * FROM personne WHERE id = ?');
+        $requser -> execute(array($getid));
+        $userinfo = $requser ->fetch();
+
               
     }
     if (isset($_POST['newprenom']) AND !empty($_POST['newprenom']) AND $_POST['newprenom']!=$user['prenom']) {
@@ -18,6 +24,12 @@ if (isset($_POST['maj'])) {
         $newprenom = htmlspecialchars($_POST['newprenom']);
         $insertnom = $bdd -> prepare("UPDATE personne SET prenom=? WHERE id=?");
         $insertnom ->execute(array($newprenom,$getid));
+        $msg = "Mis à jour!";
+      
+    $requser = $bdd -> prepare('SELECT * FROM personne WHERE id = ?');
+    $requser -> execute(array($getid));
+    $userinfo = $requser ->fetch();
+
               
     }
     if (isset($_POST['newmail']) AND !empty($_POST['newmail']) AND $_POST['newmail'] != $user['mail'])
@@ -76,6 +88,7 @@ if (isset($_POST['maj'])) {
 
   <fieldset id="set">
     <legend> <h1>Editer son profil</h1></legend>
+    <button class="hand" id="monClick"><i class="ion-android-hand"></i></button>
     <form method="POST" action="">
             <table>
                <tr>
@@ -128,9 +141,10 @@ if (isset($_POST['maj'])) {
                </tr>
                <tr>
                   <td></td>
-                  <td align="center">
-                     <br />
-                     <input type="submit" class="boutton "name="maj" value="Mettre à jour mon profil!" />
+                  <td >
+                  </br>
+                  
+                     <button type="submit" class="snip0040 "name="maj"><span>Mettre à jour!</span><i class="ion-android-done"></i></button>
                   </td>
                </tr>
             </table>
@@ -138,5 +152,45 @@ if (isset($_POST['maj'])) {
          <?php if (isset($msg)) {echo '<font color="red">'.$msg.'</font>' ;} ?>
 
  </div>  </form>
-    </fieldset>               
+    </fieldset>  
+ <div id="maReponse" class="modal">
+  <div class="maReponse-content">
+    <span class="close">&times;</span>
+   <ul> Indications pour le mot de passe : </br><br>
+    <li>Au moins 10 charactères.</li>
+    <li>Au moins un chiffre (0-9).</li>
+    <li>Au moins une minuscule.</li>
+    <li>Au moins une majuscule.</li>
+    <li>Au moins un charactère spécial.</li>
+  </ul>
+  </div>
+  </div>
+
+    <script type="text/javascript">
+var reponse = document.getElementById('maReponse');
+
+// Get the button that opens the modal
+var click = document.getElementById("monClick");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+click.onclick = function() {
+  reponse.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  reponse.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == reponse) {
+    reponse.style.display = "none";
+  }
+}
+
+</script>             
        </body>     
