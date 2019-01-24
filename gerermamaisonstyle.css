@@ -266,6 +266,7 @@ a{
 
 /*supprimer ma maison */ 
 button.snip1099 {
+  font-family: 'Raleway', sans-serif;
   border: none;
   background-color: #000000;
   border-radius: 5px;
@@ -333,7 +334,7 @@ fieldset{
 /*ajouter */
 
 button.snip0040 {
-
+  font-family: 'Raleway', sans-serif;
   border: none;
   background-color: #445D7B;
   border-radius: 5px;
@@ -400,4 +401,53 @@ button.snip0040.hover:before {
 }
 button.snip0040:active:before {
   background: rgba(255, 255, 255, 0.3);
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 10em; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.maReponse-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 1em;
+  border: 1px solid #888;
+  width: 20%;
+}
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;}
+
+}
+.Titre{
+  text-align: center;
+}
+.hand {
+background-color: #445D7B;
+  border: none;
+  color : white;
+  border-radius: 100%;
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
 }
