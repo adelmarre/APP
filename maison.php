@@ -28,7 +28,7 @@ if (isset($_POST['ajouter'])) {
 	<link rel="stylesheet" type="text/css" href="sallestyle.css" /> 
 	
 </head>
-<div id="Centre">
+<div id="EditerProfil">
 	<fieldset><legend><h1>Ajouter une maison</h1></legend>
 <form method="POST">
        <table >
@@ -36,7 +36,7 @@ if (isset($_POST['ajouter'])) {
        <td>
       <label for="adresse">Adresse :</td>
 		<td>
-        <input type="text" id="adresse" name="adresse" placeholder="Ex: 10 rue de Vanves"  value="<?php if(isset($_POST['adresse'])) {echo $adresse;} ?>"required>
+        <input type="text" id="adresse" name="adresse" placeholder="Ex: 6 rue notre dame des champs"  value="<?php if(isset($_POST['adresse'])) {echo $adresse;} ?>"required>
 		</td>
       </label>
   		</tr>
@@ -93,9 +93,10 @@ if (isset($_POST['ajouter'])) {
 
 <tr>
 	    	<td></td>
-       
+    
      <td>
-        <button type="submit" name="ajouter" >Ajouter</button><td></tr>
+         </br>
+        <button type="submit" class="snip0040" name="ajouter" ><span>Ajouter</span><i class="ion-android-done"></i></button><td></tr>
     </table>
     </form>
 </fieldset>
