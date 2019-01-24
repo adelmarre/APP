@@ -19,6 +19,7 @@ body
 }
 
 .snip1231 {
+ 
   text-align: center;
   text-transform: uppercase;
   margin-top: 2em;
@@ -71,6 +72,7 @@ body
 
 
 input[type="submit"] {
+   font-family: 'Raleway', sans-serif;
   font-size: 2em;
   overflow: visible;
   border-radius: 3px;
