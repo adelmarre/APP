@@ -67,7 +67,8 @@ if (isset($_POST['ajout'])) {
     $reponse = htmlspecialchars($_POST['réponse']);
     $insertaide = $bdd->prepare("INSERT INTO aide(question, reponse) VALUES(?, ?)");
     $successInsertaide = $insertaide->execute(array($question, $reponse));
-    $erreur = "Question/Réponse bien ajoutée";
+    header("Location: administrateur_afficherFAQ.php");
+ 
   }
   else
   {
@@ -110,8 +111,7 @@ if (isset($_POST['ajout'])) {
       { 
         echo '<font color="white">'.$erreur." ";
       }
-      ?></br>
-  
+      ?> 
   <button type="submit" class="snip0050 yellow" name="ajout" ><span>Ajouter</span><i class="ion-compose"></i></button>
 </div>
 
